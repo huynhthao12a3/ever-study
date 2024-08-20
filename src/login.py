@@ -27,6 +27,7 @@ class Login:
         self.password_verify = tk.StringVar()
         self.username_login_entry = None
         self.password_login_entry = None
+        self.login_success_screen = None
 
         font_large = Font(file=FileManager().resource_path("font/Roboto-Black.ttf"), family="Roboto", size=20)
         font_small = Font(file=FileManager().resource_path("font/Roboto-Thin.ttf"), family="Roboto", size=12)
@@ -41,9 +42,10 @@ class Login:
                                         font=font_small)
         username_login_entry.pack()
 
-        tk.Label(self.root, text="").pack()
+        tk.Label(self.root, text="", height=2).pack()
+
         tk.Label(self.root, text="Mật khẩu * ", font=font_small).pack()
-        password_login_entry = tk.Entry(self.root, textvariable=self.username_verify, show='*', width=50, borderwidth=3,
+        password_login_entry = tk.Entry(self.root, textvariable=self.password_verify, show='*', width=50, borderwidth=3,
                                         font=font_small)
         password_login_entry.pack()
 
@@ -51,45 +53,44 @@ class Login:
         tk.Button(self.root, text="Đăng nhập", width=20, height=2, command=self.login_verify, borderwidth=2,
                   cursor="circle").pack()
 
+        # tk.Button(self.root, text="delete", width=20, height=2, command=self.login_success_screen.destroy(), borderwidth=2,
+        #           cursor="circle").pack()
+
         self.root.mainloop()
 
     # Implementing event on login button
 
     def login_verify(self):
-        username1 = self.username_verify.get()
-        password1 = self.password_verify.get()
-        # username_login_entry.delete(0, END)
-        # password_login_entry.delete(0, END)
+        username = self.username_verify.get()
+        password = self.password_verify.get()
 
         # defining the api-endpoint
-        API_ENDPOINT = "https://backend-34tq.onrender.com/login"
-
-        # data to be sent to api
-        data = {
-            "username": "huynhthao@gmail.com",
-            "password": "123456"
-        }
+        api_endpoint = "https://backend-34tq.onrender.com/login"
         headers = {'Content-Type': 'application/json'}
+        data = {
+            "username": username,  #"huynhthao@gmail.com",
+            "password": password  #"123456"
+        }
 
-        # sending post request and saving response as response object
-        r = requests.post(url=API_ENDPOINT, json=data, headers=headers)
+        # cal api
+        response = requests.post(url=api_endpoint, json=data, headers=headers)
 
         # extracting response text
-        pastebin_url = r.text
+        pastebin_url = response.text
         test = json.loads(pastebin_url)
         # print("The pastebin URL is:%s" % pastebin_url)
-        print(r.status_code)
-        print(r.json()["data"])
+        print(response.status_code)
+        print(response.json()["data"])
         # print(test["data"])
 
-        if r.status_code == 200:
-            self.login_sucess()
+        if response.status_code == 200:
+            self.login_success()
 
     # Designing popup for login success
 
-    def login_sucess(self):
-        global login_success_screen
-        self.root = tk.Toplevel(self.root)
-        self.root.title("Success")
-        self.root.geometry("150x100")
-        tk.Label(self.root, text="Login Success").pack()
+    def login_success(self):
+        # global login_success_screen
+        self.login_success_screen = tk.Toplevel(self.root)
+        self.login_success_screen.title("Success")
+        self.login_success_screen.geometry("150x100")
+        tk.Label(self.login_success_screen, text="Login Success").pack()
