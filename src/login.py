@@ -1,5 +1,9 @@
 ﻿import tkinter as tk
-from tkextrafont import Font
+
+import pygame.display
+
+from src.utils.constant import Auth
+# from tkextrafont import Font
 from src.utils.file import FileManager
 # Call api, convert json library
 import requests
@@ -8,55 +12,61 @@ import json
 
 class Login:
     def __init__(self):
-        self.root = tk.Tk()
-        self.root.geometry('800x600')
-        self.root.title('Ever Study')
-        self.root.resizable(False, False)
+        print(len(Auth.full_name))
+        if len(Auth.full_name)  > 0:
+            print(Auth.full_name, "already login")
+        else:
+            Auth.full_name = "Hi, huynh van thao"
+            self.root = tk.Tk()
+            self.root.geometry('800x600')
+            self.root.title('Ever Study')
+            self.root.resizable(False, False)
 
-        # App config
-        self.icon = tk.PhotoImage(file=FileManager().resource_path("image/setting/apple.png"))
-        self.backgound = tk.PhotoImage(file=FileManager().resource_path("image/setting/khoidau.png"))
-        self.root.iconphoto(False, self.icon)
-        self.place = tk.Label(self.root, image=self.backgound)
-        self.place.place(x=0, y=0)
+            # App config
+            self.icon = tk.PhotoImage(file=FileManager().resource_path("image/setting/apple.png"))
+            self.background = tk.PhotoImage(file=FileManager().resource_path("image/setting/khoidau.png"))
+            self.root.iconphoto(False, self.icon)
+            self.place = tk.Label(self.root, image=self.background)
+            self.place.place(x=0, y=0)
 
-        self.root.wm_attributes("-transparent", "aqua")
+            self.root.wm_attributes("-transparent", "aqua")
 
-        # Variable
-        self.username_verify = tk.StringVar()
-        self.password_verify = tk.StringVar()
-        self.username_login_entry = None
-        self.password_login_entry = None
-        self.login_success_screen = None
+            # Variable
+            self.username_verify = tk.StringVar()
+            self.password_verify = tk.StringVar()
+            self.username_login_entry = None
+            self.password_login_entry = None
+            self.login_success_screen = None
 
-        font_large = Font(file=FileManager().resource_path("font/Roboto-Black.ttf"), family="Roboto", size=20)
-        font_small = Font(file=FileManager().resource_path("font/Roboto-Thin.ttf"), family="Roboto", size=12)
+            # font_large = Font(file=FileManager().resource_path("font/Roboto-Black.ttf"), family="Roboto", size=20)
+            # font_small = Font(file=FileManager().resource_path("font/Roboto-Thin.ttf"), family="Roboto", size=12)
 
-        tk.Label(self.root, text="-*- Chào mừng bạn đến với Ever Study -*-", font=font_large, bg="aqua").pack()
-        tk.Label(self.root, text="", height=5).pack()
-        tk.Label(self.root, text="Vui lòng nhập thông tin tài khoản", font=font_large).pack()
-        tk.Label(self.root, text="").pack()
+            tk.Label(self.root, text="-*- Chào mừng bạn đến với Ever Study -*-" , bg="aqua").pack()
+            tk.Label(self.root, text="", height=5).pack()
+            tk.Label(self.root, text="Vui lòng nhập thông tin tài khoản").pack()
+            tk.Label(self.root, text="").pack()
 
-        tk.Label(self.root, text="Tài khoản * ", font=font_small).pack()
-        username_login_entry = tk.Entry(self.root, textvariable=self.username_verify, width=50, borderwidth=3,
-                                        font=font_small)
-        username_login_entry.pack()
+            tk.Label(self.root, text="Tài khoản * ").pack()
+            username_login_entry = tk.Entry(self.root, textvariable=self.username_verify, width=50, borderwidth=3
+                                           )
+            username_login_entry.pack()
 
-        tk.Label(self.root, text="", height=2).pack()
+            tk.Label(self.root, text="", height=2).pack()
 
-        tk.Label(self.root, text="Mật khẩu * ", font=font_small).pack()
-        password_login_entry = tk.Entry(self.root, textvariable=self.password_verify, show='*', width=50, borderwidth=3,
-                                        font=font_small)
-        password_login_entry.pack()
+            tk.Label(self.root, text="Mật khẩu * ").pack()
+            password_login_entry = tk.Entry(self.root, textvariable=self.password_verify, show='*', width=50, borderwidth=3
+                                            )
+            password_login_entry.pack()
 
-        tk.Label(self.root, text="").pack()
-        tk.Button(self.root, text="Đăng nhập", width=20, height=2, command=self.login_verify, borderwidth=2,
-                  cursor="circle").pack()
+            tk.Label(self.root, text="").pack()
+            tk.Button(self.root, text="Đăng nhập", width=20, height=2, command=self.login_verify, borderwidth=2,
+                      cursor="circle").pack()
 
-        # tk.Button(self.root, text="delete", width=20, height=2, command=self.login_success_screen.destroy(), borderwidth=2,
-        #           cursor="circle").pack()
+            # tk.Button(self.root, text="delete", width=20, height=2, command=self.login_success_screen.destroy(), borderwidth=2,
+            #           cursor="circle").pack()
 
-        self.root.mainloop()
+            self.root.mainloop()
+
 
     # Implementing event on login button
 
