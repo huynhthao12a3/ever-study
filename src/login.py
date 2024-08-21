@@ -11,12 +11,19 @@ import json
 
 
 class Login:
-    def __init__(self):
-        print(len(Auth.full_name))
-        if len(Auth.full_name)  > 0:
+    def __init__(self, screen, popups, erasable_popup):
+        if len(Auth.full_name) > 0:
             print(Auth.full_name, "already login")
         else:
-            Auth.full_name = "Hi, huynh van thao"
+            Auth.full_name = "Huỳnh Văn Thảo"
+            Auth.login_success = True
+            if len(popups) > 0:
+                popups[0].un_draw(screen)
+                popups[1].un_draw(screen)
+                pygame.draw.rect(screen, (255,255,255), pygame.Rect(710, 4, 88, 30 ), 2, 10)
+            popups[0] = (erasable_popup(pygame.font.SysFont("roboto", 14), "✮ Hi, " + Auth.full_name))
+            popups[1] = (erasable_popup(pygame.font.SysFont("roboto", 14), ""))
+            # screen.blit(pygame.transform.scale(FileManager().load_image("image/background/tick-success.png", True), (10, 10)),(0,0))
             self.root = tk.Tk()
             self.root.geometry('800x600')
             self.root.title('Ever Study')
@@ -41,20 +48,21 @@ class Login:
             # font_large = Font(file=FileManager().resource_path("font/Roboto-Black.ttf"), family="Roboto", size=20)
             # font_small = Font(file=FileManager().resource_path("font/Roboto-Thin.ttf"), family="Roboto", size=12)
 
-            tk.Label(self.root, text="-*- Chào mừng bạn đến với Ever Study -*-" , bg="aqua").pack()
+            tk.Label(self.root, text="-*- Chào mừng bạn đến với Ever Study -*-", bg="aqua").pack()
             tk.Label(self.root, text="", height=5).pack()
             tk.Label(self.root, text="Vui lòng nhập thông tin tài khoản").pack()
             tk.Label(self.root, text="").pack()
 
             tk.Label(self.root, text="Tài khoản * ").pack()
             username_login_entry = tk.Entry(self.root, textvariable=self.username_verify, width=50, borderwidth=3
-                                           )
+                                            )
             username_login_entry.pack()
 
             tk.Label(self.root, text="", height=2).pack()
 
             tk.Label(self.root, text="Mật khẩu * ").pack()
-            password_login_entry = tk.Entry(self.root, textvariable=self.password_verify, show='*', width=50, borderwidth=3
+            password_login_entry = tk.Entry(self.root, textvariable=self.password_verify, show='*', width=50,
+                                            borderwidth=3
                                             )
             password_login_entry.pack()
 
@@ -66,7 +74,6 @@ class Login:
             #           cursor="circle").pack()
 
             self.root.mainloop()
-
 
     # Implementing event on login button
 
@@ -94,7 +101,7 @@ class Login:
         # print(test["data"])
 
         if response.status_code == 200:
-            self.login_success()
+            self.root.destroy()
 
     # Designing popup for login success
 
