@@ -13,18 +13,15 @@ from src.utils.popup import ErasablePopup
 
 
 class Login:
-    def __init__(self, main_screen):
-        if len(Auth.full_name) > 0:
+    def __init__(self, main_instance):
+        if Auth.login_success is True:
             print(Auth.full_name, "already login")
         else:
-            Auth.full_name = "Huỳnh Văn Thảo"
-            Auth.login_success = True
-            if len(main_screen.popups) > 0:
-                main_screen.popups[0].un_draw(main_screen.screen)
-                main_screen.popups[1].un_draw(main_screen.screen)
-                pygame.draw.rect(main_screen.screen, (255, 255, 255), pygame.Rect(710, 4, 88, 30 ), 2, 10)
-            main_screen.popups[0] = (ErasablePopup(pygame.font.SysFont("roboto", 14), "✮ Hi, " + Auth.full_name))
-            main_screen.popups[1] = (ErasablePopup(pygame.font.SysFont("roboto", 14), ""))
+            if len(main_instance.popups) > 0:
+                main_instance.popups[0].un_draw(main_instance.screen)
+                main_instance.popups[1].un_draw(main_instance.screen)
+                pygame.draw.rect(main_instance.screen, (255, 255, 255), pygame.Rect(710, 4, 88, 30 ), 2, 10)
+
             # screen.blit(pygame.transform.scale(FileManager().load_image("image/background/tick-success.png", True), (10, 10)),(0,0))
             self.root = tk.Tk()
             self.root.geometry('800x600')
@@ -69,7 +66,7 @@ class Login:
             password_login_entry.pack()
 
             tk.Label(self.root, text="").pack()
-            tk.Button(self.root, text="Đăng nhập", width=20, height=2, command=self.login_verify, borderwidth=2,
+            tk.Button(self.root, text="Đăng nhập", width=20, height=2, command=lambda: self.login_verify(main_instance), borderwidth=2,
                       cursor="circle").pack()
 
             # tk.Button(self.root, text="delete", width=20, height=2, command=self.login_success_screen.destroy(), borderwidth=2,
@@ -79,7 +76,7 @@ class Login:
 
     # Implementing event on login button
 
-    def login_verify(self):
+    def login_verify(self, main_instance):
         username = self.username_verify.get()
         password = self.password_verify.get()
 
@@ -87,25 +84,30 @@ class Login:
         api_endpoint = "https://backend-34tq.onrender.com/login"
         headers = {'Content-Type': 'application/json'}
         data = {
-            "username": username,  #"huynhthao@gmail.com",
-            "password": password  #"123456"
+            "username": "huynhthao@gmail.com",
+            "password": "123456"
         }
 
         # cal api
-        response = requests.post(url=api_endpoint, json=data, headers=headers)
+        response = requests.post(url=api_endpoint, json=data, headers=headers).json()
+        print(response)
+        if response["code"] == "000":
+            self.get_info(main_instance, response["data"]["access_token"])
 
-        # extracting response text
-        pastebin_url = response.text
-        test = json.loads(pastebin_url)
-        # print("The pastebin URL is:%s" % pastebin_url)
-        print(response.status_code)
-        print(response.json()["data"])
-        # print(test["data"])
-
-        if response.status_code == 200:
+    def get_info(self, main_instance, access_token):
+        api_endpoint = "https://backend-34tq.onrender.com/users/me"
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization':  "Bearer " + access_token
+        }
+        # Call api
+        response = requests.get(url=api_endpoint, headers=headers).json()
+        if response["code"] == "000":
+            Auth.login_success = True
+            Auth.full_name = response["data"]["full_name"]
+            main_instance.popups[0] = (ErasablePopup(pygame.font.SysFont("roboto", 14), "✮ Hi, " + Auth.full_name))
+            main_instance.popups[1] = (ErasablePopup(pygame.font.SysFont("roboto", 14), ""))
             self.root.destroy()
-
-    # Designing popup for login success
 
     def login_success(self):
         # global login_success_screen

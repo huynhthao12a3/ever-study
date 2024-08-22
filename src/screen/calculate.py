@@ -6,14 +6,15 @@ from src.utils.popup import ErasablePopup
 
 
 class CalculateScreen:
-    def __init__(self, home_screen):
+    def __init__(self, main_instance):
         print("Init calculate screen")
-        home_screen.is_calculate_screen = True
-        home_screen.frames = FileManager().load_gif("image/background/home-tinh-diem.gif")
-        home_screen.frame_index = 0
+        print(main_instance)
+        main_instance.is_calculate_screen = True
+        main_instance.frames = FileManager().load_gif("image/background/home-tinh-diem.gif")
+        main_instance.frame_index = 0
 
-    def draw_header_info(self, home_screen):
-        home_screen.popups[1] = ErasablePopup(home_screen.popup_font, "<- Trở về")
-        home_screen.right_info_rect = pygame.draw.rect(home_screen.screen, InfoRect.color, InfoRect.rect, InfoRect.width, InfoRect.border_radius)
-        home_screen.popups[0].draw_at(home_screen.screen, (8, 4))
-        home_screen.popups[1].draw_at(home_screen.screen, (730, 8))
+    def draw_header_info(self, main_instance):
+        main_instance.popups[1] = ErasablePopup(main_instance.popup_font, "<- Trở về")
+        main_instance.right_info_rect = pygame.draw.rect(main_instance.screen, InfoRect.color, InfoRect.rect, InfoRect.width, InfoRect.border_radius)
+        main_instance.popups[0].draw_at(main_instance.screen, (8, 4))
+        main_instance.popups[1].draw_at(main_instance.screen, (730, 8))
