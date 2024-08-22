@@ -9,24 +9,26 @@ from src.utils.file import FileManager
 import requests
 import json
 
+from src.utils.popup import ErasablePopup
+
 
 class Login:
-    def __init__(self, screen, popups, erasable_popup):
+    def __init__(self, main_screen):
         if len(Auth.full_name) > 0:
             print(Auth.full_name, "already login")
         else:
             Auth.full_name = "Huỳnh Văn Thảo"
             Auth.login_success = True
-            if len(popups) > 0:
-                popups[0].un_draw(screen)
-                popups[1].un_draw(screen)
-                pygame.draw.rect(screen, (255,255,255), pygame.Rect(710, 4, 88, 30 ), 2, 10)
-            popups[0] = (erasable_popup(pygame.font.SysFont("roboto", 14), "✮ Hi, " + Auth.full_name))
-            popups[1] = (erasable_popup(pygame.font.SysFont("roboto", 14), ""))
+            if len(main_screen.popups) > 0:
+                main_screen.popups[0].un_draw(main_screen.screen)
+                main_screen.popups[1].un_draw(main_screen.screen)
+                pygame.draw.rect(main_screen.screen, (255, 255, 255), pygame.Rect(710, 4, 88, 30 ), 2, 10)
+            main_screen.popups[0] = (ErasablePopup(pygame.font.SysFont("roboto", 14), "✮ Hi, " + Auth.full_name))
+            main_screen.popups[1] = (ErasablePopup(pygame.font.SysFont("roboto", 14), ""))
             # screen.blit(pygame.transform.scale(FileManager().load_image("image/background/tick-success.png", True), (10, 10)),(0,0))
             self.root = tk.Tk()
             self.root.geometry('800x600')
-            self.root.title('Ever Study')
+            self.root.title('Đăng nhập')
             self.root.resizable(False, False)
 
             # App config
