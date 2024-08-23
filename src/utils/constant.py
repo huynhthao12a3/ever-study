@@ -13,3 +13,7 @@ class InfoRect:
     rect = pygame.Rect(720, 4, 78, 28)
     width = 2
     border_radius = 10
+
+
+class Api:
+    api_endpoint = "https://backend-34tq.onrender.com"

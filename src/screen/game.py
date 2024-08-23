@@ -17,3 +17,7 @@ class GameScreen:
         main_instance.right_info_rect = pygame.draw.rect(main_instance.screen, InfoRect.color, InfoRect.rect, InfoRect.width, InfoRect.border_radius)
         main_instance.popups[0].draw_at(main_instance.screen, (8, 4))
         main_instance.popups[1].draw_at(main_instance.screen, (730, 8))
+
+    def run(self, main_instance, mouse_x, mouse_y):
+        if 150 < mouse_x < 300 and 200 < mouse_y < 300:
+            print("flappy bird")

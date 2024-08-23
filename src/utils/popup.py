@@ -3,7 +3,7 @@
 
 class ErasablePopup:
     FOREGROUND_COLOUR = (86, 54, 8)  # dark chocolate brown
-    BACKGROUND_COLOUR = (255, 255, 255)  # white
+    BACKGROUND_COLOUR = (255, 255, 255, 128)  # white
     SIDE_MARGIN = 1  # size of corners and margin
     LINE_SPACING = 1  # pixels between lines
 
@@ -47,7 +47,8 @@ class ErasablePopup:
             if len(line) == 0:
                 line = ' '  # make empty lines non-empty
             # Make each line into a bitmap
-            message_line = font.render(line, True, self.FOREGROUND_COLOUR, self.BACKGROUND_COLOUR)
+            message_line = font.render(line, True, self.FOREGROUND_COLOUR)
+            # message_line.set_alpha(127)
             message_lines.append(message_line)
             # do the statistics to determine the bounding-box
             maximum_width = max(maximum_width, message_line.get_width())
@@ -63,7 +64,7 @@ class ErasablePopup:
         # Render the underlying text-box
         maximum_width += 2 * self.SIDE_MARGIN  # add the margin
         image = pygame.Surface((maximum_width, height_tally), pygame.SRCALPHA)  # transparent bitmap
-        image.fill(self.BACKGROUND_COLOUR)
+        # image.fill(self.BACKGROUND_COLOUR) # remove background
         # draw the lines of text
         for i in range(len(message_lines)):
             image.blit(message_lines[i], message_rects[i])

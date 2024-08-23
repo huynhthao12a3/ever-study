@@ -78,7 +78,7 @@ class EverStudy:
                     self.calculate_screen_instance.draw_header_info(self)
 
                 if self.is_game_screen is True:
-                    print("game screen")
+                    # print("game screen")
                     self.game_screen_instance.draw_header_info(self)
 
                 if self.is_other_screen is True:
@@ -117,8 +117,10 @@ class EverStudy:
                         if self.is_home_screen is True:
                             self.home_screen_instance.run(self, mouse_x, mouse_y)
 
-                        if self.is_learn_screen is True:
-                            print("learning screen")
+                        if self.is_game_screen is True:
+                            # print("game screen")
+                            print(mouse_x, mouse_y)
+                            self.game_screen_instance.run(self, mouse_x, mouse_y)
 
             pygame.display.flip()
 
