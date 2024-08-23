@@ -21,3 +21,4 @@ class GameScreen:
     def run(self, main_instance, mouse_x, mouse_y):
         if 150 < mouse_x < 300 and 200 < mouse_y < 300:
             print("flappy bird")
+            # Flappy().start()
