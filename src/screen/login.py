@@ -91,7 +91,7 @@ class Login:
             response = requests.post(url=api_endpoint, json=data, headers=headers)
             response_json = response.json()
         except Exception as e:
-            tk.Label(self.root, text="Đăng nhập thất bại", width=16, font=('Roboto', 16, 'bold')).place(x=0, y=200)
+            tk.Label(self.root, text="Đăng nhập thất bại", width=16, font=('Roboto', 16, 'bold'), foreground="red").place(x=0, y=270)
 
         print(response_json)
         print(response.status_code)
