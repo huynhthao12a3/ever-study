@@ -16,4 +16,4 @@ class InfoRect:
 
 
 class Api:
-    api_endpoint = "https://ever-study.onrender.com"
+    api_endpoint = "https://ever-study-api.onrender.com"

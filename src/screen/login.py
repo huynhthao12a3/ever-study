@@ -26,7 +26,7 @@ class Login:
             self.root = tk.Tk()
             self.root.geometry('400x300')
             self.root.title('Đăng nhập')
-            self.root.resizable(False, False)
+            self.root.resizable(True, True)
 
             # App config
             self.icon = tk.PhotoImage(file=FileManager().resource_path("image/setting/apple.png"))

@@ -1,7 +1,6 @@
 import pygame, sys, random
 
 
-#Tạo hàm cho trò chơi
 def draw_floor():
     screen.blit(floor, (floor_x_pos, 500))
     screen.blit(floor, (floor_x_pos + 800, 500))
@@ -128,6 +127,7 @@ while True:
     screen.blit(bg, (0, 0))
     if len(pipe_list) > 0:
         if pipe_list[0].x < 0:
+            score_sound.play()
             score += 1
             pipe_list.pop(0)
             pipe_list.pop(0)
@@ -146,10 +146,10 @@ while True:
         draw_pipe(pipe_list)
         # score += 0.01
         score_display('main game')
-        score_sound_countdown -= 1
-        if score_sound_countdown <= 0:
-            score_sound.play()
-            score_sound_countdown = 100
+        # score_sound_countdown -= 1
+        # if score_sound_countdown <= 0:
+        #     score_sound.play()
+        #     score_sound_countdown = 100
     else:
         screen.blit(game_over_surface, game_over_rect)
         high_score = update_score(score, high_score)

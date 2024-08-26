@@ -10,7 +10,7 @@ class GameScreen(tk.Frame):
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
         self.configure(bg="lightblue")
-        self.load_widgets()
+        # self.load_widgets()
 
     def load_widgets(self):
         gif_path = "image/background/q-a-1.gif"

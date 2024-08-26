@@ -30,13 +30,16 @@ class AnimatedGifCanvas(tk.Canvas):
         self.show_frame(0)
 
     def show_frame(self, frame_num):
-        self.current_frame = frame_num % len(self.sequence)
-        self.gif_frame = ImageTk.PhotoImage(self.sequence[self.current_frame])
+        if self.sequence:
+            self.current_frame = frame_num % len(self.sequence)
+            self.gif_frame = ImageTk.PhotoImage(self.sequence[self.current_frame])
 
-        self.configure(width=self.gif_width, height=self.gif_height)
-        self.create_image(0, 0, anchor=tk.NW, image=self.gif_frame)
+            self.configure(width=self.gif_width, height=self.gif_height)
+            self.create_image(0, 0, anchor=tk.NW, image=self.gif_frame)
 
-        self.after(self.delay, lambda: self.show_frame(self.current_frame + 1))
+            self.after(self.delay, lambda: self.show_frame(self.current_frame + 1))
+        else:
+            pass
 
     def on_click(self, event):
         x = event.x

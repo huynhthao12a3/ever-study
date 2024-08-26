@@ -20,12 +20,12 @@ class EverStudy(tk.Tk):
         self.container = tk.Frame(self, bg="lightblue")
         self.container.pack(fill="both", expand=True)
 
-        self.pages = {}
-        self.load_pages()
-        self.current_page = None
-        self.show_page("HomeScreen")
+        self.screens = {}
+        self.load_screens()
+        self.current_screen = None
+        self.show_screen("HomeScreen")
 
-    def load_pages(self):
+    def load_screens(self):
         # Routing
         home_callback_list = {
             "LearnScreen": self.show_learn_screen,
@@ -48,41 +48,44 @@ class EverStudy(tk.Tk):
             "HomeScreen": self.show_home_screen
         }
 
-        self.pages["HomeScreen"] = HomeScreen(self.container, home_callback_list)
-        self.pages["LearnScreen"] = LearnScreen(self.container, learn_callback_list)
-        self.pages["AuthorScreen"] = AuthorScreen(self.container, author_callback_list)
-        self.pages["CalculateScreen"] = CalculateScreen(self.container, calculate_callback_list)
-        self.pages["GameScreen"] = GameScreen(self.container, game_callback_list)
-        self.pages["OtherScreen"] = OtherScreen(self.container, other_callback_list)
+        self.screens["HomeScreen"] = HomeScreen(self.container, home_callback_list)
+        self.screens["LearnScreen"] = LearnScreen(self.container, learn_callback_list)
+        self.screens["AuthorScreen"] = AuthorScreen(self.container, author_callback_list)
+        self.screens["CalculateScreen"] = CalculateScreen(self.container, calculate_callback_list)
+        self.screens["GameScreen"] = GameScreen(self.container, game_callback_list)
+        self.screens["OtherScreen"] = OtherScreen(self.container, other_callback_list)
 
-    def show_page(self, page_name):
-        if self.current_page:
-            self.current_page.pack_forget()
+    def show_screen(self, screen_name):
+        print(screen_name)
+        print(self.current_screen)
+        if self.current_screen:
+            # Hide current screen and destroy all screen's widgets
+            self.current_screen.pack_forget()
+            # self.current_screen.clear_widgets()
+            for widget in self.current_screen.winfo_children():
+                widget.destroy()
+            self.current_screen.update_idletasks()
 
-        page = self.pages.get(page_name)
-        if page:
-            page.pack(fill="both", expand=True)
-            self.current_page = page
+        new_screen = self.screens.get(screen_name)  # Init Screen
+        new_screen.load_widgets()  # Load all widgets: GIF, Button, Label
+        if new_screen:
+            new_screen.pack(fill="both", expand=True)
+            self.current_screen = new_screen
 
     def show_home_screen(self):
-        self.show_page("HomeScreen")
+        self.show_screen("HomeScreen")
 
     def show_learn_screen(self):
-        self.show_page("LearnScreen")
+        self.show_screen("LearnScreen")
 
     def show_author_screen(self):
-        self.show_page("AuthorScreen")
+        self.show_screen("AuthorScreen")
 
     def show_calculate_screen(self):
-        self.show_page("CalculateScreen")
+        self.show_screen("CalculateScreen")
 
     def show_game_screen(self):
-        self.show_page("GameScreen")
+        self.show_screen("GameScreen")
 
     def show_other_screen(self):
-        self.show_page("OtherScreen")
-
-    # def on_click(event):
-    #     x = event.x
-    #     y = event.y
-    #     print(f"Clicked at x={x}, y={y}")
+        self.show_screen("OtherScreen")
