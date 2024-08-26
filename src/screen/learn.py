@@ -1,19 +1,27 @@
-﻿import pygame
-
-from src.utils.constant import InfoRect
-from src.utils.file import FileManager
-from src.utils.popup import ErasablePopup
+﻿from src.utils.file import FileManager
+from src.utils.gif import AnimatedGifCanvas
+import tkinter as tk
 
 
-class LearnScreen:
-    def __init__(self, main_instance):
-        print("Init learn screen")
-        main_instance.is_learn_screen = True
-        main_instance.frames = FileManager().load_gif("image/background/hoc-tap.gif")
-        main_instance.frame_index = 0
+class LearnScreen(tk.Frame):
+    def __init__(self, master, callback_list, *args, **kwargs):
+        super().__init__(master, *args, **kwargs)
 
-    def draw_header_info(self, main_instance):
-        main_instance.popups[1] = ErasablePopup(main_instance.popup_font, "<- Trở về")
-        main_instance.right_info_rect = pygame.draw.rect(main_instance.screen, InfoRect.color, InfoRect.rect, InfoRect.width, InfoRect.border_radius)
-        main_instance.popups[0].draw_at(main_instance.screen, (8, 4))
-        main_instance.popups[1].draw_at(main_instance.screen, (730, 8))
+        self.master = master
+        self.show_home_screen = callback_list["HomeScreen"]
+
+        self.load_widgets()
+
+    def load_widgets(self):
+        gif_path = "image/background/hoc-tap.gif"
+        animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
+        animated_canvas.pack()
+
+        label = tk.Label(self, text="Page 2", font=("Arial", 16), bg="white")
+        label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
+
+        button = tk.Button(self, text="Go to Page 1", command=self.show_home_screen)
+        button.place(relx=0.5, rely=0.9, anchor=tk.CENTER)
+
+    def on_click(self, x, y):
+        print(f"Clicked on Page at x={x}, y={y}")

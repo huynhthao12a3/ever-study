@@ -1,5 +1,7 @@
 ﻿import pygame
-
+import tkinter as tk
+from PIL import Image, ImageTk
+from tkinter import font as tkfont
 from src.screen.author import AuthorScreen
 from src.screen.calculate import CalculateScreen
 from src.screen.game import GameScreen
@@ -7,41 +9,37 @@ from src.screen.learn import LearnScreen
 from src.screen.other import OtherScreen
 from src.utils.constant import InfoRect, Auth
 from src.utils.file import FileManager
+from src.utils.gif import AnimatedGifCanvas
 from src.utils.popup import ErasablePopup
 
 
-class HomeScreen:
-    def __init__(self, main_instance):
-        print("Init learn screen")
-        main_instance.is_home_screen = True
-        main_instance.frames = FileManager().load_gif("image/background/home.gif")
-        main_instance.frame_index = 0
+class HomeScreen(tk.Frame):
+    def __init__(self, master, callback_list, *args, **kwargs):
+        super().__init__(master, *args, **kwargs)
 
-    def draw_header_info(self, main_instance):
-        if len(Auth.full_name) > 0:
-            main_instance.popups[1] = ErasablePopup(main_instance.popup_font, "")
-            main_instance.right_info_rect = pygame.draw.rect(main_instance.screen, (255, 255, 255), pygame.Rect(710, 4, 88, 30), InfoRect.width, InfoRect.border_radius)
-        else:
-            main_instance.popups[1] = ErasablePopup(main_instance.popup_font, "Đăng nhập")
-            main_instance.right_info_rect = pygame.draw.rect(main_instance.screen, InfoRect.color, pygame.Rect(710, 4, 88, 30), InfoRect.width, InfoRect.border_radius)
-        main_instance.popups[0].draw_at(main_instance.screen, (8, 4))
-        main_instance.popups[1].draw_at(main_instance.screen, (720, 8))
+        self.master = master
+        self.show_learn_screen = callback_list["LearnScreen"]
+        self.show_author_screen = callback_list["AuthorScreen"]
+        self.show_game_screen = callback_list["GameScreen"]
 
-    def run(self, main_instance, mouse_x, mouse_y):
-        print("Home screen run", type(main_instance))
-        print(mouse_x, mouse_y)
-        if 150 < mouse_x < 370 and 240 < mouse_y < 350:  # Learn
-            main_instance.set_false_all_screen()
-            main_instance.learn_screen_instance = LearnScreen(main_instance)
-        if 430 < mouse_x < 645 and 240 < mouse_y < 350:  # Calculate
-            main_instance.set_false_all_screen()
-            main_instance.calculate_screen_instance = CalculateScreen(main_instance)
-        if 150 < mouse_x < 370 and 390 < mouse_y < 500:  # Game
-            main_instance.set_false_all_screen()
-            main_instance.game_screen_instance = GameScreen(main_instance)
-        if 430 < mouse_x < 645 and 390 < mouse_y < 500:  # Other
-            main_instance.set_false_all_screen()
-            main_instance.other_screen_instance = OtherScreen(main_instance)
-        if 370 < mouse_x < 650 and 555 < mouse_y < 600:  # Author
-            main_instance.set_false_all_screen()
-            main_instance.author_screen_instance = AuthorScreen(main_instance)
+        self.load_widgets()
+
+    def load_widgets(self):
+        gif_path = "image/background/home.gif"
+        animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
+        animated_canvas.pack()
+
+        label = tk.Label(self, text="Page 1", font=("Roboto", 12), bg="white", borderwidth=2)
+        label.place(x=0, y=0)
+        label.bind("<Button-1>", lambda e: self.test())
+
+        button = tk.Button(self, text="Go to Page 2", command=self.show_game_screen)
+        button.place(relx=0.5, rely=0.9, anchor=tk.CENTER)
+
+    def on_click(self, x, y):
+        print(f"Clicked on Page at x={x}, y={y}")
+        if 50 < x < 270:
+            self.show_learn_screen()
+
+    def test(self):
+        print("test")

@@ -1,135 +1,88 @@
-﻿import sys
+﻿import tkinter as tk
+from PIL import Image, ImageTk
 
-import pygame
-from src.screen.login import Login
 from src.screen.author import AuthorScreen
 from src.screen.calculate import CalculateScreen
 from src.screen.game import GameScreen
 from src.screen.home import HomeScreen
-from src.screen.other import OtherScreen
-from src.utils.file import FileManager
-from src.utils.popup import ErasablePopup
 from src.screen.learn import LearnScreen
+from src.screen.other import OtherScreen
 
 
-class EverStudy:
-    def __init__(self):
-        # Pygame config
-        pygame.init()
-        self.screen = pygame.display.set_mode((800, 600))
-        pygame.display.set_caption('Ever Study')
-        icon = FileManager().load_image('image/setting/apple.png', True)
-        pygame.display.set_icon(icon)
+class EverStudy(tk.Tk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
-        # Init gif
-        self.frames = FileManager().load_gif("image/background/home.gif")
-        self.frame_index = 0
-        self.clock = pygame.time.Clock()
-        self.pygame_image = FileManager().pil_image_to_pygame_surface(self.frames[self.frame_index])
+        self.title("Ever Study")
+        self.geometry("800x600")
+        self.resizable(False, False)
 
-        self.font = pygame.font.SysFont("roboto", 18)
+        self.container = tk.Frame(self, bg="lightblue")
+        self.container.pack(fill="both", expand=True)
 
-        # Current Screen
-        self.is_home_screen = True
-        self.is_learn_screen = False
-        self.is_game_screen = False
-        self.is_calculate_screen = False
-        self.is_other_screen = False
-        self.is_author_screen = False
+        self.pages = {}
+        self.load_pages()
+        self.current_page = None
+        self.show_page("HomeScreen")
 
-        # Instance
-        self.home_screen_instance = HomeScreen(self)
-        self.learn_screen_instance = None
-        self.game_screen_instance = None
-        self.calculate_screen_instance = None
-        self.other_screen_instance = None
-        self.author_screen_instance = None
+    def load_pages(self):
+        # Routing
+        home_callback_list = {
+            "LearnScreen": self.show_learn_screen,
+            "AuthorScreen": self.show_author_screen,
+            "GameScreen": self.show_game_screen
+        }
+        learn_callback_list = {
+            "HomeScreen": self.show_home_screen
+        }
+        author_callback_list = {
+            "HomeScreen": self.show_home_screen
+        }
+        calculate_callback_list = {
+            "HomeScreen": self.show_home_screen
+        }
+        game_callback_list = {
+            "HomeScreen": self.show_home_screen
+        }
+        other_callback_list = {
+            "HomeScreen": self.show_home_screen
+        }
 
-        self.left_info_rect = None
-        self.right_info_rect = None
+        self.pages["HomeScreen"] = HomeScreen(self.container, home_callback_list)
+        self.pages["LearnScreen"] = LearnScreen(self.container, learn_callback_list)
+        self.pages["AuthorScreen"] = AuthorScreen(self.container, author_callback_list)
+        self.pages["CalculateScreen"] = CalculateScreen(self.container, calculate_callback_list)
+        self.pages["GameScreen"] = GameScreen(self.container, game_callback_list)
+        self.pages["OtherScreen"] = OtherScreen(self.container, other_callback_list)
 
-        # Message Text For Displaying
-        self.popup_font = pygame.font.SysFont("roboto", 14)
-        self.popups = []  # list of popup objects
-        self.hover_rects = []  # list of hover locations
-        self.do_once = True
-        self.popups.append(ErasablePopup(self.popup_font, ""))
-        self.popups.append(ErasablePopup(self.popup_font, "Đăng nhập"))
+    def show_page(self, page_name):
+        if self.current_page:
+            self.current_page.pack_forget()
 
-    def main(self):
-        while True:
-            # Load gif
-            self.pygame_image = FileManager().pil_image_to_pygame_surface(self.frames[self.frame_index])
-            self.screen.blit(self.pygame_image, (0, 0))
-            self.frame_index = (self.frame_index + 1) % len(self.frames)
-            self.clock.tick(10)
+        page = self.pages.get(page_name)
+        if page:
+            page.pack(fill="both", expand=True)
+            self.current_page = page
 
-            if len(self.popups) > 0:
-                if self.is_home_screen is True:
-                    print("home screen")
-                    self.home_screen_instance.draw_header_info(self)
+    def show_home_screen(self):
+        self.show_page("HomeScreen")
 
-                if self.is_learn_screen is True:
-                    print("learn screen")
-                    self.learn_screen_instance.draw_header_info(self)
+    def show_learn_screen(self):
+        self.show_page("LearnScreen")
 
-                if self.is_calculate_screen is True:
-                    print("Calculate screen")
-                    self.calculate_screen_instance.draw_header_info(self)
+    def show_author_screen(self):
+        self.show_page("AuthorScreen")
 
-                if self.is_game_screen is True:
-                    # print("game screen")
-                    self.game_screen_instance.draw_header_info(self)
+    def show_calculate_screen(self):
+        self.show_page("CalculateScreen")
 
-                if self.is_other_screen is True:
-                    print("other screen")
-                    self.other_screen_instance.draw_header_info(self)
+    def show_game_screen(self):
+        self.show_page("GameScreen")
 
-                if self.is_author_screen is True:
-                    print("author screen")
-                    self.author_screen_instance.draw_header_info(self)
+    def show_other_screen(self):
+        self.show_page("OtherScreen")
 
-            for event in pygame.event.get():
-                # Quit
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        pygame.quit()
-                        sys.exit()
-
-                # Mouse click
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 1:
-                        mouse_x, mouse_y = pygame.mouse.get_pos()  # Get mouse position
-                        if self.right_info_rect.collidepoint(mouse_x, mouse_y):
-                            if self.is_home_screen is True:
-                                print("click đăng nhập")
-                                Login(self)
-                            if (self.is_learn_screen is True or self.is_calculate_screen is True
-                                    or self.is_game_screen is True or self.is_other_screen is True
-                                    or self.is_author_screen is True):
-                                print("Click trở về")
-                                self.set_false_all_screen()
-                                self.home_screen_instance = HomeScreen(self)
-
-                        if self.is_home_screen is True:
-                            self.home_screen_instance.run(self, mouse_x, mouse_y)
-
-                        if self.is_game_screen is True:
-                            # print("game screen")
-                            print(mouse_x, mouse_y)
-                            self.game_screen_instance.run(self, mouse_x, mouse_y)
-
-            pygame.display.flip()
-
-    pygame.quit()
-
-    def set_false_all_screen(self):
-        self.is_home_screen = False
-        self.is_learn_screen = False
-        self.is_game_screen = False
-        self.is_calculate_screen = False
-        self.is_other_screen = False
-        self.is_author_screen = False
+    # def on_click(event):
+    #     x = event.x
+    #     y = event.y
+    #     print(f"Clicked at x={x}, y={y}")

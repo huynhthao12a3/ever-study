@@ -1,5 +1,8 @@
 ﻿from src.main import EverStudy
 
 if __name__ == "__main__":
-    print("Welcome to Ever Study...")
-    EverStudy().main()
+    app = EverStudy()
+    # app.show_page("HomeScreen")
+    # app.wm_attributes("-transparent", "aqua")
+    app.mainloop()
+
