@@ -3,10 +3,13 @@ from PIL import Image, ImageTk
 
 from src.screen.author import AuthorScreen
 from src.screen.calculate import CalculateScreen
+from src.screen.discovery import DiscoveryScreen
 from src.screen.game import GameScreen
 from src.screen.home import HomeScreen
 from src.screen.learn import LearnScreen
+from src.screen.login import LoginScreen
 from src.screen.other import OtherScreen
+from src.screen.share import ShareScreen
 
 
 class EverStudy(tk.Tk):
@@ -15,7 +18,7 @@ class EverStudy(tk.Tk):
 
         self.title("Ever Study")
         self.geometry("800x600")
-        self.resizable(False, False)
+        # self.resizable(False, False)
 
         self.container = tk.Frame(self, bg="lightblue")
         self.container.pack(fill="both", expand=True)
@@ -29,8 +32,13 @@ class EverStudy(tk.Tk):
         # Routing
         home_callback_list = {
             "LearnScreen": self.show_learn_screen,
+            "CalculateScreen": self.show_calculate_screen,
+            "GameScreen": self.show_game_screen,
+            "DiscoveryScreen": self.show_discovery_screen,
+            "ShareScreen": self.show_share_screen,
+            "OtherScreen": self.show_other_screen,
             "AuthorScreen": self.show_author_screen,
-            "GameScreen": self.show_game_screen
+            "LoginScreen": self.show_login_screen
         }
         learn_callback_list = {
             "HomeScreen": self.show_home_screen
@@ -47,6 +55,15 @@ class EverStudy(tk.Tk):
         other_callback_list = {
             "HomeScreen": self.show_home_screen
         }
+        share_callback_list = {
+            "HomeScreen": self.show_home_screen
+        }
+        discovery_callback_list = {
+            "HomeScreen": self.show_home_screen
+        }
+        login_callback_list = {
+            "HomeScreen": self.show_home_screen
+        }
 
         self.screens["HomeScreen"] = HomeScreen(self.container, home_callback_list)
         self.screens["LearnScreen"] = LearnScreen(self.container, learn_callback_list)
@@ -54,6 +71,9 @@ class EverStudy(tk.Tk):
         self.screens["CalculateScreen"] = CalculateScreen(self.container, calculate_callback_list)
         self.screens["GameScreen"] = GameScreen(self.container, game_callback_list)
         self.screens["OtherScreen"] = OtherScreen(self.container, other_callback_list)
+        self.screens["ShareScreen"] = ShareScreen(self.container, share_callback_list)
+        self.screens["DiscoveryScreen"] = DiscoveryScreen(self.container, discovery_callback_list)
+        self.screens["LoginScreen"] = LoginScreen(self.container, discovery_callback_list)
 
     def show_screen(self, screen_name):
         print(screen_name)
@@ -89,3 +109,12 @@ class EverStudy(tk.Tk):
 
     def show_other_screen(self):
         self.show_screen("OtherScreen")
+
+    def show_share_screen(self):
+        self.show_screen("ShareScreen")
+
+    def show_discovery_screen(self):
+        self.show_screen("DiscoveryScreen")
+
+    def show_login_screen(self):
+        self.show_screen("LoginScreen")
