@@ -2,7 +2,8 @@
 from tkinter import font
 import pygame.display
 
-from src.utils.constant import Auth, Api
+from src.utils.component import Component
+from src.utils.constant import Auth, Api, ImageUrl
 # from tkextrafont import Font
 from src.utils.file import FileManager
 # Call api, convert json library
@@ -30,9 +31,11 @@ class LoginScreen(tk.Frame):
         # self.load_widgets()
 
     def load_widgets(self):
-        gif_path = "image/background/login.gif"
+        gif_path = ImageUrl.bg_login_screen
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
+
+        Component.right_button_back(self, self.show_home_screen)
 
         username_login_entry = tk.Entry(self, textvariable=self.username_verify, width=50, borderwidth=3)
         username_login_entry.place(x=340, y=230)

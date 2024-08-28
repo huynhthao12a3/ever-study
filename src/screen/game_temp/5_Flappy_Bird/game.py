@@ -53,7 +53,7 @@ def bird_animation():
 
 
 def score_display(game_state):
-    if game_state == 'main game':
+    if game_state == 'main game_temp':
         score_surface = game_font.render(str(int(score)), True, (255, 255, 255))
         score_rect = score_surface.get_rect(center=(216, 100))
         screen.blit(score_surface, score_rect)
@@ -145,7 +145,7 @@ while True:
         pipe_list = move_pipe(pipe_list)
         draw_pipe(pipe_list)
         # score += 0.01
-        score_display('main game')
+        score_display('main game_temp')
         # score_sound_countdown -= 1
         # if score_sound_countdown <= 0:
         #     score_sound.play()

@@ -1,16 +1,7 @@
-﻿import pygame
-import tkinter as tk
-from PIL import Image, ImageTk
-from tkinter import font as tkfont
-from src.screen.author import AuthorScreen
-from src.screen.calculate import CalculateScreen
-from src.screen.game import GameScreen
-from src.screen.learn import LearnScreen
-from src.screen.other import OtherScreen
-from src.utils.constant import InfoRect, Auth
-from src.utils.file import FileManager
+﻿import tkinter as tk
+from src.utils.component import Component
+from src.utils.constant import Auth, ImageUrl
 from src.utils.gif import AnimatedGifCanvas
-from src.utils.popup import ErasablePopup
 
 
 class HomeScreen(tk.Frame):
@@ -31,17 +22,15 @@ class HomeScreen(tk.Frame):
         # self.load_widgets()
 
     def load_widgets(self):
-        gif_path = "image/background/home.gif"
+        gif_path = ImageUrl.bg_home_screen
         self.animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         self.animated_canvas.pack()
 
-        label = tk.Label(self, text="Hi, " + Auth.full_name if Auth.login_success else "", font=("Roboto", 12),
-                         bg="white", borderwidth=2)
-        label.place(x=0, y=2)
-        label.bind("<Button-1>", lambda e: self.mouse_click())
+        Component.left_label(self)
+        # label.bind("<Button-1>", lambda e: self.mouse_click())
 
-        button = tk.Button(self, text="Đăng nhập", command=self.show_login_screen)
-        button.place(x=728, y=4)
+        if Auth.login_success is False:
+            Component.right_button_login(self, self.show_login_screen)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")

@@ -23,7 +23,7 @@ class Images:
             )
         )
 
-        # game over sprite
+        # game_temp over sprite
         self.game_over = pygame.image.load(
             "assets/sprites/gameover.png"
         ).convert_alpha()
