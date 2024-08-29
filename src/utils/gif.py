@@ -5,7 +5,7 @@ from src.utils.file import FileManager
 
 
 class AnimatedGifCanvas(tk.Canvas):
-    def __init__(self, master, filename, on_click_callback, *args, **kwargs):
+    def __init__(self, master, filename, on_click_callback=None, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
 
         self.sequence = []
@@ -44,4 +44,5 @@ class AnimatedGifCanvas(tk.Canvas):
     def on_click(self, event):
         x = event.x
         y = event.y
-        self.on_click_callback(x, y)
+        if self.on_click_callback:
+            self.on_click_callback(x, y)

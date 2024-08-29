@@ -12,6 +12,7 @@ class CalculateScreen(tk.Frame):
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
         self.show_subject_average_screen = callback_list["SubjectAverageScreen"]
+        self.show_academic_result_screen = callback_list["AcademicResultScreen"]
 
         # self.load_widgets()
 
@@ -30,3 +31,4 @@ class CalculateScreen(tk.Frame):
             self.show_subject_average_screen()
         if 30 < x < 735 and 350 < y < 415:
             print("Tính kết quả học tập")
+            self.show_academic_result_screen()

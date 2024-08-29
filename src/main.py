@@ -1,8 +1,7 @@
 ﻿import tkinter as tk
 
-from poetry.console.commands import self
-
 from src.screen.author.author import AuthorScreen
+from src.screen.calculate.academic_result import AcademicResultScreen
 from src.screen.calculate.calculate import CalculateScreen
 from src.screen.calculate.subject_average import SubjectAverageScreen
 from src.screen.discovery.discovery import DiscoveryScreen
@@ -51,6 +50,7 @@ class EverStudy(tk.Tk):
         calculate_callback_list = {
             "HomeScreen": self.show_home_screen,
             "SubjectAverageScreen": self.show_subject_average_screen,
+            "AcademicResultScreen": self.show_academic_result_screen,
         }
         subject_average_callback_list = {
             "CalculateScreen": self.show_calculate_screen
@@ -76,6 +76,7 @@ class EverStudy(tk.Tk):
         self.screens["AuthorScreen"] = AuthorScreen(self.container, author_callback_list)
         self.screens["CalculateScreen"] = CalculateScreen(self.container, calculate_callback_list)
         self.screens["SubjectAverageScreen"] = SubjectAverageScreen(self.container, subject_average_callback_list)
+        self.screens["AcademicResultScreen"] = AcademicResultScreen(self.container, subject_average_callback_list)
         self.screens["GameScreen"] = GameScreen(self.container, game_callback_list)
         self.screens["OtherScreen"] = OtherScreen(self.container, other_callback_list)
         self.screens["ShareScreen"] = ShareScreen(self.container, share_callback_list)
@@ -113,6 +114,9 @@ class EverStudy(tk.Tk):
 
     def show_subject_average_screen(self):
         self.show_screen("SubjectAverageScreen")
+
+    def show_academic_result_screen(self):
+        self.show_screen("AcademicResultScreen")
 
     def show_game_screen(self):
         self.show_screen("GameScreen")
