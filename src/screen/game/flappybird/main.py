@@ -3,17 +3,26 @@ import sys
 
 import pygame
 
+from src.utils.constant import GameFlappyBird
 from src.utils.file import FileManager
 
 
 class FlappyBird:
-    def __init__(self):
+    def __init__(self, on_flappy_bird_close):
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=512)
         pygame.init()
         pygame.display.set_caption('Flappy Bird Game')
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
         self.game_font = pygame.font.SysFont('Roboto', 35)
+
+        self.on_flappy_bird_close = on_flappy_bird_close
+        self.game_result = {
+            "game_score": 0,
+            "answered_question": 0,
+            "correct_answer": 0,
+            "wrong_answer": 0,
+        }
 
         # Create variable
         self.gravity = 0.25
@@ -22,20 +31,27 @@ class FlappyBird:
         self.score = 0
         self.high_score = 0
         self.lose = False
+        self.running = True
+        self.scored = False
+
+        self.random_bird = GameFlappyBird.img_bird[random.randint(0, len(GameFlappyBird.img_bird) - 1)]
+        self.random_bg = GameFlappyBird.img_background[random.randint(0, len(GameFlappyBird.img_background) - 1)]
+        self.random_pipe = GameFlappyBird.img_pipe[random.randint(0, len(GameFlappyBird.img_pipe) - 1)]
 
         # Create background
-        self.bg = FileManager().load_image('image/flappy-bird/background-night.png', True)
+        self.bg = FileManager().load_image(self.random_bg, True)
         self.bg = pygame.transform.scale(self.bg, (800, 600))
-        
+        self.bg_x_pos = 0
+
         # Create floor
         self.floor = FileManager().load_image('image/flappy-bird/floor.png', True)
         self.floor_x_pos = 0
-        
+
         # Create bird
-        self.bird_down = FileManager().load_image('image/flappy-bird/yellowbird-downflap.png', True)
-        self.bird_mid = FileManager().load_image('image/flappy-bird/yellowbird-midflap.png', True)
-        self.bird_up = FileManager().load_image('image/flappy-bird/yellowbird-upflap.png', True)
-        self.bird_list = [self.bird_down, self.bird_mid, self.bird_up]  #0 1 2
+        self.bird_down = FileManager().load_image(self.random_bird["bird_down"], True)
+        self.bird_mid = FileManager().load_image(self.random_bird["bird_mid"], True)
+        self.bird_up = FileManager().load_image(self.random_bird["bird_up"], True)
+        self.bird_list = [self.bird_down, self.bird_mid, self.bird_up]  # 0 1 2
         self.bird_index = 0
         self.bird = self.bird_list[self.bird_index]
         self.bird_rect = self.bird.get_rect(center=(80, 300))
@@ -43,24 +59,29 @@ class FlappyBird:
         # Create timer
         self.bird_flap = pygame.USEREVENT + 1
         pygame.time.set_timer(self.bird_flap, 200)
-        
+
         # Create Pipe
-        self.pipe_surface = FileManager().load_image('image/flappy-bird/pipe-green.png', True)
+        self.pipe_surface = FileManager().load_image(self.random_pipe, True)
         self.pipe_list = []
-        
+
         # Create timer
         self.spawn_pipe = pygame.USEREVENT
         pygame.time.set_timer(self.spawn_pipe, 1000)
         self.pipe_height = [300, 350, 400]
 
         # Game over
-        self.game_over_surface = pygame.transform.scale2x(FileManager().load_image('image/flappy-bird/message.png', True))
+        self.game_over_surface = pygame.transform.scale2x(
+            FileManager().load_image('image/flappy-bird/message.png', True))
         self.game_over_rect = self.game_over_surface.get_rect(center=(400, 250))
         # Add sound
         self.flap_sound = pygame.mixer.Sound(FileManager().resource_path('sound/flappy-bird/sfx_wing.wav'))
         self.hit_sound = pygame.mixer.Sound(FileManager().resource_path('sound/flappy-bird/sfx_hit.wav'))
         self.score_sound = pygame.mixer.Sound(FileManager().resource_path('sound/flappy-bird/sfx_point.wav'))
         self.score_sound_countdown = 100
+
+    def draw_background(self):
+        self.screen.blit(self.bg, (self.bg_x_pos, 0))
+        self.screen.blit(self.bg, (self.bg_x_pos + 800, 0))
 
     def draw_floor(self):
         self.screen.blit(self.floor, (self.floor_x_pos, 500))
@@ -91,6 +112,7 @@ class FlappyBird:
             if self.bird_rect.colliderect(pipe):
                 self.hit_sound.play()
                 self.lose = True
+                self.scored = False
                 return False
         if self.bird_rect.top <= -50 or self.bird_rect.bottom >= 520:
             self.lose = True
@@ -117,7 +139,7 @@ class FlappyBird:
             self.screen.blit(score_surface, score_rect)
 
             high_score_surface = self.game_font.render(f'High Score: {int(self.high_score)}', True, (255, 255, 255))
-            high_score_rect = high_score_surface.get_rect(center=(216, 630))
+            high_score_rect = high_score_surface.get_rect(center=(216, 430))
             self.screen.blit(high_score_surface, high_score_rect)
 
     def update_score(self, score, high_score):
@@ -126,25 +148,34 @@ class FlappyBird:
         return high_score
 
     def run(self):
-        while True:
-            self.screen.blit(self.bg, (0, 0))
+        while self.running:
+            # self.screen.blit(self.bg, (0, 0))
+            # Draw background
+            self.bg_x_pos -= 1
+            self.draw_background()
+            if self.bg_x_pos <= -800:
+                self.bg_x_pos = 0
+
             if len(self.pipe_list) > 0:
-                if self.pipe_list[0].x < 0:
+                if self.pipe_list[0].x < self.bird_rect.centerx and self.scored is False:
                     self.score_sound.play()
                     self.score += 1
+                    self.scored = True
+                if self.pipe_list[0].x < -100:
                     self.pipe_list.pop(0)
                     self.pipe_list.pop(0)
+                    self.scored = False
             # if game_active is False:
             #     screen.blit(bird,bird_rect)
 
             if self.game_active:
-                #chim
+                # Bird
                 self.bird_movement += self.gravity
                 rotated_bird = self.rotate_bird(self.bird)
                 self.bird_rect.centery += self.bird_movement
                 self.screen.blit(rotated_bird, self.bird_rect)
                 self.game_active = self.check_collision(self.pipe_list)
-                #ống
+                # Pipe
                 self.pipe_list = self.move_pipe(self.pipe_list)
                 self.draw_pipe(self.pipe_list)
                 # score += 0.01
@@ -154,12 +185,15 @@ class FlappyBird:
                 #     score_sound.play()
                 #     score_sound_countdown = 100
             else:
+                self.scored = False
+                self.pipe_list.clear()
                 self.screen.blit(self.game_over_surface, self.game_over_rect)
                 self.high_score = self.update_score(self.score, self.high_score)
                 # if lose is True:
-                #     score_display('game_over')
+                self.score_display('game_over')
+                self.bird_rect.center = (100, 300)
                 self.screen.blit(self.bird, self.bird_rect)
-            #sàn
+            # Draw floor
             self.floor_x_pos -= 1
             self.draw_floor()
             if self.floor_x_pos <= -800:
@@ -167,32 +201,35 @@ class FlappyBird:
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
+                    self.running = False
+                    self.on_flappy_bird_close(self.game_result)
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
-                        pygame.quit()
-                        sys.exit()
+                        self.running = False
+                        self.on_flappy_bird_close(self.game_result)
+
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE and self.game_active:
                         self.bird_movement = -4
                         self.flap_sound.play()
-                    if event.key == pygame.K_SPACE and self.game_active == False:
+                    if event.key == pygame.K_SPACE and self.game_active is False:
                         self.game_active = True
                         self.pipe_list.clear()
                         self.bird_rect.center = (100, 300)
                         self.bird_movement = 0
                         self.score = 0
+
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1 and self.game_active:
                         self.bird_movement = -4
                         self.flap_sound.play()
-                    if event.button == 1 and self.game_active == False:
+                    if event.button == 1 and self.game_active is False:
                         self.game_active = True
                         self.pipe_list.clear()
                         self.bird_rect.center = (100, 300)
                         self.bird_movement = 0
                         self.score = 0
+
                 if event.type == self.spawn_pipe:
                     self.pipe_list.extend(self.create_pipe())
 
@@ -211,3 +248,4 @@ class FlappyBird:
 
             pygame.display.update()
             self.clock.tick(60)
+        pygame.quit()

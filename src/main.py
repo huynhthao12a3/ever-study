@@ -19,7 +19,7 @@ class EverStudy(tk.Tk):
 
         self.title("Ever Study")
         self.geometry("800x600")
-        # self.resizable(False, False)
+        self.resizable(False, False)
 
         self.container = tk.Frame(self, bg="lightblue")
         self.container.pack(fill="both", expand=True)
