@@ -61,3 +61,18 @@ class GameFlappyBird:
         'image/flappy-bird/pipe-green.png',
         'image/flappy-bird/pipe-red.png'
     ]
+    questions = {
+        # Math
+        "math_01": {
+            "image_path": "image/background/q-a-1.gif",
+            "correct_answer": "A"
+        },
+        "math_02": {
+            "image_path": "image/background/q-a-1.gif",
+            "correct_answer": "B"
+        },
+        "math_03": {
+            "image_path": "image/background/q-a-1.gif",
+            "correct_answer": "C"
+        }
+    }
