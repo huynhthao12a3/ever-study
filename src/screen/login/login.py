@@ -78,6 +78,7 @@ class LoginScreen(tk.Frame):
             # self.get_info(main_instance, response_json["data"]["access_token"])
             Auth.login_success = True
             Auth.full_name = response_json["data"]["full_name"]
+            Auth.access_token = response_json["data"]["access_token"]
             self.show_home_screen()
         else:
             tk.Label(self, text="* " + response_json["detail"], font=('Roboto', 16, 'bold'), foreground="red", background="white").place(x=350, y=565)

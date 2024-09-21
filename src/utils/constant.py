@@ -20,6 +20,7 @@ class ImageUrl:
     # Background image
     bg_home_screen = "image/background/home.gif"
     bg_learn_screen = "image/background/hoc-tap.gif"
+    bg_math_screen = "image/background/subject_math.png"
     bg_calculate_screen = "image/background/home-tinh-diem.gif"
     bg_subject_average = "image/background/tinh-diem-1.gif"
     bg_academic_result = "image/background/tinh-diem-2.gif"

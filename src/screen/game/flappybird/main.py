@@ -21,10 +21,10 @@ class FlappyBird:
         # Callback
         self.on_flappy_bird_close = on_flappy_bird_close
         self.game_result = {
-            "game_score": 0,
-            "answered_question": 0,
-            "correct_answer": 0,
-            "wrong_answer": 0,
+            "game_score": 1,
+            "answered_question": 2,
+            "correct_answer": 3,
+            "wrong_answer": 4,
         }
 
         # Create variable
