@@ -328,7 +328,6 @@ class FlappyBird:
                     print("tạo ng sau 1s ...")
                     self.pipe_list.extend(self.create_pipe())
 
-
                 # Bird flap each 200ms
                 if event.type == self.bird_flap:
                     if self.bird_index < 2:
