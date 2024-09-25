@@ -26,7 +26,7 @@ class ImageUrl:
     bg_academic_result = "image/background/tinh-diem-2.gif"
     bg_game_screen = "image/background/q-a-1.gif"
     bg_discovery_screen = "image/background/hoc-tap.gif"
-    bg_share_screen = "image/background/hoc-tap.gif"
+    bg_share_screen = "image/background/chia-se.gif"
     bg_other_screen = "image/background/tinh-diem-1.gif"
     bg_author_screen = "image/background/tinh-diem-2.gif"
     bg_login_screen = "image/background/login.gif"

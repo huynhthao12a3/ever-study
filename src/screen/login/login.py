@@ -35,13 +35,14 @@ class LoginScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        custom_font = tk.font.Font(family='Roboto', size=16)
         Component.right_button_back(self, self.show_home_screen)
 
-        username_login_entry = tk.Entry(self, textvariable=self.username_verify, width=50, borderwidth=3)
-        username_login_entry.place(x=340, y=230)
+        self.username_login_entry = tk.Entry(self, textvariable=self.username_verify, borderwidth=3, font=custom_font)
+        self.username_login_entry.place(x=340, y=222, height=40, width=310)
 
-        password_login_entry = tk.Entry(self, textvariable=self.password_verify, show='*', width=50, borderwidth=3)
-        password_login_entry.place(x=340, y=320)
+        self.password_login_entry = tk.Entry(self, textvariable=self.password_verify, show='*', borderwidth=3, font=custom_font)
+        self.password_login_entry.place(x=340, y=312, height=40, width=310)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
@@ -70,30 +71,15 @@ class LoginScreen(tk.Frame):
             response = requests.post(url=api_endpoint, json=data, headers=headers)
             response_json = response.json()
         except Exception as e:
+            print(e)
             tk.Label(self, text="Đăng nhập thất bại", width=16, font=('Roboto', 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
 
         print(response_json)
         print(response.status_code)
         if response.status_code == 200:
-            # self.get_info(main_instance, response_json["data"]["access_token"])
             Auth.login_success = True
             Auth.full_name = response_json["data"]["full_name"]
             Auth.access_token = response_json["data"]["access_token"]
             self.show_home_screen()
         else:
             tk.Label(self, text="* " + response_json["detail"], font=('Roboto', 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
-
-    def get_info(self, access_token):
-        api_endpoint = Api.api_endpoint + "/users/me"
-        headers = {
-            'Content-Type': 'application/json',
-            'Authorization':  "Bearer " + access_token
-        }
-        # Call api
-        response = requests.get(url=api_endpoint, headers=headers)
-        response_json = response.json()
-        print(response.status_code)
-        print(response_json)
-        if response.status_code == 200:
-            Auth.login_success = True
-            Auth.full_name = response_json["data"]["full_name"]
