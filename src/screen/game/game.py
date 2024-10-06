@@ -1,4 +1,5 @@
-﻿from src.utils.component import Component
+﻿from src.screen.game.applecatcher.main import AppleCatcher
+from src.utils.component import Component
 from src.utils.constant import ImageUrl, Api, Auth, Font
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
@@ -37,10 +38,23 @@ class GameScreen(tk.Frame):
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
+        if 70 < x < 245 and 220 < y < 430:
+            print("Flappy Bird")
+            self.flappy_bird_run()
+        if 335 < x < 520 and 220 < y < 430:
+            print("Apple Collection")
+            self.apple_catcher_run()
+        if 590 < x < 750 and 220 < y < 430:
+            print("Word Search")
+            self.animal_word_search_run()
 
     def flappy_bird_run(self):
         self.root.withdraw()  # Hide Tkinter window
         FlappyBird(self.on_flappy_bird_close).run()
+
+    def apple_catcher_run(self):
+        self.root.withdraw()  # Hide Tkinter window
+        AppleCatcher(self.on_apple_catcher_close).run()
 
     def animal_word_search_run(self):
         self.root.withdraw()  # Hide Tkinter window
@@ -49,6 +63,24 @@ class GameScreen(tk.Frame):
     def on_flappy_bird_close(self, game_result=None):
         self.root.deiconify()  # Show Tkinter window
         print("flappy bird closed")
+        if game_result is not None and Auth.login_success is True:
+            print("call api, game_result: ", game_result)
+            api_endpoint = Api.api_endpoint + "/ranks/me"
+            headers = {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + Auth.access_token
+            }
+            # Call api
+            response = requests.put(url=api_endpoint, headers=headers, data=json.dumps(game_result))
+            response_json = response.json()
+
+            print(api_endpoint, headers)
+            print(response.status_code)
+            print(response_json)
+
+    def on_apple_catcher_close(self, game_result=None):
+        self.root.deiconify()  # Show Tkinter window
+        print("Apple Catcher closed")
         if game_result is not None and Auth.login_success is True:
             print("call api, game_result: ", game_result)
             api_endpoint = Api.api_endpoint + "/ranks/me"

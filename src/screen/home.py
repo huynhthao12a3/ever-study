@@ -25,7 +25,7 @@ class HomeScreen(tk.Frame):
         self.show_learn_screen = callback_list["LearnScreen"]
         self.show_calculate_screen = callback_list["CalculateScreen"]
         self.show_game_screen = callback_list["GameScreen"]
-        self.show_discovery_screen = callback_list["DiscoveryScreen"]
+        self.show_utility_screen = callback_list["UtilityScreen"]
         self.show_share_screen = callback_list["ShareScreen"]
         self.show_other_screen = callback_list["OtherScreen"]
         self.show_author_screen = callback_list["AuthorScreen"]
@@ -55,8 +55,8 @@ class HomeScreen(tk.Frame):
             self.show_game_screen()
 
         if 526 < x < 720 and 135 < y < 310:
-            print("Calculate Screen")
-            self.show_calculate_screen()
+            print("Utility Screen")
+            self.show_utility_screen()
 
         if 335 < x < 465 and 350 < y < 525:
             print("Share Screen")

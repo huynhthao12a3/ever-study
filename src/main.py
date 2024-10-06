@@ -4,7 +4,7 @@ from src.screen.author.author import AuthorScreen
 from src.screen.calculate.academic_result import AcademicResultScreen
 from src.screen.calculate.calculate import CalculateScreen
 from src.screen.calculate.subject_average import SubjectAverageScreen
-from src.screen.discovery.discovery import DiscoveryScreen
+from src.screen.utility.utility import UtilityScreen
 from src.screen.game.game import GameScreen
 from src.screen.home import HomeScreen
 from src.screen.learn.learn import LearnScreen
@@ -40,7 +40,7 @@ class EverStudy(tk.Tk):
             "LearnScreen": self.show_learn_screen,
             "CalculateScreen": self.show_calculate_screen,
             "GameScreen": self.show_game_screen,
-            "DiscoveryScreen": self.show_discovery_screen,
+            "UtilityScreen": self.show_utility_screen,
             "ShareScreen": self.show_share_screen,
             "OtherScreen": self.show_other_screen,
             "AuthorScreen": self.show_author_screen,
@@ -48,13 +48,14 @@ class EverStudy(tk.Tk):
         }
         learn_callback_list = {
             "HomeScreen": self.show_home_screen,
+            "LearnScreen": self.show_learn_screen,
             "MathScreen": self.show_math_screen
         }
         author_callback_list = {
             "HomeScreen": self.show_home_screen
         }
         calculate_callback_list = {
-            "HomeScreen": self.show_home_screen,
+            "UtilityScreen": self.show_utility_screen,
             "CalculateScreen": self.show_calculate_screen,
             "SubjectAverageScreen": self.show_subject_average_screen,
             "AcademicResultScreen": self.show_academic_result_screen,
@@ -68,8 +69,11 @@ class EverStudy(tk.Tk):
         share_callback_list = {
             "HomeScreen": self.show_home_screen
         }
-        discovery_callback_list = {
-            "HomeScreen": self.show_home_screen
+        utility_callback_list = {
+            "HomeScreen": self.show_home_screen,
+            "CalculateScreen": self.show_calculate_screen,
+            "SubjectAverageScreen": self.show_subject_average_screen,
+            "AcademicResultScreen": self.show_academic_result_screen,
         }
         login_callback_list = {
             "HomeScreen": self.show_home_screen
@@ -85,7 +89,7 @@ class EverStudy(tk.Tk):
         self.screens["GameScreen"] = GameScreen(self.container, game_callback_list)
         self.screens["OtherScreen"] = OtherScreen(self.container, other_callback_list)
         self.screens["ShareScreen"] = ShareScreen(self.container, share_callback_list)
-        self.screens["DiscoveryScreen"] = DiscoveryScreen(self.container, discovery_callback_list)
+        self.screens["UtilityScreen"] = UtilityScreen(self.container, utility_callback_list)
         self.screens["LoginScreen"] = LoginScreen(self.container, login_callback_list)
 
     def show_screen(self, screen_name):
@@ -135,8 +139,8 @@ class EverStudy(tk.Tk):
     def show_share_screen(self):
         self.show_screen("ShareScreen")
 
-    def show_discovery_screen(self):
-        self.show_screen("DiscoveryScreen")
+    def show_utility_screen(self):
+        self.show_screen("UtilityScreen")
 
     def show_login_screen(self):
         self.show_screen("LoginScreen")

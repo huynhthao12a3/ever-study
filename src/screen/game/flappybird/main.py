@@ -325,7 +325,7 @@ class FlappyBird:
 
                 # Create pipe each second
                 if event.type == self.spawn_pipe and self.game_active is True and self.collision is False:
-                    print("tạo ng sau 1s ...")
+                    # print("tạo ng sau 1s ...")
                     self.pipe_list.extend(self.create_pipe())
 
                 # Bird flap each 200ms

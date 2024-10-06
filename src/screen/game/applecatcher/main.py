@@ -1,10 +1,12 @@
 ﻿import pygame
 import random
 import sys
+
+from src.utils.constant import Font
 from src.utils.file import FileManager
 
 class AppleCatcher:
-    def __init__(self):
+    def __init__(self, on_apple_catcher_close):
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=512)
         pygame.init()
         self.width = 800
@@ -16,6 +18,15 @@ class AppleCatcher:
         self.large_font = pygame.font.SysFont(Font.main_font, 70)
 
         self.file_manager = FileManager()
+
+        # Callback
+        self.on_apple_catcher_close = on_apple_catcher_close
+        self.game_result = {
+            "game_score": 1,
+            "answered_question": 2,
+            "correct_answer": 3,
+            "wrong_answer": 4,
+        }
 
         # Biến trò chơi
         self.score = 0
@@ -39,10 +50,10 @@ class AppleCatcher:
         pygame.time.set_timer(self.spawn_apple, random.randint(800, 1500))
 
         # Tải hình ảnh
-        self.bg = self.load_and_scale_image('image/setting/nen.png', (self.width, self.height))
-        self.basket = self.load_and_scale_image('image/setting/bat.png', (self.player_width, self.player_height))
-        self.apple_image = self.load_and_scale_image('image/setting/apple.png', (self.apple_size, self.apple_size))
-        self.heart_image = self.load_and_scale_image('image/setting/heart.png', (25, 25))
+        self.bg = self.load_and_scale_image('image/apple-catcher/background.png', (self.width, self.height))
+        self.basket = self.load_and_scale_image('image/apple-catcher/bat.png', (self.player_width, self.player_height))
+        self.apple_image = self.load_and_scale_image('image/apple-catcher/apple.png', (self.apple_size, self.apple_size))
+        self.heart_image = self.load_and_scale_image('image/apple-catcher/heart.png', (25, 25))
 
         # Tải âm thanh
         self.catch_sound = pygame.mixer.Sound(self.file_manager.resource_path('sound/flappy-bird/sfx_point.wav'))
@@ -125,9 +136,11 @@ class AppleCatcher:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
+                    self.on_apple_catcher_close(self.game_result)  # Quit game
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.running = False
+                        self.on_apple_catcher_close(self.game_result)  # Quit game
                     if event.key == pygame.K_SPACE and self.game_over:
                         self.reset_game()
                 if event.type == self.spawn_apple and self.game_active and not self.game_over:
@@ -155,7 +168,6 @@ class AppleCatcher:
             self.clock.tick(60)
 
         pygame.quit()
-        sys.exit()
 
 if __name__ == "__main__":
     game = AppleCatcher()

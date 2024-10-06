@@ -10,7 +10,7 @@ class MathScreen(tk.Frame):
         super().__init__(master, *args, **kwargs)
 
         self.master = master
-        self.show_home_screen = callback_list["HomeScreen"]
+        self.show_learn_screen = callback_list["LearnScreen"]
         self.file_manager = FileManager()
         # self.load_widgets()
 
@@ -20,7 +20,7 @@ class MathScreen(tk.Frame):
         animated_canvas.pack()
 
         Component.left_label(self)
-        Component.right_button_back(self, self.show_home_screen)
+        Component.right_button_back(self, self.show_learn_screen)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")

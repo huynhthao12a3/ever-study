@@ -10,7 +10,7 @@ class CalculateScreen(tk.Frame):
         super().__init__(master, *args, **kwargs)
 
         self.master = master
-        self.show_home_screen = callback_list["HomeScreen"]
+        self.show_utility_screen = callback_list["UtilityScreen"]
         self.show_subject_average_screen = callback_list["SubjectAverageScreen"]
         self.show_academic_result_screen = callback_list["AcademicResultScreen"]
 
@@ -22,7 +22,7 @@ class CalculateScreen(tk.Frame):
         animated_canvas.pack()
 
         Component.left_label(self)
-        Component.right_button_back(self, self.show_home_screen)
+        Component.right_button_back(self, self.show_utility_screen)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
