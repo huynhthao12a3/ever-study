@@ -12,6 +12,8 @@ from src.screen.learn.math import MathScreen
 from src.screen.login.login import LoginScreen
 from src.screen.other.other import OtherScreen
 from src.screen.share.share import ShareScreen
+from src.utils.constant import ImageUrl
+from src.utils.file import FileManager
 
 
 class EverStudy(tk.Tk):
@@ -19,6 +21,8 @@ class EverStudy(tk.Tk):
         super().__init__(*args, **kwargs)
 
         self.title("Ever Study")
+        self.iconbitmap(FileManager().resource_path(ImageUrl.app_icon))
+        print(FileManager().resource_path(ImageUrl.app_icon))
         self.geometry("800x600")
         self.resizable(False, False)
 

@@ -1,5 +1,5 @@
 ﻿from src.utils.component import Component
-from src.utils.constant import ImageUrl, Api, Auth
+from src.utils.constant import ImageUrl, Api, Auth, Font
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 from src.screen.game.flappybird.main import FlappyBird
@@ -27,11 +27,11 @@ class GameScreen(tk.Frame):
         Component.left_label(self)
         Component.right_button_back(self, self.show_home_screen)
 
-        flappy_bird = tk.Button(self, text="Flappy Bird", font=("Roboto", 20, "bold"),
+        flappy_bird = tk.Button(self, text="Flappy Bird", font=(Font.main_font, 20, "bold"),
                                 command=self.flappy_bird_run)
         flappy_bird.place(x=50, y=50)
 
-        animal_word_search = tk.Button(self, text="Animal Word Search", font=("Roboto", 20, "bold"),
+        animal_word_search = tk.Button(self, text="Animal Word Search", font=(Font.main_font, 20, "bold"),
                                        command=self.animal_word_search_run)
         animal_word_search.place(x=500, y=50)
 

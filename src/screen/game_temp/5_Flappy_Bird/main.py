@@ -3,6 +3,8 @@ import sys
 
 import pygame
 
+from src.utils.constant import Font
+
 
 class FlappyBird:
     def __init__(self):
@@ -10,7 +12,7 @@ class FlappyBird:
         pygame.init()
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
-        self.game_font = pygame.font.SysFont('Roboto', 35)
+        self.game_font = pygame.font.SysFont(Font.main_font, 35)
         # Create variable
         self.gravity = 0.25
         self.bird_movement = 0

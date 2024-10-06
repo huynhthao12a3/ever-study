@@ -33,7 +33,7 @@ class ShareScreen(tk.Frame):
             else:
                 return False
 
-        custom_font = tk.font.Font(family='Roboto', size=16)
+        custom_font = tk.font.Font(family='Cambria', size=16)
         valid = (self.register(limit_character), '%P')
 
         Component.left_label(self)
@@ -76,13 +76,13 @@ class ShareScreen(tk.Frame):
                 self.content_text.delete(1.0, tk.END)
 
                 if response.status_code == 200:
-                    tk.Label(self, text="Gửi thành công", width=16, font=('Roboto', 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
+                    tk.Label(self, text="Gửi thành công", width=16, font=(Font.main_font, 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
                 else:
-                    tk.Label(self, text="Gửi thất bại", width=16, font=('Roboto', 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
+                    tk.Label(self, text="Gửi thất bại", width=16, font=(Font.main_font, 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
 
             except Exception as e:
                 print(e)
-                tk.Label(self, text="Gửi thất bại", width=16, font=('Roboto', 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
+                tk.Label(self, text="Gửi thất bại", width=16, font=(Font.main_font, 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
 
 
 

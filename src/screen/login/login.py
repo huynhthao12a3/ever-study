@@ -3,7 +3,7 @@ from tkinter import font
 import pygame.display
 
 from src.utils.component import Component
-from src.utils.constant import Auth, Api, ImageUrl
+from src.utils.constant import Auth, Api, ImageUrl, Font
 # from tkextrafont import Font
 from src.utils.file import FileManager
 # Call api, convert json library
@@ -35,7 +35,7 @@ class LoginScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
-        custom_font = tk.font.Font(family='Roboto', size=16)
+        custom_font = tk.font.Font(family=Font.main_font, size=16)
         Component.right_button_back(self, self.show_home_screen)
 
         self.username_login_entry = tk.Entry(self, textvariable=self.username_verify, borderwidth=3, font=custom_font)
@@ -72,7 +72,7 @@ class LoginScreen(tk.Frame):
             response_json = response.json()
         except Exception as e:
             print(e)
-            tk.Label(self, text="Đăng nhập thất bại", width=16, font=('Roboto', 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
+            tk.Label(self, text="Đăng nhập thất bại", width=16, font=(Font.main_font, 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
 
         print(response_json)
         print(response.status_code)
@@ -82,4 +82,4 @@ class LoginScreen(tk.Frame):
             Auth.access_token = response_json["data"]["access_token"]
             self.show_home_screen()
         else:
-            tk.Label(self, text="* " + response_json["detail"], font=('Roboto', 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
+            tk.Label(self, text="* " + response_json["detail"], font=(Font.main_font, 16, 'bold'), foreground="red", background="white").place(x=350, y=565)

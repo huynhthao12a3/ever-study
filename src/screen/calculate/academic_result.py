@@ -1,7 +1,7 @@
 ﻿import tkinter as tk
 
 from src.utils.component import Component
-from src.utils.constant import ImageUrl, Color
+from src.utils.constant import ImageUrl, Color, Font
 from src.utils.gif import AnimatedGifCanvas
 
 
@@ -41,65 +41,65 @@ class AcademicResultScreen(tk.Frame):
         Component.right_button_back(self, self.show_calculate_screen)
 
         # Score Mathematics
-        self.input_mathematics = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.mathematics, bg="white",
+        self.input_mathematics = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.mathematics, bg="white",
                                           validate="key",
                                           validatecommand=(self.register(self.validate_float), '%P'))
         self.input_mathematics.place(x=66, y=305)
         self.input_mathematics.bind("<KeyRelease>", self.on_key_release)
 
         # Score Literature
-        self.input_literature = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.literature, bg="white",
+        self.input_literature = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.literature, bg="white",
                                          validate="key",
                                          validatecommand=(self.register(self.validate_float), '%P'))
         self.input_literature.place(x=145, y=305)
         self.input_literature.bind("<KeyRelease>", self.on_key_release)
 
         # Score English
-        self.input_english = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.english, bg="white",
+        self.input_english = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.english, bg="white",
                                       validate="key",
                                       validatecommand=(self.register(self.validate_float), '%P'))
         self.input_english.place(x=230, y=305)
         self.input_english.bind("<KeyRelease>", self.on_key_release)
 
         # Score Natural Sciences
-        self.input_natural_sciences = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.natural_sciences,
+        self.input_natural_sciences = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.natural_sciences,
                                                bg="white", validate="key",
                                                validatecommand=(self.register(self.validate_float), '%P'))
         self.input_natural_sciences.place(x=318, y=305)
         self.input_natural_sciences.bind("<KeyRelease>", self.on_key_release)
 
         # Score History and Geography
-        self.input_history_geography = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.history_geography,
+        self.input_history_geography = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.history_geography,
                                                 bg="white", validate="key",
                                                 validatecommand=(self.register(self.validate_float), '%P'))
         self.input_history_geography.place(x=400, y=305)
         self.input_history_geography.bind("<KeyRelease>", self.on_key_release)
 
         # Score Computer Science
-        self.input_computer_science = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.computer_science,
+        self.input_computer_science = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.computer_science,
                                                bg="white", validate="key",
                                                validatecommand=(self.register(self.validate_float), '%P'))
         self.input_computer_science.place(x=490, y=305)
         self.input_computer_science.bind("<KeyRelease>", self.on_key_release)
 
         # Score Civic Education
-        self.input_civic_education = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.civic_education,
+        self.input_civic_education = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.civic_education,
                                               bg="white", validate="key",
                                               validatecommand=(self.register(self.validate_float), '%P'))
         self.input_civic_education.place(x=580, y=305)
         self.input_civic_education.bind("<KeyRelease>", self.on_key_release)
 
         # Score Technology
-        self.input_technology = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.technology, bg="white",
+        self.input_technology = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.technology, bg="white",
                                          validate="key",
                                          validatecommand=(self.register(self.validate_float), '%P'))
         self.input_technology.place(x=674, y=305)
         self.input_technology.bind("<KeyRelease>", self.on_key_release)
 
         # Show result
-        self.label_result = tk.Label(self, width=10, text=str(self.result), font=("Roboto", 20, "bold"), bg=Color.bg_main,
-                                     fg="red")
-        self.label_result.place(x=400, y=465)
+        self.label_result = tk.Label(self, width=8, text=str(self.result), font=(Font.main_font, 20, "bold"), bg=Color.bg_main,
+                                     fg=Color.text_color_red)
+        self.label_result.place(x=455, y=465)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")

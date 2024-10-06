@@ -4,7 +4,7 @@ import time
 
 import pygame
 
-from src.utils.constant import GameFlappyBird
+from src.utils.constant import GameFlappyBird, Font
 from src.utils.file import FileManager
 
 
@@ -16,7 +16,7 @@ class FlappyBird:
         pygame.display.set_caption('Flappy Bird Game')
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
-        self.game_font = pygame.font.SysFont('Roboto', 35)
+        self.game_font = pygame.font.SysFont(Font.main_font, 35)
 
         # Callback
         self.on_flappy_bird_close = on_flappy_bird_close
@@ -307,7 +307,7 @@ class FlappyBird:
 
                         if self.selected_answer == self.correct_answer:
                             print("True: ", self.selected_answer, self.correct_answer)
-                            font = pygame.font.SysFont("roboto", 24)
+                            font = pygame.font.SysFont(Font.main_font, 24)
                             text = font.render("Câu trả lời chính xác. Sẽ quay lại game sau 3 giây.", True, (255, 0, 0))
                             text_rect = text.get_rect(center=(400, 570))
                             self.screen.blit(text, text_rect)

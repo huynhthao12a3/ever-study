@@ -19,7 +19,7 @@ class AuthorScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
-        Component.left_label(self)
+        # Component.left_label(self)
         Component.right_button_back(self, self.show_home_screen)
 
     def on_click(self, x, y):

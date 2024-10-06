@@ -1,5 +1,5 @@
 from src.utils.component import Component
-from src.utils.constant import ImageUrl
+from src.utils.constant import ImageUrl, Font
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 import tkinter as tk
@@ -37,43 +37,43 @@ class SubjectAverageScreen(tk.Frame):
         Component.right_button_back(self, self.show_calculate_screen)
 
         # Score TX1
-        self.input_tx1 = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.tx1, bg="white", validate="key",
+        self.input_tx1 = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.tx1, bg="white", validate="key",
                                   validatecommand=(self.register(self.validate_float), '%P'))
         self.input_tx1.place(x=106, y=280)
         self.input_tx1.bind("<KeyRelease>", self.on_key_release)
 
         # Score TX2
-        self.input_tx2 = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.tx2, bg="white", validate="key",
+        self.input_tx2 = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.tx2, bg="white", validate="key",
                                   validatecommand=(self.register(self.validate_float), '%P'))
         self.input_tx2.place(x=192, y=280)
         self.input_tx2.bind("<KeyRelease>", self.on_key_release)
 
         # Score TX3
-        self.input_tx3 = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.tx3, bg="white", validate="key",
+        self.input_tx3 = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.tx3, bg="white", validate="key",
                                   validatecommand=(self.register(self.validate_float), '%P'))
         self.input_tx3.place(x=278, y=280)
         self.input_tx3.bind("<KeyRelease>", self.on_key_release)
 
         # Score TX4
-        self.input_tx4 = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.tx4, bg="white", validate="key",
+        self.input_tx4 = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.tx4, bg="white", validate="key",
                                   validatecommand=(self.register(self.validate_float), '%P'))
         self.input_tx4.place(x=364, y=280)
         self.input_tx4.bind("<KeyRelease>", self.on_key_release)
 
         # Score GK
-        self.input_gk = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.gk, bg="white", validate="key",
+        self.input_gk = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.gk, bg="white", validate="key",
                                  validatecommand=(self.register(self.validate_float), '%P'))
         self.input_gk.place(x=450, y=280)
         self.input_gk.bind("<KeyRelease>", self.on_key_release)
 
         # Score CK
-        self.input_ck = tk.Entry(self, width=5, font=("Roboto", 18), textvariable=self.ck, bg="white", validate="key",
+        self.input_ck = tk.Entry(self, width=5, font=(Font.main_font, 18), textvariable=self.ck, bg="white", validate="key",
                                  validatecommand=(self.register(self.validate_float), '%P'))
         self.input_ck.place(x=536, y=280)
         self.input_ck.bind("<KeyRelease>", self.on_key_release)
 
         # Show subject average
-        self.label_dtm = tk.Label(self, width=6, text=str(self.dtb), font=("Roboto", 20, "bold"), bg="white",
+        self.label_dtm = tk.Label(self, width=6, text=str(self.dtb), font=(Font.main_font, 20, "bold"), bg="white",
                                   fg="red")
         self.label_dtm.place(x=625, y=276)
 

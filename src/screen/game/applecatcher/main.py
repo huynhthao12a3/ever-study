@@ -12,8 +12,8 @@ class AppleCatcher:
         self.screen = pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption('Hứng Táo')
         self.clock = pygame.time.Clock()
-        self.game_font = pygame.font.SysFont('Roboto', 35)
-        self.large_font = pygame.font.SysFont('Roboto', 70)
+        self.game_font = pygame.font.SysFont(Font.main_font, 35)
+        self.large_font = pygame.font.SysFont(Font.main_font, 70)
 
         self.file_manager = FileManager()
 

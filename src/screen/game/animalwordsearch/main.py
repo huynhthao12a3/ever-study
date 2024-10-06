@@ -3,6 +3,8 @@ import random
 import sys
 import time
 
+from src.utils.constant import Font
+
 
 class AnimalWordSearch:
     def __init__(self, on_animal_word_search_close):
@@ -20,8 +22,8 @@ class AnimalWordSearch:
         self.YELLOW = (255, 255, 0)
 
         # Tạo font chữ
-        self.font = pygame.font.SysFont('Roboto', 26)
-        self.small_font = pygame.font.SysFont('Roboto', 18)
+        self.font = pygame.font.SysFont(Font.main_font, 26)
+        self.small_font = pygame.font.SysFont(Font.main_font, 18)
 
         # Danh sách các từ cần tìm
         self.animals = ["CAT", "DOG", "LION", "TIGER", "PIG"]
