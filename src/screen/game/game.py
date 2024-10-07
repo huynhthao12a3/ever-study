@@ -1,6 +1,6 @@
 ﻿from src.screen.game.applecatcher.main import AppleCatcher
 from src.utils.component import Component
-from src.utils.constant import ImageUrl, Api, Auth, Font
+from src.utils.constant import ImageUrl, Api, Auth, Font, GameSetting
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 from src.screen.game.flappybird.main import FlappyBird
@@ -18,6 +18,7 @@ class GameScreen(tk.Frame):
         self.root = self.winfo_toplevel()  # Get parent window (Tk)
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
+        self.show_game_mode_screen = callback_list["GameModeScreen"]
         self.pygame_window_closed = False
 
     def load_widgets(self):
@@ -28,88 +29,17 @@ class GameScreen(tk.Frame):
         Component.left_label(self)
         Component.right_button_back(self, self.show_home_screen)
 
-        flappy_bird = tk.Button(self, text="Flappy Bird", font=(Font.main_font, 20, "bold"),
-                                command=self.flappy_bird_run)
-        flappy_bird.place(x=50, y=50)
-
-        animal_word_search = tk.Button(self, text="Animal Word Search", font=(Font.main_font, 20, "bold"),
-                                       command=self.animal_word_search_run)
-        animal_word_search.place(x=500, y=50)
-
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
         if 70 < x < 245 and 220 < y < 430:
             print("Flappy Bird")
-            self.flappy_bird_run()
+            GameSetting.selected_game = "Flappy_Bird"
+            self.show_game_mode_screen()
         if 335 < x < 520 and 220 < y < 430:
             print("Apple Collection")
-            self.apple_catcher_run()
+            GameSetting.selected_game = "Apple_Catcher"
+            self.show_game_mode_screen()
         if 590 < x < 750 and 220 < y < 430:
             print("Word Search")
-            self.animal_word_search_run()
-
-    def flappy_bird_run(self):
-        self.root.withdraw()  # Hide Tkinter window
-        FlappyBird(self.on_flappy_bird_close, 'technology').run()
-
-    def apple_catcher_run(self):
-        self.root.withdraw()  # Hide Tkinter window
-        AppleCatcher(self.on_apple_catcher_close).run()
-
-    def animal_word_search_run(self):
-        self.root.withdraw()  # Hide Tkinter window
-        AnimalWordSearch(self.on_animal_word_search_close).run()
-
-    def on_flappy_bird_close(self, game_result=None):
-        self.root.deiconify()  # Show Tkinter window
-        print("flappy bird closed")
-        if game_result is not None and Auth.login_success is True:
-            print("call api, game_result: ", game_result)
-            api_endpoint = Api.api_endpoint + "/ranks/me"
-            headers = {
-                'Content-Type': 'application/json',
-                'Authorization': "Bearer " + Auth.access_token
-            }
-            # Call api
-            response = requests.put(url=api_endpoint, headers=headers, data=json.dumps(game_result))
-            response_json = response.json()
-
-            print(api_endpoint, headers)
-            print(response.status_code)
-            print(response_json)
-
-    def on_apple_catcher_close(self, game_result=None):
-        self.root.deiconify()  # Show Tkinter window
-        print("Apple Catcher closed")
-        if game_result is not None and Auth.login_success is True:
-            print("call api, game_result: ", game_result)
-            api_endpoint = Api.api_endpoint + "/ranks/me"
-            headers = {
-                'Content-Type': 'application/json',
-                'Authorization': "Bearer " + Auth.access_token
-            }
-            # Call api
-            response = requests.put(url=api_endpoint, headers=headers, data=json.dumps(game_result))
-            response_json = response.json()
-
-            print(api_endpoint, headers)
-            print(response.status_code)
-            print(response_json)
-
-    def on_animal_word_search_close(self, game_result=None):
-        self.root.deiconify()  # Show Tkinter window
-        print("Animal Word Search closed")
-        if game_result is not None and Auth.login_success is True:
-            print("call api, game_result: ", game_result)
-            api_endpoint = Api.api_endpoint + "/ranks/me"
-            headers = {
-                'Content-Type': 'application/json',
-                'Authorization': "Bearer " + Auth.access_token
-            }
-            # Call api
-            response = requests.put(url=api_endpoint, headers=headers, data=json.dumps(game_result))
-            response_json = response.json()
-
-            print(api_endpoint, headers)
-            print(response.status_code)
-            print(response_json)
+            GameSetting.selected_game = "Word_Search"
+            self.show_game_mode_screen()

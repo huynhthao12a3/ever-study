@@ -47,7 +47,11 @@ class ImageUrl:
     bg_other_screen = "image/background/tinh-diem-1.gif"
     bg_author_screen = "image/background/tac-gia.gif"
     bg_login_screen = "image/background/login.gif"
+    bg_game_mode_screen = "image/background/chon-che-do-choi.gif"
+    bg_normal_game_mode_screen = "image/background/choi-thuong.gif"
+    bg_rank_screen = "image/background/bxh.gif"
 
+    # Icon
     app_icon = "image/ever-study.ico"
 
 
@@ -266,8 +270,9 @@ class Question:
     ]
 
 
-class GameConfig:
+class GameSetting:
     selected_subject = None  # All & (Math or History or ...)
-    selected_game = None  # Flappy_Bird or Apple_Catcher or Animal_Word_Search
+    selected_game = None  # Flappy_Bird or Apple_Catcher or Word_Search
     selected_level = None  # 1 or 2 or 3 or 4
+    selected_game_mode = None  # Normal or Rank
 

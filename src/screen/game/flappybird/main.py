@@ -38,6 +38,8 @@ class FlappyBird:
         self.running = True
         self.scored = False
         self.collision = False
+        self.wrong_answer_count = 0
+        self.max_wrong_answers = 3
 
         # Question - answer
         self.question_manager = QuestionManager(Question)
@@ -251,7 +253,7 @@ class FlappyBird:
                     self.floor_x_pos = 0
 
                 # Bird collided pipe => Show question
-                if self.collision is True:
+                if self.collision is True: # and self.wrong_answer_count < self.max_wrong_answers:
                     # Show question
                     self.display_question(self.current_question)
                     # self.show_question = False
@@ -309,10 +311,10 @@ class FlappyBird:
                             print("D")
                             self.selected_answer = "D"
 
-                        if self.selected_answer == self.correct_answer:
+                        if self.selected_answer is not None and self.selected_answer == self.correct_answer:
                             # increase answered question
-                            self.game_result["answered_question"] = self.game_result["answered_question"] + 1
-                            self.game_result["correct_answer"] = self.game_result["correct_answer"] + 1
+                            self.game_result["answered_question"] += 1
+                            self.game_result["correct_answer"] += 1
 
                             print("True: ", self.selected_answer, self.correct_answer)
                             font = pygame.font.SysFont(Font.main_font, 24)
@@ -329,25 +331,47 @@ class FlappyBird:
                             self.game_active = True
                             self.bird_movement = -12
 
-                        if self.selected_answer != self.correct_answer:
+                        if self.selected_answer is not None and self.selected_answer != self.correct_answer:
                             # increase answered question
-                            self.game_result["answered_question"] = self.game_result["answered_question"] + 1
-                            self.game_result["wrong_answer"] = self.game_result["wrong_answer"] + 1
+                            self.wrong_answer_count += 1
+                            self.game_result["answered_question"] += 1
+                            self.game_result["wrong_answer"] += 1
 
-                            # render new question
-                            print("False: ", self.selected_answer, self.correct_answer)
-                            font = pygame.font.SysFont(Font.main_font, 24)
-                            text = font.render("Câu trả lời không chính xác.", True, (255, 0, 0))
-                            text_rect = text.get_rect(center=(400, 570))
-                            self.screen.blit(text, text_rect)
-                            pygame.display.update()
-                            time.sleep(1)
+                            if self.wrong_answer_count >= self.max_wrong_answers:
+                                print("Bạn đã chọn sai đủ ba lần! Kết thúc game.")
+                                font = pygame.font.SysFont(Font.main_font, 24)
+                                text = font.render("Game Over! Bạn đã sai đủ ba lần.", True, (255, 0, 0))
+                                text_rect = text.get_rect(center=(400, 570))
+                                self.screen.blit(text, text_rect)
+                                pygame.display.update()
+                                time.sleep(3)
+                                print("Bạn đã chọn sai đủ ba lần! Kết thúc game.")
+                                self.collision = False
+                                self.game_active = False
+                                self.wrong_answer_count = 0
+                                self.game_result["game_score"] += self.score
+                                self.score = 0
 
-                            subject, question = self.question_manager.get_random_question()
-                            self.current_question = question["image_path"]
-                            self.correct_answer = question["correct_answer"]
-                            self.display_question(self.current_question)
-                            print("Correct answer is ", self.correct_answer)
+                            else:
+                                font = pygame.font.SysFont(Font.main_font, 24)
+                                text = font.render("Câu trả lời không chính xác.", True, (255, 0, 0))
+                                text_rect = text.get_rect(center=(400, 570))
+                                self.screen.blit(text, text_rect)
+                                pygame.display.update()
+                                time.sleep(1)
+
+                                # Hiển thị câu hỏi mới nếu chưa đạt số lần sai tối đa.
+                                subject, question = self.question_manager.get_random_question()
+                                if question:
+                                    print("Câu hỏi mới:", subject)
+                                    self.current_question = question["image_path"]
+                                    self.correct_answer = question["correct_answer"]
+
+                            # subject, question = self.question_manager.get_random_question()
+                            # self.current_question = question["image_path"]
+                            # self.correct_answer = question["correct_answer"]
+                            # self.display_question(self.current_question)
+                            # print("Correct answer is ", self.correct_answer)
 
                         self.selected_answer = None  # Reset answer
 

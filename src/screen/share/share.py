@@ -3,7 +3,7 @@
 import requests
 
 from src.utils.component import Component
-from src.utils.constant import ImageUrl, Auth, Api
+from src.utils.constant import ImageUrl, Auth, Api, Font
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 import tkinter as tk

@@ -4,6 +4,9 @@ from src.screen.author.author import AuthorScreen
 from src.screen.calculate.academic_result import AcademicResultScreen
 from src.screen.calculate.calculate import CalculateScreen
 from src.screen.calculate.subject_average import SubjectAverageScreen
+from src.screen.game.game_mode import GameModeScreen
+from src.screen.game.normal_game_mode import NormalGameModeScreen
+from src.screen.game.rank import RankScreen
 from src.screen.utility.utility import UtilityScreen
 from src.screen.game.game import GameScreen
 from src.screen.home import HomeScreen
@@ -61,7 +64,11 @@ class EverStudy(tk.Tk):
             "AcademicResultScreen": self.show_academic_result_screen,
         }
         game_callback_list = {
-            "HomeScreen": self.show_home_screen
+            "HomeScreen": self.show_home_screen,
+            "GameScreen": self.show_game_screen,
+            "GameModeScreen": self.show_game_mode_screen,
+            "NormalGameModeScreen": self.show_normal_game_mode_screen,
+            "RankScreen": self.show_rank_screen
         }
         other_callback_list = {
             "HomeScreen": self.show_home_screen
@@ -87,6 +94,9 @@ class EverStudy(tk.Tk):
         self.screens["SubjectAverageScreen"] = SubjectAverageScreen(self.container, calculate_callback_list)
         self.screens["AcademicResultScreen"] = AcademicResultScreen(self.container, calculate_callback_list)
         self.screens["GameScreen"] = GameScreen(self.container, game_callback_list)
+        self.screens["GameModeScreen"] = GameModeScreen(self.container, game_callback_list)
+        self.screens["NormalGameModeScreen"] = NormalGameModeScreen(self.container, game_callback_list)
+        self.screens["RankScreen"] = RankScreen(self.container, game_callback_list)
         self.screens["OtherScreen"] = OtherScreen(self.container, other_callback_list)
         self.screens["ShareScreen"] = ShareScreen(self.container, share_callback_list)
         self.screens["UtilityScreen"] = UtilityScreen(self.container, utility_callback_list)
@@ -133,6 +143,15 @@ class EverStudy(tk.Tk):
     def show_game_screen(self):
         self.show_screen("GameScreen")
 
+    def show_game_mode_screen(self):
+        self.show_screen("GameModeScreen")
+
+    def show_normal_game_mode_screen(self):
+        self.show_screen("NormalGameModeScreen")
+
+    def show_rank_screen(self):
+        self.show_screen("RankScreen")
+
     def show_other_screen(self):
         self.show_screen("OtherScreen")
 
@@ -144,3 +163,4 @@ class EverStudy(tk.Tk):
 
     def show_login_screen(self):
         self.show_screen("LoginScreen")
+
