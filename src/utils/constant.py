@@ -81,18 +81,193 @@ class GameFlappyBird:
         'image/flappy-bird/pipe-green.png',
         'image/flappy-bird/pipe-red.png'
     ]
-    questions = {
-        # Math
-        "math_01": {
-            "image_path": "image/background/q-a-1.gif",
-            "correct_answer": "A"
+
+
+class Question:
+    math = [
+        {
+            "image_path": "image/question/toan_cauhoi01_B.png",
+            "correct_answer": "image/question/toan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
         },
-        "math_02": {
-            "image_path": "image/background/q-a-1.gif",
-            "correct_answer": "B"
+        {
+            "image_path": "image/question/toan_cauhoi02_B.png",
+            "correct_answer": "image/question/toan_cauhoi02_B.png".split(".")[0][-1]  # correct answer
         },
-        "math_03": {
-            "image_path": "image/background/q-a-1.gif",
-            "correct_answer": "C"
+        {
+            "image_path": "image/question/toan_cauhoi03_A.png",
+            "correct_answer": "image/question/toan_cauhoi03_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/toan_cauhoi04_A.png",
+            "correct_answer": "image/question/toan_cauhoi04_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/toan_cauhoi05_B.png",
+            "correct_answer": "image/question/toan_cauhoi05_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/toan_cauhoi06_D.png",
+            "correct_answer": "image/question/toan_cauhoi06_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/toan_cauhoi07_A.png",
+            "correct_answer": "image/question/toan_cauhoi07_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/toan_cauhoi08_A.png",
+            "correct_answer": "image/question/toan_cauhoi08_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/toan_cauhoi9_D.png",
+            "correct_answer": "image/question/toan_cauhoi9_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/toan_cauhoi10_B.png",
+            "correct_answer": "image/question/toan_cauhoi10_B.png".split(".")[0][-1]  # correct answer
         }
-    }
+    ]
+    computer_science = [
+        {
+            "image_path": "image/question/tinhoc_cauhoi01_A.png",
+            "correct_answer": "image/question/tinhoc_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/tinhoc_cauhoi02_A.png",
+            "correct_answer": "image/question/tinhoc_cauhoi02_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/tinhoc_cauhoi03_D.png",
+            "correct_answer": "image/question/tinhoc_cauhoi03_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/tinhoc_cauhoi04_B.png",
+            "correct_answer": "image/question/tinhoc_cauhoi04_B.png".split(".")[0][-1]  # correct answer
+        },
+    ]
+    english = [
+        {
+            "image_path": "image/question/tienganh_cauhoi01_C.png",
+            "correct_answer": "image/question/tienganh_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/tienganh_cauhoi02_A.png",
+            "correct_answer": "image/question/tienganh_cauhoi02_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/tienganh_cauhoi03_A.png",
+            "correct_answer": "image/question/tienganh_cauhoi03_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/tienganh_cauhoi04_A.png",
+            "correct_answer": "image/question/tienganh_cauhoi04_A.png".split(".")[0][-1]  # correct answer
+        },
+    ]
+    literature = [
+        {
+            "image_path": "image/question/nguvan_cauhoi1_B.png",
+            "correct_answer": "image/question/nguvan_cauhoi1_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/nguvan_cauhoi02_C.png",
+            "correct_answer": "image/question/nguvan_cauhoi02_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/nguvan_cauhoi03_C.png",
+            "correct_answer": "image/question/nguvan_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+    ]
+    history_geography = [
+        {
+            "image_path": "image/question/lsdl_cauhoi01_A.png",
+            "correct_answer": "image/question/lsdl_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/lsdl_cauhoi02_D.png",
+            "correct_answer": "image/question/lsdl_cauhoi02_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/lsdl_cauhoi03_C.png",
+            "correct_answer": "image/question/lsdl_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/lsdl_cauhoi04_B.png",
+            "correct_answer": "image/question/lsdl_cauhoi04_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/lsdl_cauhoi05_ C.png",
+            "correct_answer": "image/question/lsdl_cauhoi05_ C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/lsdl_cauhoi06_B.png",
+            "correct_answer": "image/question/lsdl_cauhoi06_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/lsdl_cauhoi07_D.png",
+            "correct_answer": "image/question/lsdl_cauhoi07_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/lsdl_cauhoi08_A.png",
+            "correct_answer": "image/question/lsdl_cauhoi08_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    natural_sciences = [
+        {
+            "image_path": "image/question/khtn_cauhoi01_A.png",
+            "correct_answer": "image/question/khtn_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/khtn_cauhoi02_B.png",
+            "correct_answer": "image/question/khtn_cauhoi02_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/khtn_cauhoi03_C.png",
+            "correct_answer": "image/question/khtn_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/khtn_cauhoi04_C.png",
+            "correct_answer": "image/question/khtn_cauhoi04_C.png".split(".")[0][-1]  # correct answer
+        },
+    ]
+    civic_education = [
+        {
+            "image_path": "image/question/giaoduccongdan_cauhoi01_A.png",
+            "correct_answer": "image/question/giaoduccongdan_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/giaoduccongdan_cauhoi02_C.png",
+            "correct_answer": "image/question/giaoduccongdan_cauhoi02_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/giaoduccongdan_cauhoi03_C.png",
+            "correct_answer": "image/question/giaoduccongdan_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/giaoduccongdan_cauhoi04_A.png",
+            "correct_answer": "image/question/giaoduccongdan_cauhoi04_A.png".split(".")[0][-1]  # correct answer
+        },
+    ]
+    technology = [
+        {
+            "image_path": "image/question/congnghe_cauhoi01_D.png",
+            "correct_answer": "image/question/congnghe_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/congnghe_cauhoi02_A.png",
+            "correct_answer": "image/question/congnghe_cauhoi02_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/congnghe_cauhoi03_A.png",
+            "correct_answer": "image/question/congnghe_cauhoi03_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/congnghe_cauhoi04_B.png",
+            "correct_answer": "image/question/congnghe_cauhoi04_B.png".split(".")[0][-1]  # correct answer
+        },
+    ]
+
+
+class GameConfig:
+    selected_subject = None  # All & (Math or History or ...)
+    selected_game = None  # Flappy_Bird or Apple_Catcher or Animal_Word_Search
+    selected_level = None  # 1 or 2 or 3 or 4
+

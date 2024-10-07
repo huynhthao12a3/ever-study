@@ -4,7 +4,7 @@ import time
 
 import pygame
 
-from src.utils.constant import GameFlappyBird, Font
+from src.utils.constant import GameFlappyBird, Font, Question
 from src.utils.file import FileManager
 
 
@@ -128,7 +128,7 @@ class FlappyBird:
                 self.collision = True
                 self.show_question = True
                 # Random question
-                self.current_question = random.choice(list(GameFlappyBird.questions.keys()))
+                self.current_question = random.choice(list(Question.keys()))
                 self.correct_answer = GameFlappyBird.questions[self.current_question]["correct_answer"]
                 return False
         if self.bird_rect.top <= -50 or self.bird_rect.bottom >= 520:
@@ -249,7 +249,7 @@ class FlappyBird:
                 # Bird collided pipe => Show question
                 if self.collision is True:
                     # Show question
-                    self.display_question(GameFlappyBird.questions[self.current_question]["image_path"])
+                    self.display_question(Question[self.current_question]["image_path"])
                     # self.show_question = False
 
             # Pygame event
