@@ -6,10 +6,11 @@ import pygame
 
 from src.utils.constant import GameFlappyBird, Font, Question
 from src.utils.file import FileManager
+from src.utils.question import QuestionManager
 
 
 class FlappyBird:
-    def __init__(self, on_flappy_bird_close):
+    def __init__(self, on_flappy_bird_close, mode_game):
 
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=512)
         pygame.init()
@@ -21,10 +22,10 @@ class FlappyBird:
         # Callback
         self.on_flappy_bird_close = on_flappy_bird_close
         self.game_result = {
-            "game_score": 1,
-            "answered_question": 2,
-            "correct_answer": 3,
-            "wrong_answer": 4,
+            "game_score": 0,
+            "answered_question": 0,
+            "correct_answer": 0,
+            "wrong_answer": 0
         }
 
         # Create variable
@@ -37,7 +38,10 @@ class FlappyBird:
         self.running = True
         self.scored = False
         self.collision = False
+
         # Question - answer
+        self.question_manager = QuestionManager(Question)
+        self.question_manager.set_mode(mode_game)
         self.show_question = False
         self.current_question = None
         self.correct_answer = None
@@ -128,8 +132,10 @@ class FlappyBird:
                 self.collision = True
                 self.show_question = True
                 # Random question
-                self.current_question = random.choice(list(Question.keys()))
-                self.correct_answer = GameFlappyBird.questions[self.current_question]["correct_answer"]
+                subject, question = self.question_manager.get_random_question()
+                print(subject, question)
+                self.current_question = question["image_path"]
+                self.correct_answer = question["correct_answer"]
                 return False
         if self.bird_rect.top <= -50 or self.bird_rect.bottom >= 520:
             self.hit_sound.play()
@@ -138,9 +144,12 @@ class FlappyBird:
             self.collision = True
             self.show_question = True
             # Random question
-            self.current_question = random.choice(list(GameFlappyBird.questions.keys()))
-            self.correct_answer = GameFlappyBird.questions[self.current_question]["correct_answer"]
+            subject, question = self.question_manager.get_random_question()
+            print(subject, question)
+            self.current_question = question["image_path"]
+            self.correct_answer = question["correct_answer"]
             return False
+
         return True
 
     def rotate_bird(self, bird1):
@@ -152,24 +161,19 @@ class FlappyBird:
         new_bird_rect = new_bird.get_rect(center=(100, self.bird_rect.centery))
         return new_bird, new_bird_rect
 
-    def score_display(self, game_state):
-        if game_state == 'main game_temp':
-            score_surface = self.game_font.render(str(int(self.score)), True, (255, 255, 255))
-            score_rect = score_surface.get_rect(center=(216, 100))
-            self.screen.blit(score_surface, score_rect)
-        if game_state == 'game_over':
-            score_surface = self.game_font.render(f'Score: {int(self.score)}', True, (255, 255, 255))
-            score_rect = score_surface.get_rect(center=(216, 100))
+    def score_display(self):
+            score_surface = self.game_font.render(f'Điểm: {int(self.score)}', True, (255, 255, 255))
+            score_rect = score_surface.get_rect(center=(60, 20))
             self.screen.blit(score_surface, score_rect)
 
-            high_score_surface = self.game_font.render(f'High Score: {int(self.high_score)}', True, (255, 255, 255))
-            high_score_rect = high_score_surface.get_rect(center=(216, 430))
-            self.screen.blit(high_score_surface, high_score_rect)
+            # high_score_surface = self.game_font.render(f'High Score: {int(self.high_score)}', True, (255, 255, 255))
+            # high_score_rect = high_score_surface.get_rect(center=(216, 430))
+            # self.screen.blit(high_score_surface, high_score_rect)
 
-    def update_score(self, score, high_score):
-        if score > high_score:
-            high_score = score
-        return high_score
+    # def update_score(self, score, high_score):
+    #     if score > high_score:
+    #         high_score = score
+    #     return high_score
 
     def display_question(self, image_path):
         self.screen.blit(self.file_manager.load_image(image_path, True), (0, 0))
@@ -223,7 +227,7 @@ class FlappyBird:
                 self.pipe_list = self.move_pipe(self.pipe_list)
                 self.draw_pipe(self.pipe_list)
                 # if self.collision is False:
-                self.score_display('main game_temp')
+                self.score_display()
 
                 # Draw floor
                 self.floor_x_pos -= 1
@@ -234,9 +238,9 @@ class FlappyBird:
                 self.scored = False
                 self.pipe_list.clear()
                 # self.screen.blit(self.game_over_surface, self.game_over_rect)
-                self.high_score = self.update_score(self.score, self.high_score)
+                # self.high_score = self.update_score(self.score, self.high_score)
                 # if lose is True:
-                self.score_display('game_over')
+                self.score_display()
                 self.bird_rect.center = (100, 300)
                 self.screen.blit(self.bird, self.bird_rect)
 
@@ -249,7 +253,7 @@ class FlappyBird:
                 # Bird collided pipe => Show question
                 if self.collision is True:
                     # Show question
-                    self.display_question(Question[self.current_question]["image_path"])
+                    self.display_question(self.current_question)
                     # self.show_question = False
 
             # Pygame event
@@ -292,20 +296,24 @@ class FlappyBird:
                     # Bird collided pipe => choose answer
                     if event.button == 1 and self.collision is True:
                         print("Correct answer is ", self.correct_answer)
-                        if 120 < mouse_x < 380 and 270 < mouse_y < 340:
+                        if 50 < mouse_x < 170 and 470 < mouse_y < 590:
                             print("A")
                             self.selected_answer = "A"
-                        if 470 < mouse_x < 730 and 270 < mouse_y < 340:
+                        if 240 < mouse_x < 360 and 470 < mouse_y < 590:
                             print("B")
                             self.selected_answer = "B"
-                        if 120 < mouse_x < 380 and 410 < mouse_y < 480:
+                        if 435 < mouse_x < 560 and 470 < mouse_y < 590:
                             print("C")
                             self.selected_answer = "C"
-                        if 470 < mouse_x < 730 and 410 < mouse_y < 480:
+                        if 630 < mouse_x < 750 and 470 < mouse_y < 590:
                             print("D")
                             self.selected_answer = "D"
 
                         if self.selected_answer == self.correct_answer:
+                            # increase answered question
+                            self.game_result["answered_question"] = self.game_result["answered_question"] + 1
+                            self.game_result["correct_answer"] = self.game_result["correct_answer"] + 1
+
                             print("True: ", self.selected_answer, self.correct_answer)
                             font = pygame.font.SysFont(Font.main_font, 24)
                             text = font.render("Câu trả lời chính xác. Sẽ quay lại game sau 3 giây.", True, (255, 0, 0))
@@ -320,6 +328,26 @@ class FlappyBird:
                             self.collision = False
                             self.game_active = True
                             self.bird_movement = -12
+
+                        if self.selected_answer != self.correct_answer:
+                            # increase answered question
+                            self.game_result["answered_question"] = self.game_result["answered_question"] + 1
+                            self.game_result["wrong_answer"] = self.game_result["wrong_answer"] + 1
+
+                            # render new question
+                            print("False: ", self.selected_answer, self.correct_answer)
+                            font = pygame.font.SysFont(Font.main_font, 24)
+                            text = font.render("Câu trả lời không chính xác.", True, (255, 0, 0))
+                            text_rect = text.get_rect(center=(400, 570))
+                            self.screen.blit(text, text_rect)
+                            pygame.display.update()
+                            time.sleep(1)
+
+                            subject, question = self.question_manager.get_random_question()
+                            self.current_question = question["image_path"]
+                            self.correct_answer = question["correct_answer"]
+                            self.display_question(self.current_question)
+                            print("Correct answer is ", self.correct_answer)
 
                         self.selected_answer = None  # Reset answer
 

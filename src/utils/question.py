@@ -5,7 +5,13 @@ class QuestionManager:
     def __init__(self, Question):
         self.original_subjects = {
             'math': Question.math.copy(),
-            'computer_science': Question.computer_science.copy()
+            'computer_science': Question.computer_science.copy(),
+            'english': Question.english.copy(),
+            'literature': Question.literature.copy(),
+            'history_geography': Question.history_geography.copy(),
+            'natural_sciences': Question.natural_sciences.copy(),
+            'civic_education': Question.civic_education.copy(),
+            'technology': Question.technology.copy()
         }
         self.subjects = self.original_subjects.copy()
         self.used_questions = set()

@@ -50,7 +50,7 @@ class GameScreen(tk.Frame):
 
     def flappy_bird_run(self):
         self.root.withdraw()  # Hide Tkinter window
-        FlappyBird(self.on_flappy_bird_close).run()
+        FlappyBird(self.on_flappy_bird_close, 'technology').run()
 
     def apple_catcher_run(self):
         self.root.withdraw()  # Hide Tkinter window
