@@ -1,8 +1,6 @@
-﻿import time
-
-import pygame
-import random
+﻿import random
 import sys
+import pygame
 
 from src.utils.constant import Font, Question
 from src.utils.file import FileManager
@@ -31,15 +29,6 @@ class AppleCatcher:
             "correct_answer": 0,
             "wrong_answer": 0,
         }
-        # Question - answer
-        self.question_manager = QuestionManager(Question)
-        self.question_manager.set_mode(mode_game)
-        self.show_question = False
-        self.current_question = None
-        self.correct_answer = None
-        self.selected_answer = None
-        self.wrong_answer_count = 0
-        self.max_wrong_answers = 3
 
         # Biến trò chơi
         self.score = 0
@@ -65,7 +54,8 @@ class AppleCatcher:
         # Tải hình ảnh
         self.bg = self.load_and_scale_image('image/apple-catcher/background.png', (self.width, self.height))
         self.basket = self.load_and_scale_image('image/apple-catcher/bat.png', (self.player_width, self.player_height))
-        self.apple_image = self.load_and_scale_image('image/apple-catcher/apple.png', (self.apple_size, self.apple_size))
+        self.apple_image = self.load_and_scale_image('image/apple-catcher/apple.png',
+                                                     (self.apple_size, self.apple_size))
         self.heart_image = self.load_and_scale_image('image/apple-catcher/heart.png', (25, 25))
 
         # Tải âm thanh
@@ -73,13 +63,23 @@ class AppleCatcher:
         self.miss_sound = pygame.mixer.Sound(self.file_manager.resource_path('sound/flappy-bird/sfx_hit.wav'))
         self.game_over_sound = pygame.mixer.Sound(self.file_manager.resource_path('sound/flappy-bird/sfx_die.wav'))
 
+        # Quản lý câu hỏi
+        self.question_manager = QuestionManager(Question)
+        self.question_manager.set_mode(mode_game)
+        self.show_question = False
+        self.current_question = None
+        self.correct_answer = None
+        self.wrong_answer_count = 0
+        self.max_wrong_answers = 3
+
     def load_and_scale_image(self, path, size):
         image = self.file_manager.load_image(path, True)
         return pygame.transform.scale(image, size)
 
     def create_apple(self):
         return {
-            'rect': pygame.Rect(random.randint(0, self.width - self.apple_size), -self.apple_size, self.apple_size, self.apple_size),
+            'rect': pygame.Rect(random.randint(0, self.width - self.apple_size), -self.apple_size, self.apple_size,
+                                self.apple_size),
             'speed': random.uniform(2 + self.level * 0.5, 5 + self.level * 0.5),
             'rotation': 0,
             'rotation_speed': random.uniform(-3, 3)
@@ -97,6 +97,11 @@ class AppleCatcher:
                 if self.lives <= 0:
                     self.game_over = True
                     self.game_over_sound.play()
+                else:
+                    self.show_question = True
+                    subject, question = self.question_manager.get_random_question()
+                    self.current_question = question["image_path"]
+                    self.correct_answer = question["correct_answer"]
 
     def check_collision(self):
         player_rect = pygame.Rect(self.player_x, self.player_y, self.player_width, self.player_height)
@@ -104,15 +109,10 @@ class AppleCatcher:
             if player_rect.colliderect(apple['rect']):
                 self.apples.remove(apple)
                 self.score += 1
+                self.game_result["game_score"] += 1
                 self.catch_sound.play()
                 if self.score % 10 == 0:
                     self.level += 1
-                # Random question
-                subject, question = self.question_manager.get_random_question()
-                print(subject, question)
-                self.current_question = question["image_path"]
-                self.correct_answer = question["correct_answer"]
-                self.display_question(self.current_question)
 
     def draw_objects(self):
         self.screen.blit(self.bg, (0, 0))
@@ -142,114 +142,83 @@ class AppleCatcher:
         self.screen.blit(score_text, (self.width // 2 - score_text.get_width() // 2, self.height // 2))
         self.screen.blit(restart_text, (self.width // 2 - restart_text.get_width() // 2, self.height // 2 + 100))
 
+    def display_question(self):
+        question_image = self.file_manager.load_image(self.current_question, True)
+        question_rect = question_image.get_rect(center=(self.width // 2, self.height // 2))
+        self.screen.blit(question_image, question_rect)
+
+    def check_answer(self, selected_answer):
+        print("current_question:", self.current_question)
+        if selected_answer == self.correct_answer:
+            self.show_question = False
+            self.game_result["answered_question"] += 1
+            self.game_result["correct_answer"] += 1
+            self.display_message("Câu trả lời chính xác! Sẽ quay lại game sau 3 giây.", 3)
+        else:
+            self.wrong_answer_count += 1
+            self.game_result["answered_question"] += 1
+            self.game_result["wrong_answer"] += 1
+            if self.wrong_answer_count >= self.max_wrong_answers:
+                self.game_over = True
+            else:
+                self.display_message("Câu trả lời không chính xác!", 1)
+                self.show_new_question()
+
+    def display_message(self, message, duration):
+        font = pygame.font.SysFont(Font.main_font, 24)
+        text = font.render(message, True, (255, 0, 0))
+        text_rect = text.get_rect(center=(self.width // 2, self.height - 30))
+        self.screen.blit(text, text_rect)
+        pygame.display.update()
+        pygame.time.wait(duration * 1000)
+
+    def show_new_question(self):
+        subject, question = self.question_manager.get_random_question()
+        self.current_question = question["image_path"]
+        self.correct_answer = question["correct_answer"]
+        self.show_question = True
+
     def reset_game(self):
         self.score = 0
         self.lives = 3
         self.level = 1
+        self.wrong_answer_count = 0
         self.apples.clear()
         self.game_over = False
-        self.game_active = False
-
-    def display_question(self, image_path):
-        self.screen.blit(self.file_manager.load_image(image_path, True), (0, 0))
+        self.game_active = True
+        self.show_question = False
 
     def run(self):
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
-                    self.on_apple_catcher_close(self.game_result)  # Quit game
+                    self.on_apple_catcher_close(self.game_result)
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.running = False
-                        self.on_apple_catcher_close(self.game_result)  # Quit game
+                        self.on_apple_catcher_close(self.game_result)
                     if event.key == pygame.K_SPACE and self.game_over:
                         self.reset_game()
-                if event.type == self.spawn_apple and self.game_active and not self.game_over:
+                if event.type == self.spawn_apple and self.game_active and not self.game_over and not self.show_question:
                     self.apples.append(self.create_apple())
-                    pygame.time.set_timer(self.spawn_apple, random.randint(800 - self.level * 50, 1500 - self.level * 50))
-                if event.type == pygame.MOUSEBUTTONDOWN and not self.game_active:
-                    # self.game_active = True
-                    mouse_x, mouse_y = pygame.mouse.get_pos()
-                    print(mouse_x, mouse_y)
-
-                    # Bird collided pipe => choose answer
-                    if event.button == 1:
-                        print("Correct answer is ", self.correct_answer)
+                    pygame.time.set_timer(self.spawn_apple,
+                                          random.randint(800 - self.level * 50, 1500 - self.level * 50))
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if self.show_question:
+                        mouse_x, mouse_y = pygame.mouse.get_pos()
                         if 50 < mouse_x < 170 and 470 < mouse_y < 590:
-                            print("A")
-                            self.selected_answer = "A"
-                        if 240 < mouse_x < 360 and 470 < mouse_y < 590:
-                            print("B")
-                            self.selected_answer = "B"
-                        if 435 < mouse_x < 560 and 470 < mouse_y < 590:
-                            print("C")
-                            self.selected_answer = "C"
-                        if 630 < mouse_x < 750 and 470 < mouse_y < 590:
-                            print("D")
-                            self.selected_answer = "D"
+                            self.check_answer("A")
+                        elif 240 < mouse_x < 360 and 470 < mouse_y < 590:
+                            self.check_answer("B")
+                        elif 435 < mouse_x < 560 and 470 < mouse_y < 590:
+                            self.check_answer("C")
+                        elif 630 < mouse_x < 750 and 470 < mouse_y < 590:
+                            self.check_answer("D")
+                    elif not self.game_active:
+                        self.game_active = True
 
-                        if self.selected_answer == self.correct_answer:
-                            # increase answered question
-                            self.game_result["answered_question"] += 1
-                            self.game_result["correct_answer"] += 1
-
-                            print("True: ", self.selected_answer, self.correct_answer)
-                            font = pygame.font.SysFont(Font.main_font, 24)
-                            text = font.render("Câu trả lời chính xác. Sẽ quay lại game sau 3 giây.", True, (255, 0, 0))
-                            text_rect = text.get_rect(center=(400, 570))
-                            self.screen.blit(text, text_rect)
-                            pygame.display.update()
-
-                            # pygame.time.set_timer(self.spawn_pipe, 3000)  # Create pipe after 3s sleep
-                            time.sleep(3)
-                            # pygame.time.set_timer(self.spawn_pipe, 1000)  # Rollback create pipe
-
-                            self.game_active = True
-                        else:
-                            # increase answered question
-                            self.wrong_answer_count += 1
-                            self.game_result["answered_question"] += 1
-                            self.game_result["wrong_answer"] += 1
-
-                            if self.wrong_answer_count >= self.max_wrong_answers:
-                                print("Bạn đã chọn sai đủ ba lần! Kết thúc game.")
-                                font = pygame.font.SysFont(Font.main_font, 24)
-                                text = font.render("Game Over! Bạn đã sai đủ ba lần.", True, (255, 0, 0))
-                                text_rect = text.get_rect(center=(400, 570))
-                                self.screen.blit(text, text_rect)
-                                pygame.display.update()
-                                time.sleep(3)
-                                print("Bạn đã chọn sai đủ ba lần! Kết thúc game.")
-                                self.game_active = False
-                                self.wrong_answer_count = 0
-                                self.game_result["game_score"] += self.score
-                                self.score = 0
-
-                            else:
-                                font = pygame.font.SysFont(Font.main_font, 24)
-                                text = font.render("Câu trả lời không chính xác.", True, (255, 0, 0))
-                                text_rect = text.get_rect(center=(400, 570))
-                                self.screen.blit(text, text_rect)
-                                pygame.display.update()
-                                time.sleep(1)
-
-                                # Hiển thị câu hỏi mới nếu chưa đạt số lần sai tối đa.
-                                subject, question = self.question_manager.get_random_question()
-                                if question:
-                                    print("Câu hỏi mới:", subject)
-                                    self.current_question = question["image_path"]
-                                    self.correct_answer = question["correct_answer"]
-
-                            # subject, question = self.question_manager.get_random_question()
-                            # self.current_question = question["image_path"]
-                            # self.correct_answer = question["correct_answer"]
-                            # self.display_question(self.current_question)
-                            # print("Correct answer is ", self.correct_answer)
-
-                        self.selected_answer = None  # Reset answer
-
-            if self.game_active and not self.game_over:
+            if self.game_active and not self.game_over and not self.show_question:
                 mouse_x, _ = pygame.mouse.get_pos()
                 self.player_x = mouse_x - self.player_width // 2
                 self.player_x = max(0, min(self.player_x, self.width - self.player_width))
@@ -260,6 +229,9 @@ class AppleCatcher:
             self.screen.fill((255, 255, 255))
             self.draw_objects()
             self.draw_ui()
+
+            if self.show_question:
+                self.display_question()
 
             if self.game_over:
                 self.draw_game_over()

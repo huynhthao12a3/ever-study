@@ -85,6 +85,7 @@ class GameModeScreen(tk.Frame):
     def on_apple_catcher_close(self, game_result=None):
         self.root.deiconify()  # Show Tkinter window
         print("Apple Catcher closed")
+        print(game_result)
         if game_result is not None and Auth.login_success is True:
             print("call api, game_result: ", game_result)
             api_endpoint = Api.api_endpoint + "/ranks/me"
@@ -103,6 +104,7 @@ class GameModeScreen(tk.Frame):
     def on_animal_word_search_close(self, game_result=None):
         self.root.deiconify()  # Show Tkinter window
         print("Animal Word Search closed")
+        print(game_result)
         if game_result is not None and Auth.login_success is True:
             print("call api, game_result: ", game_result)
             api_endpoint = Api.api_endpoint + "/ranks/me"
