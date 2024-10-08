@@ -6,11 +6,21 @@ from src.utils.constant import Font, Question
 from src.utils.file import FileManager
 from src.utils.question import QuestionManager
 
+import ctypes
+import sys
+
+if sys.platform.startswith('win'):
+    try:
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("AppleCatcherGame")
+    except AttributeError:
+        pass
+
 
 class AppleCatcher:
     def __init__(self, on_apple_catcher_close, mode_game):
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=512)
         pygame.init()
+        self.file_manager = FileManager()
         self.width = 800
         self.height = 600
         self.screen = pygame.display.set_mode((self.width, self.height))
@@ -18,9 +28,11 @@ class AppleCatcher:
         self.clock = pygame.time.Clock()
         self.game_font = pygame.font.SysFont(Font.main_font, 35)
         self.large_font = pygame.font.SysFont(Font.main_font, 70)
-
-        self.file_manager = FileManager()
-
+        # try:
+        #     pygame.display.set_icon(self.file_manager.load_image("image/ever-study.png", True))
+        #     print("set icon")
+        # except pygame.error as e:
+        #     print(e)
         # Callback
         self.on_apple_catcher_close = on_apple_catcher_close
         self.game_result = {

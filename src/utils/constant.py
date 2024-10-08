@@ -11,10 +11,12 @@ class Auth:
 class Color:
     bg_main = "#8DE3E6"
     text_color_red = "#EF3220"
+    bg_color_blue = "#F0FBFD"
 
 
 class Font:
     main_font = "Cambria"
+    main_font_mold = "Cambria 16 bold"
 
 
 class Api:
@@ -50,6 +52,9 @@ class ImageUrl:
     bg_game_mode_screen = "image/background/chon-che-do-choi.gif"
     bg_normal_game_mode_screen = "image/background/choi-thuong.gif"
     bg_rank_screen = "image/background/bxh.gif"
+    bg_time_table_screen = "image/background/tkb.png"
+    bg_time_table_child1_screen = "image/background/tkb-1.gif"
+    bg_time_table_child2_screen = "image/background/tkb-2.gif"
 
     # Icon
     app_icon = "image/ever-study.ico"

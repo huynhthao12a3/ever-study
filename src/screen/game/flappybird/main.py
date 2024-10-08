@@ -211,6 +211,7 @@ class FlappyBird:
                 if self.pipe_list[0].x < self.bird_rect.centerx and self.scored is False:
                     self.score_sound.play()
                     self.score += 1
+                    self.game_result["game_score"] += 1
                     self.scored = True
                 if self.pipe_list[0].x < -100:
                     self.pipe_list.pop(0)

@@ -12,6 +12,7 @@ class UtilityScreen(tk.Frame):
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
         self.show_calculate_screen = callback_list["CalculateScreen"]
+        self.show_time_table_screen = callback_list["TimeTableScreen"]
 
         # self.load_widgets()
 
@@ -30,6 +31,7 @@ class UtilityScreen(tk.Frame):
             self.show_calculate_screen()
         if 335 < x < 485 and 135 < y < 325:
             print("tkb")
+            self.show_time_table_screen()
         if 575 < x < 730 and 135 < y < 325:
             print("kho de")
         if 95 < x < 245 and 365 < y < 535:
