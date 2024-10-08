@@ -1,4 +1,6 @@
-﻿from src.screen.game.applecatcher.main import AppleCatcher
+﻿from tkinter import messagebox
+
+from src.screen.game.applecatcher.main import AppleCatcher
 from src.utils.component import Component
 from src.utils.constant import ImageUrl, Api, Auth, Font, GameSetting
 from src.utils.file import FileManager
@@ -42,4 +44,5 @@ class GameScreen(tk.Frame):
         if 590 < x < 750 and 220 < y < 430:
             print("Word Search")
             GameSetting.selected_game = "Word_Search"
-            self.show_game_mode_screen()
+            messagebox.showinfo("Đang làm", f"Game này đang chỉnh sửa, chưa hoàn thiện.")
+            # self.show_game_mode_screen()

@@ -1,4 +1,6 @@
-﻿from src.utils.component import Component
+﻿from tkinter import messagebox
+
+from src.utils.component import Component
 from src.utils.constant import ImageUrl
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
@@ -34,7 +36,10 @@ class UtilityScreen(tk.Frame):
             self.show_time_table_screen()
         if 575 < x < 730 and 135 < y < 325:
             print("kho de")
+            messagebox.showinfo("Chưa có ý tưởng", f"Từ từ làm sau, ghi chú tạm đây")
         if 95 < x < 245 and 365 < y < 535:
             print("thi")
+            messagebox.showinfo("Chưa có ý tưởng", f"Từ từ làm sau, ghi chú tạm đây")
         if 575 < x < 730 and 365 < y < 535:
             print("ai")
+            messagebox.showinfo("Chưa có ý tưởng", f"Từ từ làm sau, ghi chú tạm đây")

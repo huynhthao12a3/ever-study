@@ -15,7 +15,7 @@ class AuthorScreen(tk.Frame):
         # self.load_widgets()
 
     def load_widgets(self):
-        gif_path = ImageUrl.bg_author_screen
+        gif_path = ImageUrl.bg_time_table_child1_screen
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
