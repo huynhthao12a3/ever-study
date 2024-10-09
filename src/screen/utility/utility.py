@@ -15,6 +15,7 @@ class UtilityScreen(tk.Frame):
         self.show_home_screen = callback_list["HomeScreen"]
         self.show_calculate_screen = callback_list["CalculateScreen"]
         self.show_time_table_screen = callback_list["TimeTableScreen"]
+        self.show_exam_screen = callback_list["ExamScreen"]
 
         # self.load_widgets()
 
@@ -39,7 +40,8 @@ class UtilityScreen(tk.Frame):
             messagebox.showinfo("Chưa có ý tưởng", f"Từ từ làm sau, ghi chú tạm đây")
         if 95 < x < 245 and 365 < y < 535:
             print("thi")
-            messagebox.showinfo("Chưa có ý tưởng", f"Từ từ làm sau, ghi chú tạm đây")
+            # messagebox.showinfo("Chưa có ý tưởng", f"Từ từ làm sau, ghi chú tạm đây")
+            self.show_exam_screen()
         if 575 < x < 730 and 365 < y < 535:
             print("ai")
             messagebox.showinfo("Chưa có ý tưởng", f"Từ từ làm sau, ghi chú tạm đây")

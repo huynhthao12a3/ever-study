@@ -7,6 +7,7 @@ from src.screen.calculate.subject_average import SubjectAverageScreen
 from src.screen.game.game_mode import GameModeScreen
 from src.screen.game.normal_game_mode import NormalGameModeScreen
 from src.screen.game.rank import RankScreen
+from src.screen.utility.exam import ExamScreen
 from src.screen.utility.time_table import TimeTableScreen
 from src.screen.utility.utility import UtilityScreen
 from src.screen.game.game import GameScreen
@@ -83,7 +84,8 @@ class EverStudy(tk.Tk):
             "SubjectAverageScreen": self.show_subject_average_screen,
             "AcademicResultScreen": self.show_academic_result_screen,
             "UtilityScreen": self.show_utility_screen,
-            "TimeTableScreen": self.show_time_table_screen
+            "TimeTableScreen": self.show_time_table_screen,
+            "ExamScreen": self.show_exam_screen
         }
         login_callback_list = {
             "HomeScreen": self.show_home_screen
@@ -104,6 +106,7 @@ class EverStudy(tk.Tk):
         self.screens["ShareScreen"] = ShareScreen(self.container, share_callback_list)
         self.screens["UtilityScreen"] = UtilityScreen(self.container, utility_callback_list)
         self.screens["TimeTableScreen"] = TimeTableScreen(self.container, utility_callback_list)
+        self.screens["ExamScreen"] = ExamScreen(self.container, utility_callback_list)
         self.screens["LoginScreen"] = LoginScreen(self.container, login_callback_list)
 
     def show_screen(self, screen_name):
@@ -167,6 +170,9 @@ class EverStudy(tk.Tk):
 
     def show_time_table_screen(self):
         self.show_screen("TimeTableScreen")
+
+    def show_exam_screen(self):
+        self.show_screen("ExamScreen")
 
     def show_login_screen(self):
         self.show_screen("LoginScreen")
