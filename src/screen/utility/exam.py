@@ -11,6 +11,7 @@ class ExamScreen(tk.Frame):
 
         self.master = master
         self.show_utility_screen = callback_list["UtilityScreen"]
+        self.show_traffic_safety_screen = callback_list["TrafficSafetyScreen"]
 
     def load_widgets(self):
         gif_path = ImageUrl.bg_exam_screen
@@ -24,3 +25,4 @@ class ExamScreen(tk.Frame):
         print(f"Clicked on Page at x={x}, y={y}")
         if 95 < x < 225 and 130 < y < 305:
             print("ATGT")
+            self.show_traffic_safety_screen()

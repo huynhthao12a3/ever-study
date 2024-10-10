@@ -279,18 +279,36 @@ class Question:
 
 
 class Exam:
-    def __init__(self, question_number, answer):
-        self.image_paths = {
-            'A': f"image/question/exam/ATGT_{question_number}_A.{answer}.gif",
-            'B': f"image/question/exam/ATGT_{question_number}_B.{answer}.gif",
-            'C': f"image/question/exam/ATGT_{question_number}_C.{answer}.gif",
-            'D': f"image/question/exam/ATGT_{question_number}_D.{answer}.gif"
-        }
-        self.correct_answer = f"image/question/exam/ATGT_{question_number}_B.gif".split(".")[0][-1]  # Câu trả lời đúng
-
-    def get_image(self, answer):
-        print(f"Đang hiển thị hình ảnh: {self.image_paths[answer]}")
-        return self.image_paths[answer], self.correct_answer
+    ATGT = [
+        {
+            "image_path": "image/question/exam/ATGT_01_B.gif",
+            "correct_answer": "image/question/exam/ATGT_01_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/ATGT_01_B.A.gif",
+            "B": "image/question/exam/ATGT_01_B.B.gif",
+            "C": "image/question/exam/ATGT_01_B.C.gif",
+            "D": "image/question/exam/ATGT_01_B.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/ATGT_01_B.gif",
+            "correct_answer": "image/question/exam/ATGT_01_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/ATGT_01_B.A.gif",
+            "B": "image/question/exam/ATGT_01_B.B.gif",
+            "C": "image/question/exam/ATGT_01_B.C.gif",
+            "D": "image/question/exam/ATGT_01_B.D.gif",
+        },
+    ]
+    # def __init__(self, question_number, answer):
+    #     self.image_paths = {
+    #         'A': f"image/question/exam/ATGT_{question_number}_A.{answer}.gif",
+    #         'B': f"image/question/exam/ATGT_{question_number}_B.{answer}.gif",
+    #         'C': f"image/question/exam/ATGT_{question_number}_C.{answer}.gif",
+    #         'D': f"image/question/exam/ATGT_{question_number}_D.{answer}.gif"
+    #     }
+    #     self.correct_answer = f"image/question/exam/ATGT_{question_number}_B.gif".split(".")[0][-1]  # Câu trả lời đúng
+    #
+    # def get_image(self, answer):
+    #     print(f"Đang hiển thị hình ảnh: {self.image_paths[answer]}")
+    #     return self.image_paths[answer], self.correct_answer
 
 
 class GameSetting:
