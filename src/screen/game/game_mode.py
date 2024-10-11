@@ -21,6 +21,7 @@ class GameModeScreen(tk.Frame):
         self.show_game_screen = callback_list["GameScreen"]
         self.show_normal_game_mode_screen = callback_list["NormalGameModeScreen"]
         self.show_rank_screen = callback_list["RankScreen"]
+        self.show_word_search_mode_screen = callback_list["WordSearchModeScreen"]
         self.pygame_window_closed = False
 
     def load_widgets(self):
@@ -45,23 +46,20 @@ class GameModeScreen(tk.Frame):
             if GameSetting.selected_game == "Apple_Catcher":
                 self.apple_catcher_run("all")
             if GameSetting.selected_game == "Word_Search":
-                self.animal_word_search_run("all")
+                self.show_word_search_mode_screen()
+                # self.animal_word_search_run()
 
         if 90 < x < 210 and 420 < y < 580:
             print("BXH")
             self.show_rank_screen()
 
-    def flappy_bird_run(self, game_mode):
+    def flappy_bird_run(self, selected_subject):
         self.root.withdraw()  # Hide Tkinter window
-        FlappyBird(self.on_flappy_bird_close, game_mode).run()
+        FlappyBird(self.on_flappy_bird_close, selected_subject).run()
 
-    def apple_catcher_run(self, game_mode):
+    def apple_catcher_run(self, selected_subject):
         self.root.withdraw()  # Hide Tkinter window
-        AppleCatcher(self.on_apple_catcher_close, game_mode).run()
-
-    def animal_word_search_run(self, game_mode):
-        self.root.withdraw()  # Hide Tkinter window
-        AnimalWordSearch(self.on_animal_word_search_close, game_mode).run()
+        AppleCatcher(self.on_apple_catcher_close, selected_subject).run()
 
     def on_flappy_bird_close(self, game_result=None):
         self.root.deiconify()  # Show Tkinter window
@@ -101,21 +99,4 @@ class GameModeScreen(tk.Frame):
             print(response.status_code)
             print(response_json)
 
-    def on_animal_word_search_close(self, game_result=None):
-        self.root.deiconify()  # Show Tkinter window
-        print("Animal Word Search closed")
-        print(game_result)
-        if game_result is not None and Auth.login_success is True:
-            print("call api, game_result: ", game_result)
-            api_endpoint = Api.api_endpoint + "/ranks/me"
-            headers = {
-                'Content-Type': 'application/json',
-                'Authorization': "Bearer " + Auth.access_token
-            }
-            # Call api
-            response = requests.put(url=api_endpoint, headers=headers, data=json.dumps(game_result))
-            response_json = response.json()
 
-            print(api_endpoint, headers)
-            print(response.status_code)
-            print(response_json)

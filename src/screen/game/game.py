@@ -1,16 +1,7 @@
-﻿from tkinter import messagebox
-
-from src.screen.game.applecatcher.main import AppleCatcher
-from src.utils.component import Component
+﻿from src.utils.component import Component
 from src.utils.constant import ImageUrl, Api, Auth, Font, GameSetting
-from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
-from src.screen.game.flappybird.main import FlappyBird
-from src.screen.game.animalwordsearch.main import AnimalWordSearch
 import tkinter as tk
-# Call api, convert json library
-import requests
-import json
 
 
 class GameScreen(tk.Frame):
@@ -44,5 +35,4 @@ class GameScreen(tk.Frame):
         if 590 < x < 750 and 220 < y < 430:
             print("Word Search")
             GameSetting.selected_game = "Word_Search"
-            messagebox.showinfo("Đang làm", f"Game này đang chỉnh sửa, chưa hoàn thiện.")
-            # self.show_game_mode_screen()
+            self.show_game_mode_screen()

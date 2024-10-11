@@ -1,18 +1,19 @@
-﻿import pygame
+﻿from tkinter import messagebox
+
+import pygame
 import random
 import sys
 import time
-
-from src.utils.constant import Font
+from src.utils.constant import Font, GameWordSearch
 
 
 class AnimalWordSearch:
-    def __init__(self, on_animal_word_search_close):
+    def __init__(self, on_animal_word_search_close, selected_subject, selected_level):
         # Khởi tạo Pygame và cài đặt màn hình
         pygame.init()
         self.WIDTH, self.HEIGHT = 800, 600
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
-        pygame.display.set_caption("Animal Word Search")
+        pygame.display.set_caption("Game Word Search")
 
         # Định nghĩa màu sắc
         self.WHITE = (255, 255, 255)
@@ -26,12 +27,14 @@ class AnimalWordSearch:
         self.small_font = pygame.font.SysFont(Font.main_font, 18)
 
         # Danh sách các từ cần tìm
-        self.animals = ["CAT", "DOG", "LION", "TIGER", "PIG"]
+        if selected_subject == "english":
+            print(GameWordSearch.english["lv1"])
+        self.words = GameWordSearch.english["lv1"] # ["CAT", "DOG", "LION", "TIGER", "PIG"]
         self.grid_size = 10
         self.grid = [[' ' for _ in range(self.grid_size)] for _ in range(self.grid_size)]
 
         # Thiết lập thời gian và điểm số
-        self.game_time = 180  # 3 phút
+        self.game_time = 30  # 3 phút
         self.start_time = time.time()
         self.score = 0
 
@@ -46,10 +49,10 @@ class AnimalWordSearch:
         # Callback
         self.on_animal_word_search_close = on_animal_word_search_close
         self.game_result = {
-            "game_score": 1,
-            "answered_question": 2,
-            "correct_answer": 3,
-            "wrong_answer": 4,
+            "game_score": 0,
+            "answered_question": 0,
+            "correct_answer": 0,
+            "wrong_answer": 0,
         }
 
     def place_word(self, word):
@@ -90,7 +93,7 @@ class AnimalWordSearch:
     def initialize_grid(self):
         # Khởi tạo lưới với các từ và điền các ô trống bằng chữ cái ngẫu nhiên
         words_placed = []
-        for word in self.animals:
+        for word in self.words:
             if self.place_word(word):
                 words_placed.append(word)
 
@@ -102,7 +105,7 @@ class AnimalWordSearch:
         return words_placed
 
     def draw_grid(self):
-        cell_size = 50  # Giả sử kích thước ô là 50x50 pixel
+        cell_size = 50  # Kích thước ô là 50x50 pixel
         for y in range(self.grid_size):
             for x in range(self.grid_size):
                 # Vẽ ô
@@ -117,7 +120,7 @@ class AnimalWordSearch:
 
     def draw_word_list(self):
         # Vẽ danh sách các từ cần tìm
-        for i, word in enumerate(self.animals):
+        for i, word in enumerate(self.words):
             color = self.GREEN if word in self.found_words else self.WHITE
             text = self.font.render(word, True, color)
             self.screen.blit(text, (self.grid_size * 50 + 20, i * 40))
@@ -137,8 +140,8 @@ class AnimalWordSearch:
         # Hiển thị thời gian còn lại và điểm số
         elapsed_time = int(time.time() - self.start_time)
         remaining_time = max(0, self.game_time - elapsed_time)
-        time_text = self.small_font.render(f"Time: {remaining_time}s", True, self.WHITE)
-        score_text = self.small_font.render(f"Score: {self.score}", True, self.WHITE)
+        time_text = self.small_font.render(f"Thời gian: {remaining_time}s", True, self.WHITE)
+        score_text = self.small_font.render(f"Điểm: {self.score}", True, self.WHITE)
         self.screen.blit(time_text, (self.WIDTH - 100, 10))
         self.screen.blit(score_text, (self.WIDTH - 100, 30))
 
@@ -166,9 +169,10 @@ class AnimalWordSearch:
                     self.running = False
                     self.on_animal_word_search_close(self.game_result)  # Quit game
                 elif event.key == pygame.K_RETURN:
-                    if self.current_word.upper() in self.animals and self.current_word.upper() not in self.found_words:
+                    if self.current_word.upper() in self.words and self.current_word.upper() not in self.found_words:
                         self.found_words.add(self.current_word.upper())
-                        self.score += len(self.current_word) * 10
+                        self.score += len(self.current_word)
+                        self.game_result['game_score'] = self.score
                         print(f"Word found: {self.current_word}")
                     self.current_word = ""
                 elif event.key == pygame.K_BACKSPACE:
@@ -217,13 +221,8 @@ class AnimalWordSearch:
 
         finally:
             print(f"Game over! Final score: {self.score}")
+            messagebox.showinfo("Kết thúc trò chơi", f"Điểm số của bạn là: {self.score}")
+            self.running = False
+            self.on_animal_word_search_close(self.game_result)  # Quit game
             pygame.quit()
 
-
-def on_animal_word_search_close(self):
-    print("test")
-
-
-if __name__ == "__main__":
-    game = AnimalWordSearch(on_animal_word_search_close)
-    game.run()

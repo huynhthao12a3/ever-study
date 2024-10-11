@@ -17,7 +17,7 @@ if sys.platform.startswith('win'):
 
 
 class AppleCatcher:
-    def __init__(self, on_apple_catcher_close, mode_game):
+    def __init__(self, on_apple_catcher_close, selected_subject):
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=512)
         pygame.init()
         self.file_manager = FileManager()
@@ -77,7 +77,7 @@ class AppleCatcher:
 
         # Quản lý câu hỏi
         self.question_manager = QuestionManager(Question)
-        self.question_manager.set_mode(mode_game)
+        self.question_manager.set_mode(selected_subject)
         self.show_question = False
         self.current_question = None
         self.correct_answer = None

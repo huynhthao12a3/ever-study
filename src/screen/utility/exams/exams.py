@@ -7,16 +7,18 @@ from PIL import Image, ImageTk
 from src.utils.gif import AnimatedGifCanvas
 import os
 
-class TrafficSafetyScreen(tk.Frame):
+
+class ExamsScreen(tk.Frame):
     def __init__(self, master, callback_list, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
 
         self.master = master
-        self.show_utility_screen = callback_list["UtilityScreen"]
-        self.question_data = None  # Khởi tạo biến cho câu hỏi
-        self.used_questions = []    # Danh sách lưu trữ các câu hỏi đã sử dụng
-        self.answer = None          # Đáp án mặc định là None
-        self.gif_canvas = None      # Biến để lưu AnimatedGifCanvas
+        self.show_exam_screen = callback_list["ExamScreen"]
+        self.question_data = None
+        self.available_questions = list(Exam.ATGT)  # Tạo một bản sao của danh sách câu hỏi
+        self.used_questions = []  # Danh sách lưu trữ các câu hỏi đã sử dụng
+        self.answer = None
+        self.gif_canvas = None
         self.file_manager = FileManager()
 
         # Chọn câu hỏi đầu tiên
@@ -26,7 +28,7 @@ class TrafficSafetyScreen(tk.Frame):
         # Hiển thị câu hỏi đầu tiên từ image_path
         self.display_question_image()  # Hiển thị câu hỏi ngay khi tải widget
 
-        Component.right_button_back(self, self.show_utility_screen)
+        Component.right_button_back(self, self.show_exam_screen)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
@@ -69,19 +71,22 @@ class TrafficSafetyScreen(tk.Frame):
         self.gif_canvas.pack()
 
         if self.answer:
-            # Gọi phương thức chuyển sang câu hỏi mới sau 5 giây nếu đã chọn đáp án
+            # Chuyển sang câu hỏi mới sau 5 giây nếu đã chọn đáp án
             self.after(5000, self.load_new_question)
 
-
     def load_new_question(self):
-        if len(self.used_questions) >= len(Exam.ATGT):
+        if not self.available_questions:
             print("All questions have been used.")
+            self.answer = None
+            self.gif_canvas.destroy()
+            self.show_exam_screen()
             return
 
-        while True:
-            new_question = random.choice(Exam.ATGT)
-            if new_question not in self.used_questions:
-                break
+        # Chọn ngẫu nhiên một câu hỏi từ danh sách có sẵn
+        new_question = random.choice(self.available_questions)
+
+        # Loại bỏ câu hỏi đã chọn khỏi danh sách có sẵn
+        self.available_questions.remove(new_question)
 
         # Thêm câu hỏi mới vào danh sách đã sử dụng
         self.used_questions.append(new_question)
@@ -91,8 +96,4 @@ class TrafficSafetyScreen(tk.Frame):
         self.answer = None
 
         print("Loading new question...")
-
-        # Hiển thị hình ảnh câu hỏi mới
         self.display_question_image()
-
-# Sử dụng class TrafficSafetyScreen trong ứng dụng của bạn.

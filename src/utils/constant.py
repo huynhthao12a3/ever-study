@@ -57,7 +57,7 @@ class ImageUrl:
     bg_game_mode_screen = "image/background/chon-che-do-choi.gif"
     bg_normal_game_mode_screen = "image/background/choi-thuong.gif"
     bg_rank_screen = "image/background/bxh.gif"
-
+    bg_word_search_mode_screen = "image/background/word-search-mode.gif"
 
     # Icon
     app_icon = "image/ever-study.ico"
@@ -95,6 +95,21 @@ class GameFlappyBird:
     ]
 
 
+class GameWordSearch:
+    english = {
+        "lv1": ["DETEST", "FOND", "CRAZY", "MESSAGE", "PUZZLE", "LEISURE", "FOLD"],
+        "lv2": ["DRY", "FEED", "MILK", "CATTLE", "HARVEST", "LOAD"],
+        "lv3": ["CONNECT", "FORUM", "STRESS", "PRESSURE", "BROWSE", "ACCOUNT"],
+        "lv4": ["CROP", "HIGHLAND", "SOIL", "MINORITY", "FOLK", "FEATURE"]
+    }
+    math = {
+        "lv1": ["PHANSO", "THAPPHAN", "NGUYENTO"],
+        "lv2": ["PHANSO", "THAPPHAN"],
+        "lv3": ["PHANSO", "THAPPHAN"],
+        "lv4": ["PHANSO", "THAPPHAN"]
+    }
+
+
 class Question:
     math = [
         {
@@ -102,8 +117,8 @@ class Question:
             "correct_answer": "image/question/game/toan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
         },
         {
-            "image_path": "image/question/game/toan_cauhoi02_B.png",
-            "correct_answer": "image/question/game/toan_cauhoi02_B.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/toan_cauhoi02_C.png",
+            "correct_answer": "image/question/game/toan_cauhoi02_C.png".split(".")[0][-1]  # correct answer
         },
         {
             "image_path": "image/question/game/toan_cauhoi03_A.png",
@@ -114,20 +129,20 @@ class Question:
             "correct_answer": "image/question/game/toan_cauhoi04_A.png".split(".")[0][-1]  # correct answer
         },
         {
-            "image_path": "image/question/game/toan_cauhoi05_B.png",
-            "correct_answer": "image/question/game/toan_cauhoi05_B.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/toan_cauhoi05_A.png",
+            "correct_answer": "image/question/game/toan_cauhoi05_A.png".split(".")[0][-1]  # correct answer
         },
         {
             "image_path": "image/question/game/toan_cauhoi06_D.png",
             "correct_answer": "image/question/game/toan_cauhoi06_D.png".split(".")[0][-1]  # correct answer
         },
         {
-            "image_path": "image/question/game/toan_cauhoi07_A.png",
-            "correct_answer": "image/question/game/toan_cauhoi07_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/toan_cauhoi07_C.png",
+            "correct_answer": "image/question/game/toan_cauhoi07_C.png".split(".")[0][-1]  # correct answer
         },
         {
-            "image_path": "image/question/game/toan_cauhoi08_A.png",
-            "correct_answer": "image/question/game/toan_cauhoi08_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/toan_cauhoi08_C.png",
+            "correct_answer": "image/question/game/toan_cauhoi08_C.png".split(".")[0][-1]  # correct answer
         },
         {
             "image_path": "image/question/game/toan_cauhoi9_D.png",
@@ -288,14 +303,7 @@ class Exam:
             "C": "image/question/exam/ATGT_01_B.C.gif",
             "D": "image/question/exam/ATGT_01_B.D.gif",
         },
-        {
-            "image_path": "image/question/exam/ATGT_01_B.gif",
-            "correct_answer": "image/question/exam/ATGT_01_B.gif".split(".")[0][-1],
-            "A": "image/question/exam/ATGT_01_B.A.gif",
-            "B": "image/question/exam/ATGT_01_B.B.gif",
-            "C": "image/question/exam/ATGT_01_B.C.gif",
-            "D": "image/question/exam/ATGT_01_B.D.gif",
-        },
+
     ]
     # def __init__(self, question_number, answer):
     #     self.image_paths = {
