@@ -34,19 +34,19 @@ class ExamsScreen(tk.Frame):
         print(f"Clicked on Page at x={x}, y={y}")
 
         # Xác định đáp án dựa trên tọa độ nhấp chuột
-        if 20 < x < 520 and 184 < y < 235:  # Vùng cho A
+        if 675 < x < 755 and 145 < y < 220:  # Vùng cho A
             self.answer = 'A'
             print("Selected answer: A")
             self.display_question_image()
-        elif 20 < x < 520 and 260 < y < 315:  # Vùng cho B
+        elif 675 < x < 755 and 245 < y < 320:  # Vùng cho B
             self.answer = 'B'
             print("Selected answer: B")
             self.display_question_image()
-        elif 20 < x < 520 and 335 < y < 385:  # Vùng cho C
+        elif 675 < x < 755 and 350 < y < 430:  # Vùng cho C
             self.answer = 'C'
             print("Selected answer: C")
             self.display_question_image()
-        elif 20 < x < 520 and 420 < y < 475:  # Vùng cho D
+        elif 675 < x < 755 and 465 < y < 545:  # Vùng cho D
             self.answer = 'D'
             print("Selected answer: D")
             self.display_question_image()
@@ -72,7 +72,7 @@ class ExamsScreen(tk.Frame):
 
         if self.answer:
             # Chuyển sang câu hỏi mới sau 5 giây nếu đã chọn đáp án
-            self.after(5000, self.load_new_question)
+            self.after(15000, self.load_new_question)
 
     def load_new_question(self):
         if not self.available_questions:
