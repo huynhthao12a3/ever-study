@@ -26,11 +26,19 @@ from src.utils.file import FileManager
 class EverStudy(tk.Tk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Lấy kích thước màn hình
+        width = 800
+        height = 600
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        # Tính toán tọa độ để đặt cửa sổ ở giữa
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - (height // 2)
 
         self.title("Ever Study")
         self.iconbitmap(FileManager().resource_path(ImageUrl.app_icon))
         print(FileManager().resource_path(ImageUrl.app_icon))
-        self.geometry("800x600")
+        self.geometry(f"{width}x{height}+{x}+{y}")
         self.resizable(False, False)
 
         self.container = tk.Frame(self, bg="lightblue")

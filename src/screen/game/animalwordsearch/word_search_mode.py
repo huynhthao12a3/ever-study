@@ -31,32 +31,43 @@ class WordSearchModeScreen(tk.Frame):
         print("animal_word_search_run")
         # self.animal_word_search_run()
         if 55 < x < 135 and 270 < y < 350:
-            print("Ngữ Văn - 1")
+            print("Toán - 1")
+            self.animal_word_search_run("math", "lv1")
         if 165 < x < 245 and 270 < y < 350:
-            print("Ngữ Văn - 2")
+            print("Toán - 2")
+            self.animal_word_search_run("math", "lv2")
         if 55 < x < 135 and 370 < y < 450:
-            print("Ngữ Văn - 3")
+            print("Toán - 3")
+            self.animal_word_search_run("math", "lv3")
         if 165 < x < 245 and 370 < y < 450:
-            print("Ngữ Văn - 4")
+            print("Toán - 4")
+            self.animal_word_search_run("math", "lv4")
 
         if 305 < x < 385 and 270 < y < 350:
             print("Tiếng Anh - 1")
             self.animal_word_search_run("english", "lv1")
         if 415 < x < 495 and 270 < y < 350:
             print("Tiếng Anh - 2")
+            self.animal_word_search_run("english", "lv2")
         if 305 < x < 385 and 370 < y < 450:
             print("Tiếng Anh - 3")
+            self.animal_word_search_run("english", "lv3")
         if 415 < x < 495 and 370 < y < 450:
             print("Tiếng Anh - 4")
+            self.animal_word_search_run("english", "lv4")
 
         if 555 < x < 635 and 270 < y < 350:
             print("LS-DL - 1")
+            self.animal_word_search_run("history", "lv1")
         if 665 < x < 745 and 270 < y < 350:
             print("LS-DL - 2")
+            self.animal_word_search_run("history", "lv2")
         if 555 < x < 635 and 370 < y < 450:
             print("LS-DL - 3")
+            self.animal_word_search_run("history", "lv3")
         if 665 < x < 745 and 370 < y < 450:
             print("LS-DL - 4")
+            self.animal_word_search_run("history", "lv4")
 
     def animal_word_search_run(self, selected_subject, selected_level):
         self.root.withdraw()  # Hide Tkinter window

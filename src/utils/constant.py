@@ -58,6 +58,7 @@ class ImageUrl:
     bg_normal_game_mode_screen = "image/background/choi-thuong.gif"
     bg_rank_screen = "image/background/bxh.gif"
     bg_word_search_mode_screen = "image/background/word-search-mode.gif"
+    bg_word_search_screen = "image/background/word-search.png"
 
     # Icon
     app_icon = "image/ever-study.ico"
@@ -96,17 +97,23 @@ class GameFlappyBird:
 
 
 class GameWordSearch:
+    math = {
+        "lv1": ["TAPHOP", "PHANTU", "TINHCHAT", "SOTUNHIEN", "LUYTHUA", "SOMU", "COSO", "THUASO", "GIAOHOAN", "KETHOP"],
+        "lv2": ["CHIAHET", "TANCUNG", "UOCCHUNG", "BOICHUNG", "SONGUYENTO", "HOPSO", "QUYDONG", "RUTGON", "MAYTINH", "NGOACTRON"],
+        "lv3": ["CHIAHET", "TANCUNG", "UOCCHUNG", "BOICHUNG", "SONGUYENTO", "HOPSO", "QUYDONG", "RUTGON", "MAYTINH", "NGOACTRON"],
+        "lv4": ["CHIAHET", "TANCUNG", "UOCCHUNG", "BOICHUNG", "SONGUYENTO", "HOPSO", "QUYDONG", "RUTGON", "MAYTINH", "NGOACTRON"]
+    }
     english = {
         "lv1": ["DETEST", "FOND", "CRAZY", "MESSAGE", "PUZZLE", "LEISURE", "FOLD"],
         "lv2": ["DRY", "FEED", "MILK", "CATTLE", "HARVEST", "LOAD"],
         "lv3": ["CONNECT", "FORUM", "STRESS", "PRESSURE", "BROWSE", "ACCOUNT"],
         "lv4": ["CROP", "HIGHLAND", "SOIL", "MINORITY", "FOLK", "FEATURE"]
     }
-    math = {
-        "lv1": ["PHANSO", "THAPPHAN", "NGUYENTO"],
-        "lv2": ["PHANSO", "THAPPHAN"],
-        "lv3": ["PHANSO", "THAPPHAN"],
-        "lv4": ["PHANSO", "THAPPHAN"]
+    history = {
+        "lv1": ["CACHMANG", "DOCTAI", "NGHIVIEN", "THUOCDIA", "GIAIPHONG", "QUYTOC", "CONGNGHIEP", "JAMESWATT", "KHAITHAC", "HOINUOC"],
+        "lv2": ["XAMNHAP", "TUBAN", "CUONGBUC", "DOHO", "THUCDAN", "NGUDAN", "CONGNHAN", "DUONGSAT", "DONDIEN", "RUONGDAT"],
+        "lv3": ["PHONGKIEN", "PHANTRANH", "XUNGDOT", "DANGNGOAI", "DANGTRONG", "NOICHIEN", "DAIVIET", "HOANGSA", "TRUONGSA", "KHAIHOANG"],
+        "lv4": ["PHONGKIEN", "PHANTRANH", "XUNGDOT", "DANGNGOAI", "DANGTRONG", "NOICHIEN", "DAIVIET", "HOANGSA", "TRUONGSA", "KHAIHOANG"]
     }
 
 

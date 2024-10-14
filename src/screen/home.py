@@ -12,13 +12,13 @@ class HomeScreen(tk.Frame):
         super().__init__(master, *args, **kwargs)
 
         # Start Postgresql
-        api_endpoint = Api.api_endpoint + "/healthcheck"
-        headers = {'Content-Type': 'application/json'}
-        try:
-            response = requests.get(url=api_endpoint, headers=headers)
-            print(response.json())
-        except Exception as e:
-            print(e)
+        # api_endpoint = Api.api_endpoint + "/healthcheck"
+        # headers = {'Content-Type': 'application/json'}
+        # try:
+        #     response = requests.get(url=api_endpoint, headers=headers)
+        #     print(response.json())
+        # except Exception as e:
+        #     print(e)
 
         self.animated_canvas = None
         self.master = master
