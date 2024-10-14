@@ -310,6 +310,37 @@ class Exam:
             "C": "image/question/exam/ATGT_01_B.C.gif",
             "D": "image/question/exam/ATGT_01_B.D.gif",
         },
+        {
+            "image_path": "image/question/exam/ATGT_02_C.gif",
+            "correct_answer": "image/question/exam/ATGT_02_C.gif".split(".")[0][-1],
+            "A": "image/question/exam/ATGT_02_C.A.gif",
+            "B": "image/question/exam/ATGT_02_C.B.gif",
+            "C": "image/question/exam/ATGT_02_C.C.gif",
+            "D": "image/question/exam/ATGT_02_C.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/ATGT_03_B.gif",
+            "correct_answer": "image/question/exam/ATGT_03_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/ATGT_03_B.A.gif",
+            "B": "image/question/exam/ATGT_03_B.B.gif",
+            "C": "image/question/exam/ATGT_03_B.C.gif",
+            "D": "image/question/exam/ATGT_03_B.D.gif",
+        },{
+            "image_path": "image/question/exam/ATGT_04_C.gif",
+            "correct_answer": "image/question/exam/ATGT_04_C.gif".split(".")[0][-1],
+            "A": "image/question/exam/ATGT_04_C.A.gif",
+            "B": "image/question/exam/ATGT_04_C.B.gif",
+            "C": "image/question/exam/ATGT_04_C.C.gif",
+            "D": "image/question/exam/ATGT_04_C.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/ATGT_05_B.gif",
+            "correct_answer": "image/question/exam/ATGT_05_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/ATGT_05_B.A.gif",
+            "B": "image/question/exam/ATGT_05_B.B.gif",
+            "C": "image/question/exam/ATGT_05_B.C.gif",
+            "D": "image/question/exam/ATGT_05_B.D.gif",
+        },
 
     ]
     # def __init__(self, question_number, answer):

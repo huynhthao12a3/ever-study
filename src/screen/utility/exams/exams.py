@@ -72,7 +72,7 @@ class ExamsScreen(tk.Frame):
 
         if self.answer:
             # Chuyển sang câu hỏi mới sau 5 giây nếu đã chọn đáp án
-            self.after(15000, self.load_new_question)
+            self.after(5000, self.load_new_question)
 
     def load_new_question(self):
         if not self.available_questions:
