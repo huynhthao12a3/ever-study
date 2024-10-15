@@ -6,6 +6,7 @@ from src.utils.constant import ImageUrl, Auth, Api, Font, Color
 from src.utils.gif import AnimatedGifCanvas
 import tkinter as tk
 
+
 class RankScreen(tk.Frame):
     def __init__(self, master, callback_list, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
@@ -20,7 +21,7 @@ class RankScreen(tk.Frame):
             ((130, 400), (315, 315)),  # Top 2
             ((530, 790), (315, 315)),  # Top 3
             ((130, 400), (420, 420)),  # Top 4
-            ((530, 790), (420, 420))   # Top 5
+            ((530, 790), (420, 420))  # Top 5
         ]
 
     def calculate_center(self, x1, x2, y1, y2):
@@ -46,6 +47,9 @@ class RankScreen(tk.Frame):
             response = requests.get(url=api_endpoint, headers=headers)
             response_json = response.json()
 
+            response_me = requests.get(url=Api.api_endpoint + "/ranks/me", headers=headers)
+            response_me_json = response_me.json()
+            # print(response_me, response_me_json)
             if response.status_code == 200:
                 for i, player in enumerate(response_json["data"][:5]):
                     (x1, x2), (y1, y2) = self.positions[i]
@@ -59,8 +63,20 @@ class RankScreen(tk.Frame):
                                          bg=Color.bg_color_blue, fg="red", borderwidth=2)
 
                     # Đặt vị trí label ở giữa cặp tọa độ
-                    lbl_name.place(x=center_x, y=center_y-25, anchor="center")
-                    lbl_score.place(x=center_x, y=center_y+25, anchor="center")
+                    lbl_name.place(x=center_x, y=center_y - 25, anchor="center")
+                    lbl_score.place(x=center_x, y=center_y + 25, anchor="center")
+
+            if response_me.status_code == 200:
+                print("response_me_json:", response_me_json["data"]["game_score"])
+                lbl_me = tk.Label(self, text=response_me_json["data"]["game_score"],
+                                  font=(Font.main_font, 30, "bold"),
+                                  bg=Color.bg_color_yellow, fg="red", borderwidth=2)
+                lbl_me.place(x=470, y=485)
+            else:
+                lbl_me = tk.Label(self, text="0",
+                                  font=(Font.main_font, 30, "bold"),
+                                  bg=Color.bg_color_yellow, fg="red", borderwidth=2)
+                lbl_me.place(x=470, y=485)
 
         except Exception as e:
             print(e)

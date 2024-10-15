@@ -113,9 +113,9 @@ class ChatAIScreen(tk.Frame):
             self.after(100, self.check_queue)
 
     def get_gpt4o_mini_response(self, message):
-        url = "https://huynhthao-duckduckgo-95.deno.dev/v1/chat/completions"
+        url = "https://everstudy-chatgpt.deno.dev/v1/chat/completions"
         headers = {
-            "Authorization": "Bearer YOUR_API_KEY_HERE",
+            "Authorization": "Bearer EverStudy",
             "Content-Type": "application/json"
         }
         data = {

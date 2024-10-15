@@ -12,6 +12,7 @@ class Color:
     bg_main = "#8DE3E6"
     text_color_red = "#EF3220"
     bg_color_blue = "#F0FBFD"
+    bg_color_yellow = "#FCFFB5"
 
 
 class Font:
