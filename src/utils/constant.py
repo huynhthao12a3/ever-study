@@ -340,21 +340,154 @@ class Exam:
             "B": "image/question/exam/ATGT_05_B.B.gif",
             "C": "image/question/exam/ATGT_05_B.C.gif",
             "D": "image/question/exam/ATGT_05_B.D.gif",
-        },
-
+        }
     ]
-    # def __init__(self, question_number, answer):
-    #     self.image_paths = {
-    #         'A': f"image/question/exam/ATGT_{question_number}_A.{answer}.gif",
-    #         'B': f"image/question/exam/ATGT_{question_number}_B.{answer}.gif",
-    #         'C': f"image/question/exam/ATGT_{question_number}_C.{answer}.gif",
-    #         'D': f"image/question/exam/ATGT_{question_number}_D.{answer}.gif"
-    #     }
-    #     self.correct_answer = f"image/question/exam/ATGT_{question_number}_B.gif".split(".")[0][-1]  # Câu trả lời đúng
-    #
-    # def get_image(self, answer):
-    #     print(f"Đang hiển thị hình ảnh: {self.image_paths[answer]}")
-    #     return self.image_paths[answer], self.correct_answer
+    BLHD = [
+        {
+            "image_path": "image/question/exam/BLHĐ_01_C.gif",
+            "correct_answer": "image/question/exam/BLHĐ_01_C.gif".split(".")[0][-1],
+            "A": "image/question/exam/BLHĐ_01_C.A.gif",
+            "B": "image/question/exam/BLHĐ_01_C.B.gif",
+            "C": "image/question/exam/BLHĐ_01_C.C.gif",
+            "D": "image/question/exam/BLHĐ_01_C.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/BLHĐ_02_B.gif",
+            "correct_answer": "image/question/exam/BLHĐ_02_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/BLHĐ_02_B.A.gif",
+            "B": "image/question/exam/BLHĐ_02_B.B.gif",
+            "C": "image/question/exam/BLHĐ_02_B.C.gif",
+            "D": "image/question/exam/BLHĐ_02_B.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/BLHĐ_03_B.gif",
+            "correct_answer": "image/question/exam/BLHĐ_03_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/BLHĐ_03_B.A.gif",
+            "B": "image/question/exam/BLHĐ_03_B.B.gif",
+            "C": "image/question/exam/BLHĐ_03_B.C.gif",
+            "D": "image/question/exam/BLHĐ_03_B.D.gif",
+        },
+    ]
+    XHTD = [
+        {
+            "image_path": "image/question/exam/XHTD_01_B.gif",
+            "correct_answer": "image/question/exam/XHTD_01_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/XHTD_01_B.A.gif",
+            "B": "image/question/exam/XHTD_01_B.B.gif",
+            "C": "image/question/exam/XHTD_01_B.C.gif",
+            "D": "image/question/exam/XHTD_01_B.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/XHTD_02_B.gif",
+            "correct_answer": "image/question/exam/XHTD_02_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/XHTD_02_B.A.gif",
+            "B": "image/question/exam/XHTD_02_B.B.gif",
+            "C": "image/question/exam/XHTD_02_B.C.gif",
+            "D": "image/question/exam/XHTD_02_B.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/XHTD_03_C.gif",
+            "correct_answer": "image/question/exam/XHTD_03_C.gif".split(".")[0][-1],
+            "A": "image/question/exam/XHTD_03_C.A.gif",
+            "B": "image/question/exam/XHTD_03_C.B.gif",
+            "C": "image/question/exam/XHTD_03_C.C.gif",
+            "D": "image/question/exam/XHTD_03_C.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/XHTD_04_B.gif",
+            "correct_answer": "image/question/exam/XHTD_04_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/XHTD_04_B.A.gif",
+            "B": "image/question/exam/XHTD_04_B.B.gif",
+            "C": "image/question/exam/XHTD_04_B.C.gif",
+            "D": "image/question/exam/XHTD_04_B.D.gif",
+        }
+    ]
+    GDGT = [
+        {
+            "image_path": "image/question/exam/GDGT_01_C.gif",
+            "correct_answer": "image/question/exam/GDGT_01_C.gif".split(".")[0][-1],
+            "A": "image/question/exam/GDGT_01_C.A.gif",
+            "B": "image/question/exam/GDGT_01_C.B.gif",
+            "C": "image/question/exam/GDGT_01_C.C.gif",
+            "D": "image/question/exam/GDGT_01_C.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/GDGT_02_B.gif",
+            "correct_answer": "image/question/exam/GDGT_02_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/GDGT_02_B.A.gif",
+            "B": "image/question/exam/GDGT_02_B.B.gif",
+            "C": "image/question/exam/GDGT_02_B.C.gif",
+            "D": "image/question/exam/GDGT_02_B.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/GDGT_03_C.gif",
+            "correct_answer": "image/question/exam/GDGT_03_C.gif".split(".")[0][-1],
+            "A": "image/question/exam/GDGT_03_C.A.gif",
+            "B": "image/question/exam/GDGT_03_C.B.gif",
+            "C": "image/question/exam/GDGT_03_C.C.gif",
+            "D": "image/question/exam/GDGT_03_C.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/GDGT_04_A.gif",
+            "correct_answer": "image/question/exam/GDGT_04_A.gif".split(".")[0][-1],
+            "A": "image/question/exam/GDGT_04_A.A.gif",
+            "B": "image/question/exam/GDGT_04_A.B.gif",
+            "C": "image/question/exam/GDGT_04_A.C.gif",
+            "D": "image/question/exam/GDGT_04_A.D.gif",
+        }
+    ]
+    ATM = [
+        {
+            "image_path": "image/question/exam/ATM_01_B.gif",
+            "correct_answer": "image/question/exam/ATM_01_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/ATM_01_B.A.gif",
+            "B": "image/question/exam/ATM_01_B.B.gif",
+            "C": "image/question/exam/ATM_01_B.C.gif",
+            "D": "image/question/exam/ATM_01_B.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/ATM_02_C.gif",
+            "correct_answer": "image/question/exam/ATM_02_C.gif".split(".")[0][-1],
+            "A": "image/question/exam/ATM_02_C.A.gif",
+            "B": "image/question/exam/ATM_02_C.B.gif",
+            "C": "image/question/exam/ATM_02_C.C.gif",
+            "D": "image/question/exam/ATM_02_C.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/ATM_03_D.gif",
+            "correct_answer": "image/question/exam/ATM_03_D.gif".split(".")[0][-1],
+            "A": "image/question/exam/ATM_03_D.A.gif",
+            "B": "image/question/exam/ATM_03_D.B.gif",
+            "C": "image/question/exam/ATM_03_D.C.gif",
+            "D": "image/question/exam/ATM_03_D.D.gif",
+        }
+    ]
+    TLDT = [
+        {
+            "image_path": "image/question/exam/TLĐT_01_B.gif",
+            "correct_answer": "image/question/exam/TLĐT_01_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/TLĐT_01_B.A.gif",
+            "B": "image/question/exam/TLĐT_01_B.B.gif",
+            "C": "image/question/exam/TLĐT_01_B.C.gif",
+            "D": "image/question/exam/TLĐT_01_B.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/TLĐT_02_A.gif",
+            "correct_answer": "image/question/exam/TLĐT_02_A.gif".split(".")[0][-1],
+            "A": "image/question/exam/TLĐT_02_A.A.gif",
+            "B": "image/question/exam/TLĐT_02_A.B.gif",
+            "C": "image/question/exam/TLĐT_02_A.C.gif",
+            "D": "image/question/exam/TLĐT_02_A.D.gif",
+        },
+        {
+            "image_path": "image/question/exam/TLĐT_03_B.gif",
+            "correct_answer": "image/question/exam/TLĐT_03_B.gif".split(".")[0][-1],
+            "A": "image/question/exam/TLĐT_03_B.A.gif",
+            "B": "image/question/exam/TLĐT_03_B.B.gif",
+            "C": "image/question/exam/TLĐT_03_B.C.gif",
+            "D": "image/question/exam/TLĐT_03_B.D.gif",
+        }
+    ]
 
 
 class GameSetting:
@@ -363,3 +496,6 @@ class GameSetting:
     selected_level = None  # 1 or 2 or 3 or 4
     selected_game_mode = None  # Normal or Rank
 
+
+class ExamSetting:
+    selected_subject = Exam.ATGT

@@ -8,6 +8,7 @@ from src.screen.game.animalwordsearch.word_search_mode import WordSearchModeScre
 from src.screen.game.game_mode import GameModeScreen
 from src.screen.game.normal_game_mode import NormalGameModeScreen
 from src.screen.game.rank import RankScreen
+from src.screen.utility.chatgpt import ChatAIScreen
 from src.screen.utility.exam import ExamScreen
 from src.screen.utility.exams.exams import ExamsScreen
 from src.screen.utility.time_table import TimeTableScreen
@@ -97,7 +98,8 @@ class EverStudy(tk.Tk):
             "UtilityScreen": self.show_utility_screen,
             "TimeTableScreen": self.show_time_table_screen,
             "ExamScreen": self.show_exam_screen,
-            "TrafficSafetyScreen": self.show_traffic_safety_screen
+            "ExamsScreen": self.show_exams_screen,
+            "ChatAIScreen": self.show_chat_ai_screen
         }
         login_callback_list = {
             "HomeScreen": self.show_home_screen
@@ -120,7 +122,8 @@ class EverStudy(tk.Tk):
         self.screens["UtilityScreen"] = UtilityScreen(self.container, utility_callback_list)
         self.screens["TimeTableScreen"] = TimeTableScreen(self.container, utility_callback_list)
         self.screens["ExamScreen"] = ExamScreen(self.container, utility_callback_list)
-        self.screens["TrafficSafetyScreen"] = ExamsScreen(self.container, utility_callback_list)
+        self.screens["ExamsScreen"] = ExamsScreen(self.container, utility_callback_list)
+        self.screens["ChatAIScreen"] = ChatAIScreen(self.container, utility_callback_list)
         self.screens["LoginScreen"] = LoginScreen(self.container, login_callback_list)
 
     def show_screen(self, screen_name):
@@ -191,8 +194,11 @@ class EverStudy(tk.Tk):
     def show_exam_screen(self):
         self.show_screen("ExamScreen")
 
-    def show_traffic_safety_screen(self):
-        self.show_screen("TrafficSafetyScreen")
+    def show_exams_screen(self):
+        self.show_screen("ExamsScreen")
+
+    def show_chat_ai_screen(self):
+        self.show_screen("ChatAIScreen")
 
     def show_login_screen(self):
         self.show_screen("LoginScreen")
