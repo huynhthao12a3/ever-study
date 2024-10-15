@@ -39,7 +39,7 @@ class EverStudy(tk.Tk):
         self.title("Ever Study")
         self.iconbitmap(FileManager().resource_path(ImageUrl.app_icon))
         print(FileManager().resource_path(ImageUrl.app_icon))
-        self.geometry(f"{width}x{height}+{x}+{y}")
+        self.geometry(f"{width}x{height}+{x}+{y-30}")
         self.resizable(False, False)
 
         self.container = tk.Frame(self, bg="lightblue")

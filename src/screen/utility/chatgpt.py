@@ -25,17 +25,17 @@ class ChatAIScreen(tk.Frame):
         self.bg_canvas.pack(fill='both', expand=True)
 
         # Chat history frame
-        chat_frame = tk.Frame(self, bg='#f0f0f0', bd=1, relief='groove')
-        chat_frame.place(relx=0.1, rely=0.1, relwidth=0.8, relheight=0.6)
+        chat_frame = tk.Frame(self, bg='#f0f0f0', bd=0.1, relief='groove')
+        chat_frame.place(relx=0.07, rely=0.11, relwidth=0.86, relheight=0.68)
 
         self.chat_history = scrolledtext.ScrolledText(chat_frame, state='normal', bg='#ffffff', font=('Arial', 10))
         self.chat_history.pack(padx=10, pady=10, fill='both', expand=True)
-        self.chat_history.insert(tk.END, "\n                                            ***** Chào mừng bạn đến với EverStudy AI *****\n\n")
+        self.chat_history.insert(tk.END, "\n                                                  ***** Chào mừng bạn đến với EverStudy AI *****\n\n")
         self.chat_history.config(state='disabled')
 
         # Input frame
-        input_frame = tk.Frame(self, bg='#e0e0e0', bd=1, relief='groove')
-        input_frame.place(relx=0.1, rely=0.75, relwidth=0.8, relheight=0.15)
+        input_frame = tk.Frame(self, bg='#e0e0e0', bd=0.1, relief='groove')
+        input_frame.place(relx=0.07, rely=0.82, relwidth=0.86, relheight=0.08)
 
         self.user_input = tk.Entry(input_frame, font=('Arial', 12), bd=1, relief='solid', textvariable=self.input_var)
         self.user_input.pack(side='left', padx=(10, 5), pady=10, fill='both', expand=True)
