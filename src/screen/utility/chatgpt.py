@@ -55,20 +55,17 @@ class ChatAIScreen(tk.Frame):
 
     def send_message(self):
         user_message = self.input_var.get().strip()
-        print(f"Attempting to send message: '{user_message}'")  # Debug print
 
         if not user_message:
             print("No message to send")
             return
 
-        print(f"Sending message: '{user_message}'")  # Debug print
         self.input_var.set('')  # Clear the input
         self.update_chat_history(f"Bạn: {user_message}")
         self.start_loading_animation()
         threading.Thread(target=self.get_response, args=(user_message,), daemon=True).start()
 
     def update_chat_history(self, message):
-        print(f"Updating chat history: {message}")  # Debug print
         self.chat_history.config(state='normal')
         self.chat_history.insert(tk.END, "\n=> " + message + "\n\n")
         self.chat_history.config(state='disabled')
@@ -99,7 +96,7 @@ class ChatAIScreen(tk.Frame):
             response = self.get_gpt4o_mini_response(message)
             self.queue.put(("EverStudy AI: " + response))
         except Exception as e:
-            print(f"Error getting response: {str(e)}")  # Debug print
+            print(f"Error getting response: {str(e)}")
             self.queue.put("Lỗi: EverStudy AI đang bảo trì. Vui lòng thử lại.")
 
     def check_queue(self):

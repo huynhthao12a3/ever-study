@@ -76,7 +76,7 @@ class RankScreen(tk.Frame):
                 lbl_me = tk.Label(self, text="0",
                                   font=(Font.main_font, 20, "bold"),
                                   bg=Color.bg_color_yellow, fg="red", borderwidth=2)
-                lbl_me.place(x=460, y=490)
+                lbl_me.place(x=470, y=490)
 
         except Exception as e:
             print(e)
