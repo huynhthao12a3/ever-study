@@ -83,7 +83,3 @@ class ShareScreen(tk.Frame):
             except Exception as e:
                 print(e)
                 tk.Label(self, text="Gửi thất bại", width=16, font=(Font.main_font, 16, 'bold'), foreground="red", background="white").place(x=350, y=565)
-
-
-
-

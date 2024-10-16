@@ -31,19 +31,12 @@ class UtilityScreen(tk.Frame):
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
         if 95 < x < 245 and 135 < y < 325:
-            print("ket qua hoc tap")
             self.show_calculate_screen()
         if 335 < x < 485 and 135 < y < 325:
-            print("tkb")
             self.show_time_table_screen()
         if 575 < x < 730 and 135 < y < 325:
-            print("kho de")
             messagebox.showinfo("Thông báo", f"Tính năng này đang phát trển.\nVui lòng quay lại sau.")
         if 95 < x < 245 and 365 < y < 535:
-            print("thi")
-            # messagebox.showinfo("Chưa có ý tưởng", f"Từ từ làm sau, ghi chú tạm đây")
             self.show_exam_screen()
         if 575 < x < 730 and 365 < y < 535:
-            print("ai")
             self.show_chat_ai_screen()
-            # messagebox.showinfo("Chưa có ý tưởng", f"Từ từ làm sau, ghi chú tạm đây")

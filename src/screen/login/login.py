@@ -9,9 +9,7 @@ from src.utils.file import FileManager
 # Call api, convert json library
 import requests
 import json
-
 from src.utils.gif import AnimatedGifCanvas
-from src.utils.popup import ErasablePopup
 
 
 class LoginScreen(tk.Frame):

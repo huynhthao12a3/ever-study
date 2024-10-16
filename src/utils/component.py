@@ -14,9 +14,6 @@ class Component:
 
     # Login
     def right_button_login(self, callback=None):
-        # button = tk.Button(self, text="Đăng nhập", fg="red", font=(Font.main_font, 10, "bold"), borderwidth=4,
-        #                    command=callback)
-        # button.place(x=720, y=2)
         icon = Image.open(FileManager().resource_path("image/setting/login_icon.png"))
         icon = icon.resize((60, 26), Image.LANCZOS)
         self.login_icon = ImageTk.PhotoImage(icon)
@@ -33,9 +30,6 @@ class Component:
 
     # Come back
     def right_button_back(self, callback=None):
-        # button = tk.Button(self, text=" Trở về ", fg="red", font=(Font.main_font, 10, "bold"), borderwidth=4,
-        #                    command=callback)
-        # button.place(x=736, y=2)
         icon = Image.open(FileManager().resource_path("image/setting/back_icon.png"))
         icon = icon.resize((60, 30), Image.LANCZOS)
         self.back_icon = ImageTk.PhotoImage(icon)

@@ -53,4 +53,3 @@ class QuestionManager:
             self.subjects = {self.current_mode: self.original_subjects[self.current_mode].copy()}
         self.used_questions.clear()
         print(f"Đã reset câu hỏi cho chế độ: {self.current_mode}")
-

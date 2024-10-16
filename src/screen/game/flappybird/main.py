@@ -14,7 +14,7 @@ class FlappyBird:
 
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=512)
         pygame.init()
-        pygame.display.set_caption('Flappy Bird Game')
+        pygame.display.set_caption('Trò chơi Flappy Bird')
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
         self.game_font = pygame.font.SysFont(Font.main_font, 35)
@@ -165,7 +165,7 @@ class FlappyBird:
 
     def score_display(self):
             score_surface = self.game_font.render(f'Điểm: {int(self.score)}', True, (255, 255, 255))
-            score_rect = score_surface.get_rect(center=(60, 20))
+            score_rect = score_surface.get_rect(center=(70, 20))
             self.screen.blit(score_surface, score_rect)
 
             # high_score_surface = self.game_font.render(f'High Score: {int(self.high_score)}', True, (255, 255, 255))

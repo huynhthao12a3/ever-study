@@ -24,8 +24,6 @@ class MathScreen(tk.Frame):
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
-        # webbrowser.open(FileManager().resource_path('CV_Huynh-Van-Thao.pdf'))
-
         if 60 < x < 430 and 144 < y < 164:
             print("Chuong 1")
             webbrowser.open(self.file_manager.resource_path("file/math/" + FileUrl.f_toan_chuong_01))
