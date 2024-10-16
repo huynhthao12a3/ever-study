@@ -12,8 +12,6 @@ class OtherScreen(tk.Frame):
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
 
-        # self.load_widgets()
-
     def load_widgets(self):
         gif_path = ImageUrl.bg_other_screen
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)

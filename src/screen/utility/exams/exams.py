@@ -22,12 +22,9 @@ class ExamsScreen(tk.Frame):
         self.answer_selected = False  # Thêm biến để theo dõi trạng thái đã chọn đáp án
 
     def load_widgets(self):
-        print("load_widgets", ExamSetting.selected_subject)
         self.available_questions = list(ExamSetting.selected_subject)
         # Chọn câu hỏi đầu tiên
         self.load_new_question()
-        # Hiển thị câu hỏi đầu tiên từ image_path
-        # self.display_question_image()  # Hiển thị câu hỏi ngay khi tải widget
 
         Component.right_button_back(self, self.show_exam_screen)
 

@@ -26,14 +26,11 @@ class GameScreen(tk.Frame):
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
         if 70 < x < 245 and 220 < y < 430:
-            print("Flappy Bird")
             GameSetting.selected_game = "Flappy_Bird"
             self.show_game_mode_screen()
         if 335 < x < 520 and 220 < y < 430:
-            print("Apple Collection")
             GameSetting.selected_game = "Apple_Catcher"
             self.show_game_mode_screen()
         if 590 < x < 750 and 220 < y < 430:
-            print("Word Search")
             GameSetting.selected_game = "Word_Search"
             self.show_game_mode_screen()

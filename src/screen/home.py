@@ -12,15 +12,6 @@ class HomeScreen(tk.Frame):
     def __init__(self, master, callback_list, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
 
-        # Start Postgresql
-        # api_endpoint = Api.api_endpoint + "/healthcheck"
-        # headers = {'Content-Type': 'application/json'}
-        # try:
-        #     response = requests.get(url=api_endpoint, headers=headers)
-        #     print(response.json())
-        # except Exception as e:
-        #     print(e)
-
         self.animated_canvas = None
         self.master = master
         self.show_learn_screen = callback_list["LearnScreen"]
@@ -32,15 +23,12 @@ class HomeScreen(tk.Frame):
         self.show_author_screen = callback_list["AuthorScreen"]
         self.show_login_screen = callback_list["LoginScreen"]
 
-        # self.load_widgets()
-
     def load_widgets(self):
         gif_path = ImageUrl.bg_home_screen
         self.animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         self.animated_canvas.pack()
 
         Component.left_label(self)
-        # label.bind("<Button-1>", lambda e: self.mouse_click())
 
         if Auth.login_success is False:
             Component.right_button_login(self, self.show_login_screen)
@@ -69,6 +57,3 @@ class HomeScreen(tk.Frame):
                 self.show_author_screen()
         else:
             messagebox.showinfo("Thông báo", "Vui lòng đăng nhập để sử dụng ứng dụng.")
-
-    def mouse_click(self):
-        print("mouse click")

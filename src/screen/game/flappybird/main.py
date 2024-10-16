@@ -185,16 +185,15 @@ class FlappyBird:
         text = font.render("Câu trả lời đúng", True, (255, 255, 255))
         text_rect = text.get_rect(center=(400, 300))
         self.screen.blit(text, text_rect)
+
         pygame.display.update()
-        print(self.collision)
-        print(self.game_active)
         pygame.time.set_timer(self.spawn_pipe, 5000)
         time.sleep(5)
         pygame.time.set_timer(self.spawn_pipe, 1000)
+
         self.collision = False
         self.game_active = True
         self.bird_movement = -12
-        print("đợi 3s ........")
 
     def run(self):
         while self.running:
@@ -300,16 +299,12 @@ class FlappyBird:
                     if event.button == 1 and self.collision is True:
                         print("Correct answer is ", self.correct_answer)
                         if 50 < mouse_x < 170 and 470 < mouse_y < 590:
-                            print("A")
                             self.selected_answer = "A"
                         if 240 < mouse_x < 360 and 470 < mouse_y < 590:
-                            print("B")
                             self.selected_answer = "B"
                         if 435 < mouse_x < 560 and 470 < mouse_y < 590:
-                            print("C")
                             self.selected_answer = "C"
                         if 630 < mouse_x < 750 and 470 < mouse_y < 590:
-                            print("D")
                             self.selected_answer = "D"
 
                         if self.selected_answer is not None and self.selected_answer == self.correct_answer:
@@ -339,14 +334,13 @@ class FlappyBird:
                             self.game_result["wrong_answer"] += 1
 
                             if self.wrong_answer_count >= self.max_wrong_answers:
-                                print("Bạn đã chọn sai đủ ba lần! Kết thúc game.")
                                 font = pygame.font.SysFont(Font.main_font, 24)
                                 text = font.render("Game Over! Bạn đã sai đủ ba lần.", True, (255, 0, 0))
                                 text_rect = text.get_rect(center=(400, 570))
                                 self.screen.blit(text, text_rect)
                                 pygame.display.update()
                                 time.sleep(3)
-                                print("Bạn đã chọn sai đủ ba lần! Kết thúc game.")
+
                                 self.collision = False
                                 self.game_active = False
                                 self.wrong_answer_count = 0
@@ -368,17 +362,10 @@ class FlappyBird:
                                     self.current_question = question["image_path"]
                                     self.correct_answer = question["correct_answer"]
 
-                            # subject, question = self.question_manager.get_random_question()
-                            # self.current_question = question["image_path"]
-                            # self.correct_answer = question["correct_answer"]
-                            # self.display_question(self.current_question)
-                            # print("Correct answer is ", self.correct_answer)
-
                         self.selected_answer = None  # Reset answer
 
                 # Create pipe each second
                 if event.type == self.spawn_pipe and self.game_active is True and self.collision is False:
-                    # print("tạo ng sau 1s ...")
                     self.pipe_list.extend(self.create_pipe())
 
                 # Bird flap each 200ms

@@ -48,8 +48,6 @@ class LoginScreen(tk.Frame):
             print("Login")
             self.login_verify()
 
-    # Implementing event on login button
-
     def login_verify(self):
         username = self.username_verify.get()
         password = self.password_verify.get()

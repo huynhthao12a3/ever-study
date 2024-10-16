@@ -15,7 +15,6 @@ class ChatAIScreen(tk.Frame):
         self.queue = queue.Queue()
         self.input_var = tk.StringVar()
         self.loading_animation = None
-        self.load_widgets()
         self.after(100, self.check_queue)
 
     def load_widgets(self):

@@ -46,7 +46,6 @@ class ShareScreen(tk.Frame):
         self.content_text = tk.Text(self, width=50, borderwidth=3, font=custom_font, wrap=tk.WORD)
         self.content_text.place(x=275, y=270, height=180, width=380)
 
-
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
         title = self.title.get()

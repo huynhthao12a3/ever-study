@@ -28,11 +28,7 @@ class AppleCatcher:
         self.clock = pygame.time.Clock()
         self.game_font = pygame.font.SysFont(Font.main_font, 35)
         self.large_font = pygame.font.SysFont(Font.main_font, 70)
-        # try:
-        #     pygame.display.set_icon(self.file_manager.load_image("image/ever-study.png", True))
-        #     print("set icon")
-        # except pygame.error as e:
-        #     print(e)
+
         # Callback
         self.on_apple_catcher_close = on_apple_catcher_close
         self.game_result = {

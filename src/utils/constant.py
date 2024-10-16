@@ -1,7 +1,4 @@
-﻿import pygame
-
-
-class Auth:
+﻿class Auth:
     login_success = False
     full_name = ""
     access_token = ""
@@ -503,22 +500,34 @@ class ExamSetting:
 
 
 class ToolTip:
-    learn_screen = "EverStudy\nĐây là hướng dẫn sử dụng của màn hình Ôn tập."
-    game_screen = "EverStudy\nĐây là hướng dẫn sử dụng của màn hình Trò chơi.\nChọn trò chơi mà bạn muốn chơi."
-    game_screen_mode = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Trò chơi.\nChọn chế độ mà bạn muốn chơi."
+    learn_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Ôn tập.\n"
+                    "\nBạn có thể tùy ý chọn môn mà bản thân cần ôn bài.")
+    game_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Trò chơi.\n"
+                   "\nChọn trò chơi mà bạn muốn chơi."
+                   "\nFlappy Bird / Apple Collection / Word Search."
+                   "\nCách chơi:"
+                   "\n- Flappy Bird: Dùng nút chuột trái hoặc nút SPACE để điều khiển chim bay."
+                   "\n- Apple Collection: Dùng chuột hoặc mũi tên -> <- trên bàn phím để di chuyển giỏ táo và hứng táo."
+                   "\n- Word Search: Nhìn hình và gõ ra các từ xuất hiện trong hình theo 3 đường: dọc, ngang và chéo.")
+    game_screen_mode = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Trò chơi.\n"
+                        "\nChọn chế độ mà bạn muốn chơi."
                         "\nChơi thường sẽ không tính điểm xếp hạng."
                         "\nChơi xếp hạng để tham gia đua top cùng mọi người.")
-    utility_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Tiện ích."
+    utility_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Tiện ích.\n"
                "\nBạn có thể chọn sử dụng tiện ích mà bạn cần.")
-    share_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Chia sẻ."
+    share_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Chia sẻ.\n"
                     "\nBạn có thể chia sẻ mọi thứ cùng giáo viên."
                     "\nMọi thông tin sẽ được bí mật.")
-    calculate_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Kết quả học tập."
+    calculate_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Kết quả học tập.\n"
                         "\nBạn có thể tính toán điểm Trung bình môn và Kết quả học tập của bản thân.")
-    time_table_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Thời khóa biểu."
-                         "\nBạn có thể lưu trữ thời khóa biểu thông qua hình ảnh, có 2 hình ảnh để bạn tùy chỉnh.")
-    exam_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Thi."
-                   "\nBạn có thể tham gia trả lời các câu hỏi theo từng bài thi có sẵn.")
-    chat_gpt_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Chat cùng AI."
+    time_table_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Thời khóa biểu.\n"
+                         "\nBạn có thể lưu trữ thời khóa biểu thông qua hình ảnh, có 2 hình ảnh để bạn tùy chỉnh."
+                         "\nHình bên trái: in ra 10 dòng."
+                         "\nHình bên phải: in ra 5 dòng.")
+    exam_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Thi.\n"
+                   "\nBạn có thể tham gia trả lời các câu hỏi theo từng bài thi có sẵn."
+                   "\nSau khi trả lời xong sẽ hiện đáp án."
+                   "\nTiếp tục nhấn 1 lần nữa để sang câu hỏi mới.")
+    chat_gpt_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Chat cùng AI.\n"
                       "\nBạn có thể hỏi đáp các thắc mắc cùng EverStudy AI tại đây."
                       "\nĐừng ngại hỏi nếu bạn không biết, cùng trau dồi kiến thức nào.")

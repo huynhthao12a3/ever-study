@@ -18,8 +18,6 @@ class UtilityScreen(tk.Frame):
         self.show_exam_screen = callback_list["ExamScreen"]
         self.show_chat_ai_screen = callback_list["ChatAIScreen"]
 
-        # self.load_widgets()
-
     def load_widgets(self):
         gif_path = ImageUrl.bg_utility_screen
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)

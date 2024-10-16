@@ -28,8 +28,6 @@ class WordSearchModeScreen(tk.Frame):
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
-        print("animal_word_search_run")
-        # self.animal_word_search_run()
         if 55 < x < 135 and 270 < y < 350:
             print("Toán - 1")
             self.animal_word_search_run("math", "lv1")

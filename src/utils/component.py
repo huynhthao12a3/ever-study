@@ -62,4 +62,3 @@ class Component:
 
         # Thêm tooltip cho button với text được truyền vào
         Tooltip(self.button, "\n" + tooltip_text + "\n")
-

@@ -244,7 +244,6 @@ class AnimalWordSearch:
                 self.clock.tick(60)
 
                 if len(self.found_words) == 5 or time.time() - self.start_time >= self.game_time:
-                    print("Time's up!")
                     messagebox.showinfo("Kết thúc trò chơi", f"Điểm số của bạn là: {self.score}.")
                     self.running = False
 

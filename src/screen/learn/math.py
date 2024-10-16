@@ -12,7 +12,6 @@ class MathScreen(tk.Frame):
         self.master = master
         self.show_learn_screen = callback_list["LearnScreen"]
         self.file_manager = FileManager()
-        # self.load_widgets()
 
     def load_widgets(self):
         gif_path = ImageUrl.bg_math_screen

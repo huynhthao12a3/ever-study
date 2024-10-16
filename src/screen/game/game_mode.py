@@ -36,11 +36,9 @@ class GameModeScreen(tk.Frame):
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
         if 145 < x < 320 and 200 < y < 400:
-            print("Normal game mode")
             GameSetting.selected_game_mode = "Normal"
             self.show_normal_game_mode_screen()
         if 465 < x < 665 and 205 < y < 400:
-            print("Rank game mode")
             GameSetting.selected_game_mode = "Rank"
             if GameSetting.selected_game == "Flappy_Bird":
                 self.flappy_bird_run("all")
@@ -48,10 +46,8 @@ class GameModeScreen(tk.Frame):
                 self.apple_catcher_run("all")
             if GameSetting.selected_game == "Word_Search":
                 self.show_word_search_mode_screen()
-                # self.animal_word_search_run()
 
         if 90 < x < 210 and 420 < y < 580:
-            print("BXH")
             self.show_rank_screen()
 
     def flappy_bird_run(self, selected_subject):

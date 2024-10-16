@@ -49,7 +49,6 @@ class RankScreen(tk.Frame):
 
             response_me = requests.get(url=Api.api_endpoint + "/ranks/me", headers=headers)
             response_me_json = response_me.json()
-            # print(response_me, response_me_json)
             if response.status_code == 200:
                 for i, player in enumerate(response_json["data"][:5]):
                     (x1, x2), (y1, y2) = self.positions[i]

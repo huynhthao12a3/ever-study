@@ -1,8 +1,6 @@
 ﻿import tkinter as tk
-from PIL import Image, ImageTk
-
 from src.utils.constant import Color, Font
-from src.utils.file import FileManager
+
 
 class Tooltip:
     def __init__(self, widget, text, app_width=800, app_height=600):
@@ -54,4 +52,3 @@ class Tooltip:
     def on_window_move(self, event=None):
         if self.tooltip:
             self.position_tooltip()
-

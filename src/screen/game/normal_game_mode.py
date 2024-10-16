@@ -69,7 +69,6 @@ class NormalGameModeScreen(tk.Frame):
                     self.apple_catcher_run(GameSetting.selected_subject)
         else:
             print("animal_word_search_run")
-            # self.animal_word_search_run()
             if 55 < x < 135 and 270 < y < 350:
                 print("Toán - 1")
                 self.animal_word_search_run("math", "lv1")
@@ -123,12 +122,9 @@ class NormalGameModeScreen(tk.Frame):
 
     def on_flappy_bird_close(self, game_result=None):
         self.root.deiconify()  # Show Tkinter window
-        print("flappy bird closed - normal game mode")
 
     def on_apple_catcher_close(self, game_result=None):
         self.root.deiconify()  # Show Tkinter window
-        print("Apple Catcher closed - normal game mode")
 
     def on_animal_word_search_close(self, game_result=None):
         self.root.deiconify()  # Show Tkinter window
-        print("Animal Word Search closed - normal game mode")
