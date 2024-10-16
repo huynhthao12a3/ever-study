@@ -1,5 +1,5 @@
 from src.utils.component import Component
-from src.utils.constant import ImageUrl, ExamSetting, Exam
+from src.utils.constant import ImageUrl, ExamSetting, Exam, ToolTip
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 import tkinter as tk
@@ -20,6 +20,7 @@ class ExamScreen(tk.Frame):
 
         # Component.left_label(self)
         Component.right_button_back(self, self.show_utility_screen)
+        Component.right_button_intro(self, ToolTip.exam_screen)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")

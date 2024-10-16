@@ -69,14 +69,14 @@ class RankScreen(tk.Frame):
             if response_me.status_code == 200:
                 print("response_me_json:", response_me_json["data"]["game_score"])
                 lbl_me = tk.Label(self, text=response_me_json["data"]["game_score"],
-                                  font=(Font.main_font, 30, "bold"),
+                                  font=(Font.main_font, 20, "bold"),
                                   bg=Color.bg_color_yellow, fg="red", borderwidth=2)
-                lbl_me.place(x=470, y=485)
+                lbl_me.place(x=470, y=490)
             else:
                 lbl_me = tk.Label(self, text="0",
-                                  font=(Font.main_font, 30, "bold"),
+                                  font=(Font.main_font, 20, "bold"),
                                   bg=Color.bg_color_yellow, fg="red", borderwidth=2)
-                lbl_me.place(x=470, y=485)
+                lbl_me.place(x=460, y=490)
 
         except Exception as e:
             print(e)

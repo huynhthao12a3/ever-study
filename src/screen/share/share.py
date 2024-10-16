@@ -3,7 +3,7 @@
 import requests
 
 from src.utils.component import Component
-from src.utils.constant import ImageUrl, Auth, Api, Font
+from src.utils.constant import ImageUrl, Auth, Api, Font, ToolTip
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 import tkinter as tk
@@ -38,6 +38,7 @@ class ShareScreen(tk.Frame):
 
         Component.left_label(self)
         Component.right_button_back(self, self.show_home_screen)
+        Component.right_button_intro(self, ToolTip.share_screen)
 
         self.title_entry = tk.Entry(self, textvariable=self.title, width=50, borderwidth=3, font=custom_font, validate="key", validatecommand=valid)
         self.title_entry.place(x=275, y=192, height=40, width=380)

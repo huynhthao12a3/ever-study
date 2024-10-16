@@ -4,7 +4,7 @@ import cairo
 import os
 from PIL import Image, ImageTk
 from src.utils.component import Component
-from src.utils.constant import ImageUrl, Color, Font, Auth
+from src.utils.constant import ImageUrl, Color, Font, Auth, ToolTip
 from src.utils.file import FileManager
 
 
@@ -138,13 +138,11 @@ class TimeTableScreen(tk.Frame):
         bg_label_1.grid(row=0, column=0, padx=10)
         bg_label_2.grid(row=0, column=1, padx=10)
 
-        tk.Button(bg_frame, text="Tạo ảnh thời khóa biểu", font=Font.main_font, command=self.generate_image).grid(row=1,
-                                                                                                                  columnspan=2,
-                                                                                                                  pady=(
-                                                                                                                      10))
+        tk.Button(bg_frame, text="Tạo ảnh thời khóa biểu", font=Font.main_font, command=self.generate_image).grid(row=1, columnspan=2, pady=(10))
 
         Component.left_label(self)
         Component.right_button_back(self, self.show_utility_screen)
+        Component.right_button_intro(self, ToolTip.time_table_screen)
 
     def set_background(self, bg_path, positions, time_positions, slots):
         self.current_background = bg_path

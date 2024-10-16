@@ -500,3 +500,25 @@ class GameSetting:
 
 class ExamSetting:
     selected_subject = Exam.ATGT
+
+
+class ToolTip:
+    learn_screen = "EverStudy\nĐây là hướng dẫn sử dụng của màn hình Ôn tập."
+    game_screen = "EverStudy\nĐây là hướng dẫn sử dụng của màn hình Trò chơi.\nChọn trò chơi mà bạn muốn chơi."
+    game_screen_mode = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Trò chơi.\nChọn chế độ mà bạn muốn chơi."
+                        "\nChơi thường sẽ không tính điểm xếp hạng."
+                        "\nChơi xếp hạng để tham gia đua top cùng mọi người.")
+    utility_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Tiện ích."
+               "\nBạn có thể chọn sử dụng tiện ích mà bạn cần.")
+    share_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Chia sẻ."
+                    "\nBạn có thể chia sẻ mọi thứ cùng giáo viên."
+                    "\nMọi thông tin sẽ được bí mật.")
+    calculate_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Kết quả học tập."
+                        "\nBạn có thể tính toán điểm Trung bình môn và Kết quả học tập của bản thân.")
+    time_table_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Thời khóa biểu."
+                         "\nBạn có thể lưu trữ thời khóa biểu thông qua hình ảnh, có 2 hình ảnh để bạn tùy chỉnh.")
+    exam_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Thi."
+                   "\nBạn có thể tham gia trả lời các câu hỏi theo từng bài thi có sẵn.")
+    chat_gpt_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Chat cùng AI."
+                      "\nBạn có thể hỏi đáp các thắc mắc cùng EverStudy AI tại đây."
+                      "\nĐừng ngại hỏi nếu bạn không biết, cùng trau dồi kiến thức nào.")

@@ -1,6 +1,6 @@
 from src.screen.game.applecatcher.main import AppleCatcher
 from src.utils.component import Component
-from src.utils.constant import ImageUrl, Api, Auth, Font, GameSetting
+from src.utils.constant import ImageUrl, Api, Auth, Font, GameSetting, ToolTip
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 from src.screen.game.flappybird.main import FlappyBird
@@ -31,6 +31,7 @@ class GameModeScreen(tk.Frame):
 
         Component.left_label(self)
         Component.right_button_back(self, self.show_game_screen)
+        Component.right_button_intro(self, ToolTip.game_screen_mode)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")

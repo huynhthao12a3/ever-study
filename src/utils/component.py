@@ -2,6 +2,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 from src.utils.constant import Auth, Font
 from src.utils.file import FileManager
+from src.utils.tooltip import Tooltip
 
 
 class Component:
@@ -43,3 +44,22 @@ class Component:
             highlightthickness=0
         )
         self.back_button.place(x=736, y=4)
+
+    # Introduce
+    def right_button_intro(self, tooltip_text):
+        icon = Image.open(FileManager().resource_path("image/setting/introduce_icon.png"))
+        icon = icon.resize((20, 20), Image.LANCZOS)
+        self.button_icon = ImageTk.PhotoImage(icon)
+
+        # Tạo nút với icon
+        self.button = tk.Button(
+            self,
+            image=self.button_icon,
+            borderwidth=0,
+            highlightthickness=0
+        )
+        self.button.place(x=775, y=575)
+
+        # Thêm tooltip cho button với text được truyền vào
+        Tooltip(self.button, "\n" + tooltip_text + "\n")
+

@@ -1,5 +1,5 @@
 ﻿from src.utils.component import Component
-from src.utils.constant import ImageUrl, Api, Auth, Font, GameSetting
+from src.utils.constant import ImageUrl, Api, Auth, Font, GameSetting, ToolTip
 from src.utils.gif import AnimatedGifCanvas
 import tkinter as tk
 
@@ -21,6 +21,7 @@ class GameScreen(tk.Frame):
 
         Component.left_label(self)
         Component.right_button_back(self, self.show_home_screen)
+        Component.right_button_intro(self, ToolTip.game_screen)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")

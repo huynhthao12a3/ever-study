@@ -1,5 +1,5 @@
 ﻿from src.utils.component import Component
-from src.utils.constant import Auth, ImageUrl
+from src.utils.constant import Auth, ImageUrl, ToolTip
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 import tkinter as tk
@@ -22,6 +22,7 @@ class LearnScreen(tk.Frame):
 
         Component.left_label(self)
         Component.right_button_back(self, self.show_home_screen)
+        Component.right_button_intro(self, ToolTip.learn_screen)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
