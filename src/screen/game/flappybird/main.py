@@ -315,7 +315,7 @@ class FlappyBird:
                             print("True: ", self.selected_answer, self.correct_answer)
                             font = pygame.font.SysFont(Font.main_font, 24)
                             text = font.render("Câu trả lời chính xác. Sẽ quay lại game sau 3 giây.", True, (255, 0, 0))
-                            text_rect = text.get_rect(center=(400, 570))
+                            text_rect = text.get_rect(center=(400, 450))
                             self.screen.blit(text, text_rect)
                             pygame.display.update()
 
@@ -336,7 +336,7 @@ class FlappyBird:
                             if self.wrong_answer_count >= self.max_wrong_answers:
                                 font = pygame.font.SysFont(Font.main_font, 24)
                                 text = font.render("Game Over! Bạn đã sai đủ ba lần.", True, (255, 0, 0))
-                                text_rect = text.get_rect(center=(400, 570))
+                                text_rect = text.get_rect(center=(400, 450))
                                 self.screen.blit(text, text_rect)
                                 pygame.display.update()
                                 time.sleep(3)
@@ -350,7 +350,7 @@ class FlappyBird:
                             else:
                                 font = pygame.font.SysFont(Font.main_font, 24)
                                 text = font.render("Câu trả lời không chính xác.", True, (255, 0, 0))
-                                text_rect = text.get_rect(center=(400, 570))
+                                text_rect = text.get_rect(center=(400, 450))
                                 self.screen.blit(text, text_rect)
                                 pygame.display.update()
                                 time.sleep(1)
