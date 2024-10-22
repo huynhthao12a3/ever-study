@@ -55,7 +55,7 @@ class RankScreen(tk.Frame):
                     center_x, center_y = self.calculate_center(x1, x2, y1, y2)
 
                     lbl_name = tk.Label(self, text=player["full_name"],
-                                        font=(Font.main_font, 30, "bold"),
+                                        font=(Font.main_font, 20, "bold"),
                                         bg=Color.bg_color_blue, borderwidth=2)
                     lbl_score = tk.Label(self, text=player["game_score"],
                                          font=(Font.main_font, 20, "bold"),
