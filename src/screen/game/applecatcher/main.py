@@ -175,7 +175,7 @@ class AppleCatcher:
     def display_message(self, message, duration):
         font = pygame.font.SysFont(Font.main_font, 24)
         text = font.render(message, True, (255, 0, 0))
-        text_rect = text.get_rect(center=(self.width // 2, self.height - 30))
+        text_rect = text.get_rect(center=(400, 450))
         self.screen.blit(text, text_rect)
         pygame.display.update()
         pygame.time.wait(duration * 1000)
