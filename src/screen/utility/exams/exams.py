@@ -26,12 +26,6 @@ class ExamsScreen(tk.Frame):
         # Chọn câu hỏi đầu tiên
         self.load_new_question()
 
-        # Handle change cursor
-        self.gif_canvas.add_clickable_area(675, 145, 755, 220)  # A
-        self.gif_canvas.add_clickable_area(675, 245, 755, 320)  # B
-        self.gif_canvas.add_clickable_area(675, 350, 755, 430)  # C
-        self.gif_canvas.add_clickable_area(675, 465, 755, 545)  # D
-
         Component.right_button_back(self, self.show_exam_screen)
 
     def on_click(self, x, y):
@@ -83,6 +77,12 @@ class ExamsScreen(tk.Frame):
 
         self.gif_canvas = AnimatedGifCanvas(self, image_path, self.on_click)
         self.gif_canvas.pack()
+
+        # Handle change cursor
+        self.gif_canvas.add_clickable_area(675, 145, 755, 220)  # A
+        self.gif_canvas.add_clickable_area(675, 245, 755, 320)  # B
+        self.gif_canvas.add_clickable_area(675, 350, 755, 430)  # C
+        self.gif_canvas.add_clickable_area(675, 465, 755, 545)  # D
 
     def load_new_question(self):
         if not self.available_questions:
