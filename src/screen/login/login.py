@@ -33,6 +33,9 @@ class LoginScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        # Handle change cursor
+        animated_canvas.add_clickable_area(300, 450, 600, 520)
+
         custom_font = tk.font.Font(family=Font.main_font, size=16)
         Component.right_button_back(self, self.show_home_screen)
 
@@ -44,7 +47,7 @@ class LoginScreen(tk.Frame):
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
-        if 300 < x < 600 and 450 < y < 520 :
+        if 300 < x < 600 and 450 < y < 520:
             print("Login")
             self.login_verify()
 

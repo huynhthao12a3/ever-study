@@ -21,6 +21,10 @@ class CalculateScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        # Handle change cursor
+        animated_canvas.add_clickable_area(30, 200, 735, 265)  # Subject Average Screen
+        animated_canvas.add_clickable_area(30, 350, 735, 415)  # Academic Result Screen
+
         Component.left_label(self)
         Component.right_button_back(self, self.show_utility_screen)
         Component.right_button_intro(self, ToolTip.calculate_screen)

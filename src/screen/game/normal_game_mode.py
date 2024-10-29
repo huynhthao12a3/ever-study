@@ -12,6 +12,7 @@ class NormalGameModeScreen(tk.Frame):
     def __init__(self, master, callback_list, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
 
+        self.animated_canvas = None
         self.root = self.winfo_toplevel()  # Get parent window (Tk)
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
@@ -27,11 +28,49 @@ class NormalGameModeScreen(tk.Frame):
         else:
             self.gif_path = ImageUrl.bg_word_search_mode_screen
 
-        animated_canvas = AnimatedGifCanvas(self, self.gif_path, self.on_click)
-        animated_canvas.pack()
+        self.animated_canvas = AnimatedGifCanvas(self, self.gif_path, self.on_click)
+        self.animated_canvas.pack()
+
+        # Đăng ký các vùng có thể click
+        if GameSetting.selected_game in ["Flappy_Bird", "Apple_Catcher"]:
+            self.register_normal_game_clickable_areas()
+        else:
+            self.register_word_search_clickable_areas()
 
         Component.left_label(self)
         Component.right_button_back(self, self.show_game_mode_screen)
+
+    def register_normal_game_clickable_areas(self):
+        areas = [
+            (110, 80, 310, 180),   # Môn Toán
+            (110, 200, 310, 300),  # Môn Tiếng anh
+            (110, 330, 310, 430),  # Môn LS-DL
+            (110, 450, 310, 550),  # Môn Tin học
+            (475, 80, 685, 180),   # Môn Ngữ văn
+            (475, 200, 685, 300),  # Môn KHTN
+            (475, 330, 685, 430),  # Môn GDCD
+            (475, 450, 685, 550),  # Môn Công nghệ
+        ]
+        for area in areas:
+            self.animated_canvas.add_clickable_area(*area)
+
+    def register_word_search_clickable_areas(self):
+        areas = [
+            (55, 270, 135, 350),   # Toán - 1
+            (165, 270, 245, 350),  # Toán - 2
+            (55, 370, 135, 450),   # Toán - 3
+            (165, 370, 245, 450),  # Toán - 4
+            (305, 270, 385, 350),  # Tiếng Anh - 1
+            (415, 270, 495, 350),  # Tiếng Anh - 2
+            (305, 370, 385, 450),  # Tiếng Anh - 3
+            (415, 370, 495, 450),  # Tiếng Anh - 4
+            (555, 270, 635, 350),  # LS-DL - 1
+            (665, 270, 745, 350),  # LS-DL - 2
+            (555, 370, 635, 450),  # LS-DL - 3
+            (665, 370, 745, 450),  # LS-DL - 4
+        ]
+        for area in areas:
+            self.animated_canvas.add_clickable_area(*area)
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")

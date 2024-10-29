@@ -28,6 +28,14 @@ class HomeScreen(tk.Frame):
         self.animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         self.animated_canvas.pack()
 
+        # Handle change cursor
+        self.animated_canvas.add_clickable_area(75, 150, 270, 310)  # Learn Screen
+        self.animated_canvas.add_clickable_area(325, 120, 470, 310)  # Game Screen
+        self.animated_canvas.add_clickable_area(526, 135, 720, 310)  # Utility Screen
+        self.animated_canvas.add_clickable_area(335, 350, 465, 525)  # Share Screen
+        self.animated_canvas.add_clickable_area(1, 520, 60, 600)     # Author Screen (left)
+        self.animated_canvas.add_clickable_area(750, 490, 800, 600)  # Author Screen (right)
+
         Component.left_label(self)
 
         if Auth.login_success is False:
@@ -35,7 +43,7 @@ class HomeScreen(tk.Frame):
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
-        if Auth.login_success is True:
+        if Auth.login_success is True or Auth.login_success is False:
             if 75 < x < 270 and 150 < y < 310:
                 print("Learn Screen")
                 self.show_learn_screen()

@@ -18,6 +18,14 @@ class ExamScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        # Handle change cursor
+        animated_canvas.add_clickable_area(95, 130, 225, 305)  # ATGT
+        animated_canvas.add_clickable_area(340, 130, 460, 305)  # BLHD
+        animated_canvas.add_clickable_area(610, 130, 730, 305)  # XHTD
+        animated_canvas.add_clickable_area(95, 340, 225, 520)  # GDGT
+        animated_canvas.add_clickable_area(340, 340, 460, 520)  # ATM
+        animated_canvas.add_clickable_area(610, 340, 730, 520)  # TLDT
+
         # Component.left_label(self)
         Component.right_button_back(self, self.show_utility_screen)
         Component.right_button_intro(self, ToolTip.exam_screen)

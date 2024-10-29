@@ -9,6 +9,11 @@ from src.utils.file import FileManager
 from src.utils.question import QuestionManager
 
 
+class ClickableArea:
+    def __init__(self, rect):
+        self.rect = pygame.Rect(rect)
+
+
 class FlappyBird:
     def __init__(self, on_flappy_bird_close, selected_subject):
 
@@ -97,6 +102,18 @@ class FlappyBird:
         self.score_sound = pygame.mixer.Sound(self.file_manager.resource_path('sound/flappy-bird/sfx_point.wav'))
         self.score_sound_countdown = 100
 
+        # Click Area
+        self.clickable_areas = [
+            ClickableArea((50, 470, 120, 120)),   # A
+            ClickableArea((240, 470, 120, 120)),  # B
+            ClickableArea((435, 470, 125, 120)),  # C
+            ClickableArea((630, 470, 120, 120))   # D
+        ]
+
+        # Cursor hand
+        self.hand_cursor = pygame.cursors.Cursor(pygame.SYSTEM_CURSOR_HAND)
+        self.default_cursor = pygame.cursors.Cursor(pygame.SYSTEM_CURSOR_ARROW)
+
     def draw_background(self):
         self.screen.blit(self.bg, (self.bg_x_pos, 0))
         self.screen.blit(self.bg, (self.bg_x_pos + 800, 0))
@@ -168,15 +185,6 @@ class FlappyBird:
             score_rect = score_surface.get_rect(center=(70, 20))
             self.screen.blit(score_surface, score_rect)
 
-            # high_score_surface = self.game_font.render(f'High Score: {int(self.high_score)}', True, (255, 255, 255))
-            # high_score_rect = high_score_surface.get_rect(center=(216, 430))
-            # self.screen.blit(high_score_surface, high_score_rect)
-
-    # def update_score(self, score, high_score):
-    #     if score > high_score:
-    #         high_score = score
-    #     return high_score
-
     def display_question(self, image_path):
         self.screen.blit(self.file_manager.load_image(image_path, True), (0, 0))
 
@@ -194,6 +202,24 @@ class FlappyBird:
         self.collision = False
         self.game_active = True
         self.bird_movement = -12
+
+    def handle_mouse_click(self, pos):
+        for i, area in enumerate(self.clickable_areas):
+            if area.rect.collidepoint(pos):
+                self.selected_answer = ["A", "B", "C", "D"][i]
+                print(f"Selected answer: {self.selected_answer}")
+                break
+
+    def handle_mouse_motion(self, pos):
+        cursor_changed = False
+        for area in self.clickable_areas:
+            if area.rect.collidepoint(pos):
+                pygame.mouse.set_cursor(self.hand_cursor)
+                cursor_changed = True
+                break
+
+        if not cursor_changed:
+            pygame.mouse.set_cursor(self.default_cursor)
 
     def run(self):
         while self.running:
@@ -264,7 +290,7 @@ class FlappyBird:
                     self.running = False
                     self.on_flappy_bird_close(self.game_result)  # Quit game
 
-                if event.type == pygame.KEYDOWN:
+                elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.running = False
                         self.on_flappy_bird_close(self.game_result)  # Quit game
@@ -280,7 +306,7 @@ class FlappyBird:
                         self.bird_movement = 0
                         # self.score = 0
 
-                if event.type == pygame.MOUSEBUTTONDOWN:
+                elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_x, mouse_y = pygame.mouse.get_pos()
                     print(mouse_x, mouse_y)
                     if event.button == 1 and self.game_active:
@@ -298,14 +324,15 @@ class FlappyBird:
                     # Bird collided pipe => choose answer
                     if event.button == 1 and self.collision is True:
                         print("Correct answer is ", self.correct_answer)
-                        if 50 < mouse_x < 170 and 470 < mouse_y < 590:
-                            self.selected_answer = "A"
-                        if 240 < mouse_x < 360 and 470 < mouse_y < 590:
-                            self.selected_answer = "B"
-                        if 435 < mouse_x < 560 and 470 < mouse_y < 590:
-                            self.selected_answer = "C"
-                        if 630 < mouse_x < 750 and 470 < mouse_y < 590:
-                            self.selected_answer = "D"
+                        self.handle_mouse_click(event.pos)
+                        # if 50 < mouse_x < 170 and 470 < mouse_y < 590:
+                        #     self.selected_answer = "A"
+                        # if 240 < mouse_x < 360 and 470 < mouse_y < 590:
+                        #     self.selected_answer = "B"
+                        # if 435 < mouse_x < 560 and 470 < mouse_y < 590:
+                        #     self.selected_answer = "C"
+                        # if 630 < mouse_x < 750 and 470 < mouse_y < 590:
+                        #     self.selected_answer = "D"
 
                         if self.selected_answer is not None and self.selected_answer == self.correct_answer:
                             # increase answered question
@@ -364,6 +391,10 @@ class FlappyBird:
 
                         self.selected_answer = None  # Reset answer
 
+                elif event.type == pygame.MOUSEMOTION:
+                    if self.collision is True:
+                        self.handle_mouse_motion(event.pos)
+
                 # Create pipe each second
                 if event.type == self.spawn_pipe and self.game_active is True and self.collision is False:
                     self.pipe_list.extend(self.create_pipe())
@@ -375,7 +406,13 @@ class FlappyBird:
                     else:
                         self.bird_index = 0
                     self.bird, self.bird_rect = self.bird_animation()
-
+            # self.check_click_area()
             pygame.display.update()
             self.clock.tick(60)
         pygame.quit()
+
+    def check_click_area(self):
+        # Check click area
+        if self.collision:
+            for area in self.clickable_areas:
+                pygame.draw.rect(self.screen, (255, 0, 0), area.rect, 2)

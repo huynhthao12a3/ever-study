@@ -27,6 +27,9 @@ class ShareScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        # Handle change cursor
+        animated_canvas.add_clickable_area(375, 480, 575, 530)
+
         def limit_character(P):
             if len(P) <= 500:
                 return True

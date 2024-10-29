@@ -34,6 +34,14 @@ class UtilityScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        # Handle change cursor
+        animated_canvas.add_clickable_area(95, 135, 245, 325)  # Calculate Screen
+        animated_canvas.add_clickable_area(335, 135, 485, 325)  # Time Table Screen
+        animated_canvas.add_clickable_area(575, 135, 730, 325)  # Updating...
+        animated_canvas.add_clickable_area(95, 365, 245, 535)  # Exam Screen
+        animated_canvas.add_clickable_area(300, 365, 520, 535)  # Open .ppsm
+        animated_canvas.add_clickable_area(575, 365, 730, 535)  # Chat AI Screen
+
         Component.left_label(self)
         Component.right_button_back(self, self.show_home_screen)
         Component.right_button_intro(self, ToolTip.utility_screen)

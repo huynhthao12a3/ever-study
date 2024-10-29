@@ -16,6 +16,11 @@ if sys.platform.startswith('win'):
         pass
 
 
+class ClickableArea:
+    def __init__(self, rect):
+        self.rect = pygame.Rect(rect)
+
+
 class AppleCatcher:
     def __init__(self, on_apple_catcher_close, selected_subject):
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=512)
@@ -79,6 +84,18 @@ class AppleCatcher:
         self.correct_answer = None
         self.wrong_answer_count = 0
         self.max_wrong_answers = 3
+
+        # Click Area
+        self.clickable_areas = [
+            ClickableArea((50, 470, 120, 120)),   # A
+            ClickableArea((240, 470, 120, 120)),  # B
+            ClickableArea((435, 470, 125, 120)),  # C
+            ClickableArea((630, 470, 120, 120))   # D
+        ]
+
+        # Cursor hand
+        self.hand_cursor = pygame.cursors.Cursor(pygame.SYSTEM_CURSOR_HAND)
+        self.default_cursor = pygame.cursors.Cursor(pygame.SYSTEM_CURSOR_ARROW)
 
     def load_and_scale_image(self, path, size):
         image = self.file_manager.load_image(path, True)
@@ -196,6 +213,24 @@ class AppleCatcher:
         self.game_active = True
         self.show_question = False
 
+    def handle_mouse_click(self, pos):
+        for i, area in enumerate(self.clickable_areas):
+            if area.rect.collidepoint(pos):
+                self.check_answer(["A", "B", "C", "D"][i])
+                print(f"Selected answer: ", ["A", "B", "C", "D"][i])
+                break
+
+    def handle_mouse_motion(self, pos):
+        cursor_changed = False
+        for area in self.clickable_areas:
+            if area.rect.collidepoint(pos):
+                pygame.mouse.set_cursor(self.hand_cursor)
+                cursor_changed = True
+                break
+
+        if not cursor_changed:
+            pygame.mouse.set_cursor(self.default_cursor)
+
     def run(self):
         while self.running:
             for event in pygame.event.get():
@@ -214,17 +249,21 @@ class AppleCatcher:
                                           random.randint(800 - self.level * 50, 1500 - self.level * 50))
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.show_question:
-                        mouse_x, mouse_y = pygame.mouse.get_pos()
-                        if 50 < mouse_x < 170 and 470 < mouse_y < 590:
-                            self.check_answer("A")
-                        elif 240 < mouse_x < 360 and 470 < mouse_y < 590:
-                            self.check_answer("B")
-                        elif 435 < mouse_x < 560 and 470 < mouse_y < 590:
-                            self.check_answer("C")
-                        elif 630 < mouse_x < 750 and 470 < mouse_y < 590:
-                            self.check_answer("D")
+                        self.handle_mouse_click(event.pos)
+                        # mouse_x, mouse_y = pygame.mouse.get_pos()
+                        # if 50 < mouse_x < 170 and 470 < mouse_y < 590:
+                        #     self.check_answer("A")
+                        # elif 240 < mouse_x < 360 and 470 < mouse_y < 590:
+                        #     self.check_answer("B")
+                        # elif 435 < mouse_x < 560 and 470 < mouse_y < 590:
+                        #     self.check_answer("C")
+                        # elif 630 < mouse_x < 750 and 470 < mouse_y < 590:
+                        #     self.check_answer("D")
                     elif not self.game_active:
                         self.game_active = True
+                if event.type == pygame.MOUSEMOTION:
+                    if self.show_question:
+                        self.handle_mouse_motion(event.pos)
 
             if self.game_active and not self.game_over and not self.show_question:
                 mouse_x, _ = pygame.mouse.get_pos()
@@ -244,7 +283,13 @@ class AppleCatcher:
             if self.game_over:
                 self.draw_game_over()
 
+            # self.check_click_area()
             pygame.display.update()
             self.clock.tick(60)
 
         pygame.quit()
+
+    # def check_click_area(self):
+    #     # Check click area
+    #     for area in self.clickable_areas:
+    #         pygame.draw.rect(self.screen, (255, 0, 0), area.rect, 2)

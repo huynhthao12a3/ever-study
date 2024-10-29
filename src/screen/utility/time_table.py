@@ -127,18 +127,18 @@ class TimeTableScreen(tk.Frame):
         self.bg_photo1 = ImageTk.PhotoImage(bg_image1)
         self.bg_photo2 = ImageTk.PhotoImage(bg_image2)
 
-        bg_label_1 = tk.Label(bg_frame, image=self.bg_photo1, bg="white")
+        bg_label_1 = tk.Label(bg_frame, image=self.bg_photo1, bg="white", cursor="hand2")
         bg_label_1.bind("<Button-1>", lambda event: self.set_background(self.background_path1, self.positions_1,
                                                                         self.time_positions_1, 10))
 
-        bg_label_2 = tk.Label(bg_frame, image=self.bg_photo2, bg="white")
+        bg_label_2 = tk.Label(bg_frame, image=self.bg_photo2, bg="white", cursor="hand2")
         bg_label_2.bind("<Button-1>", lambda event: self.set_background(self.background_path2, self.positions_2,
                                                                         self.time_positions_2, 5))
 
         bg_label_1.grid(row=0, column=0, padx=10)
         bg_label_2.grid(row=0, column=1, padx=10)
 
-        tk.Button(bg_frame, text="Tạo ảnh thời khóa biểu", font=Font.main_font, command=self.generate_image).grid(row=1, columnspan=2, pady=(10))
+        tk.Button(bg_frame, text="Tạo ảnh thời khóa biểu", font=Font.main_font, command=self.generate_image, cursor="hand2").grid(row=1, columnspan=2, pady=(10))
 
         Component.left_label(self)
         Component.right_button_back(self, self.show_utility_screen)

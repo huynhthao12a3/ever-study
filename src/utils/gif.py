@@ -10,10 +10,13 @@ class AnimatedGifCanvas(tk.Canvas):
 
         self.sequence = []
         self.delay = 100
+        self.clickable_areas = []
 
         self.load_gif(filename)
         self.on_click_callback = on_click_callback
         self.bind("<Button-1>", self.on_click)
+        self.bind("<Motion>", self.on_mouse_move)
+        self.bind("<Leave>", self.on_mouse_leave)
 
     def load_gif(self, filename):
         self.gif = Image.open(FileManager().resource_path(filename))
@@ -46,3 +49,26 @@ class AnimatedGifCanvas(tk.Canvas):
         y = event.y
         if self.on_click_callback:
             self.on_click_callback(x, y)
+
+    def add_clickable_area(self, x1, y1, x2, y2, cursor="hand2"):
+        self.clickable_areas.append((x1, y1, x2, y2, cursor))
+
+    def is_in_clickable_area(self, x, y):
+        for area in self.clickable_areas:
+            x1, y1, x2, y2, cursor = area
+            if x1 <= x <= x2 and y1 <= y <= y2:
+                return cursor
+        return None
+
+    def on_mouse_move(self, event):
+        cursor = self.is_in_clickable_area(event.x, event.y)
+        if cursor:
+            self.config(cursor=cursor)
+        else:
+            self.config(cursor="")
+
+    def on_mouse_leave(self, event):
+        self.config(cursor="")
+
+    def clear_clickable_areas(self):
+        self.clickable_areas.clear()

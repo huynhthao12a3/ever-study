@@ -10,7 +10,7 @@ class Component:
     def left_label(self, callback=None):
         label = tk.Label(self, text="Hi, " + Auth.full_name if Auth.login_success else "",
                          font=(Font.main_font, 12),
-                         bg="white", fg="red", borderwidth=2)
+                         bg="white", fg="red", borderwidth=2, cursor="target")
         label.place(x=0, y=2)
 
     # Login
@@ -25,7 +25,8 @@ class Component:
             image=self.login_icon,
             command=callback,
             borderwidth=0,
-            highlightthickness=0
+            highlightthickness=0,
+            cursor="hand2"
         )
         self.login_button.place(x=736, y=4)
 
@@ -41,7 +42,8 @@ class Component:
             image=self.back_icon,
             command=callback,
             borderwidth=0,
-            highlightthickness=0
+            highlightthickness=0,
+            cursor="hand2"
         )
         self.back_button.place(x=736, y=4)
 
@@ -56,7 +58,8 @@ class Component:
             self,
             image=self.button_icon,
             borderwidth=0,
-            highlightthickness=0
+            highlightthickness=0,
+            cursor="target"
         )
         self.button.place(x=775, y=575)
 

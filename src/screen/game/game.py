@@ -19,6 +19,11 @@ class GameScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        # Handle change cursor
+        animated_canvas.add_clickable_area(70, 220, 245, 430)  # Flappy_Bird
+        animated_canvas.add_clickable_area(335, 220, 520, 430)  # Apple_Catcher
+        animated_canvas.add_clickable_area(590, 220, 750, 430)  # Word_Search
+
         Component.left_label(self)
         Component.right_button_back(self, self.show_home_screen)
         Component.right_button_intro(self, ToolTip.game_screen)

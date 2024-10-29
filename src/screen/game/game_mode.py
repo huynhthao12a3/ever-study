@@ -29,6 +29,11 @@ class GameModeScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        # Handle change cursor
+        animated_canvas.add_clickable_area(145, 200, 320, 400)  # Normal
+        animated_canvas.add_clickable_area(465, 205, 665, 400)  # Rank
+        animated_canvas.add_clickable_area(90, 420, 210, 580)  # Rank Screen
+
         Component.left_label(self)
         Component.right_button_back(self, self.show_game_screen)
         Component.right_button_intro(self, ToolTip.game_screen_mode)

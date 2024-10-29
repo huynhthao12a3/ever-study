@@ -20,6 +20,16 @@ class LearnScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        # Handle change cursor
+        animated_canvas.add_clickable_area(110, 80, 310, 180)  # Toán
+        animated_canvas.add_clickable_area(110, 200, 310, 300)  # Tiếng Anh
+        animated_canvas.add_clickable_area(110, 330, 310, 430)  # LS-DL
+        animated_canvas.add_clickable_area(110, 450, 310, 550)  # Tin Học
+        animated_canvas.add_clickable_area(475, 80, 685, 180)  # Ngữ Văn
+        animated_canvas.add_clickable_area(475, 200, 685, 300)  # KHTN
+        animated_canvas.add_clickable_area(475, 330, 685, 430)  # GDCD
+        animated_canvas.add_clickable_area(475, 450, 685, 550)  # Công Nghệ
+
         Component.left_label(self)
         Component.right_button_back(self, self.show_home_screen)
         Component.right_button_intro(self, ToolTip.learn_screen)

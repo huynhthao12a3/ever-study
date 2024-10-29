@@ -18,6 +18,17 @@ class MathScreen(tk.Frame):
         animated_canvas = AnimatedGifCanvas(self, gif_path, self.on_click)
         animated_canvas.pack()
 
+        # Handle change cursor
+        animated_canvas.add_clickable_area(60, 144, 430, 164)  # Chuương 1
+        animated_canvas.add_clickable_area(60, 190, 635, 210)  # Chuương 2
+        animated_canvas.add_clickable_area(60, 238, 460, 256)  # Chuương 3
+        animated_canvas.add_clickable_area(60, 284, 540, 305)  # Chuương 4
+        animated_canvas.add_clickable_area(60, 328, 445, 350)  # Chuương 5
+        animated_canvas.add_clickable_area(60, 377, 400, 396)  # Chuương 6
+        animated_canvas.add_clickable_area(60, 424, 400, 445)  # Chuương 7
+        animated_canvas.add_clickable_area(60, 470, 430, 490)  # Chuương 8
+        animated_canvas.add_clickable_area(60, 515, 535, 540)  # Chuương 9
+
         Component.left_label(self)
         Component.right_button_back(self, self.show_learn_screen)
 
