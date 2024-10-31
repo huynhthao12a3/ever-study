@@ -14,7 +14,7 @@ class AnimalWordSearch:
         pygame.init()
         self.WIDTH, self.HEIGHT = 800, 600
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
-        pygame.display.set_caption("Trò Chơi Word Search")
+        pygame.display.set_caption("Word Search")
 
         self.file_manager = FileManager()
         self.background = self.file_manager.load_image(ImageUrl.bg_word_search_screen)

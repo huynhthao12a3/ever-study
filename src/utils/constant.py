@@ -49,7 +49,8 @@ class ImageUrl:
     bg_time_table_child2_screen = "image/background/tkb-2.gif"
     bg_exam_screen = "image/background/tien-ich-thi.gif"
     bg_share_screen = "image/background/chia-se.gif"
-    bg_other_screen = "image/background/tinh-diem-1.gif"
+    bg_question_bank_screen = "image/background/kho-de-1.gif"
+    bg_subject_screen = "image/background/kho-de-2.gif"
     bg_author_screen = "image/background/tac-gia.gif"
     bg_login_screen = "image/background/login.gif"
     bg_game_mode_screen = "image/background/chon-che-do-choi.gif"
@@ -531,3 +532,5 @@ class ToolTip:
     chat_gpt_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Chat cùng AI.\n"
                       "\nBạn có thể hỏi đáp các thắc mắc cùng EverStudy AI tại đây."
                       "\nĐừng ngại hỏi nếu bạn không biết, cùng trau dồi kiến thức nào.")
+    question_bank_screen = ("EverStudy\nĐây là hướng dẫn sử dụng của màn hình Kho đề.\n"
+                   "\nBạn có thể xem các đề cũ của các môn có trong danh sách.")

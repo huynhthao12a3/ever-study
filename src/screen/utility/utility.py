@@ -26,6 +26,7 @@ class UtilityScreen(tk.Frame):
         self.show_time_table_screen = callback_list["TimeTableScreen"]
         self.show_exam_screen = callback_list["ExamScreen"]
         self.show_chat_ai_screen = callback_list["ChatAIScreen"]
+        self.show_question_bank_screen = callback_list["QuestionBankScreen"]
         self.is_powerpoint_open = False
         self.powerpoint_hwnd = None
 
@@ -53,7 +54,8 @@ class UtilityScreen(tk.Frame):
         if 335 < x < 485 and 135 < y < 325:
             self.show_time_table_screen()
         if 575 < x < 730 and 135 < y < 325:
-            messagebox.showinfo("Thông báo", f"Tính năng này đang phát trển.\nVui lòng quay lại sau.")
+            self.show_question_bank_screen()
+            # messagebox.showinfo("Thông báo", f"Tính năng này đang phát trển.\nVui lòng quay lại sau.")
         if 95 < x < 245 and 365 < y < 535:
             self.show_exam_screen()
         if 300 < x < 520 and 365 < y < 535:

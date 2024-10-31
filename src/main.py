@@ -8,6 +8,7 @@ from src.screen.game.animalwordsearch.word_search_mode import WordSearchModeScre
 from src.screen.game.game_mode import GameModeScreen
 from src.screen.game.normal_game_mode import NormalGameModeScreen
 from src.screen.game.rank import RankScreen
+from src.screen.question_bank.subject import SubjectScreen
 from src.screen.utility.chatgpt import ChatAIScreen
 from src.screen.utility.exam import ExamScreen
 from src.screen.utility.exams.exams import ExamsScreen
@@ -18,7 +19,7 @@ from src.screen.home import HomeScreen
 from src.screen.learn.learn import LearnScreen
 from src.screen.learn.math import MathScreen
 from src.screen.login.login import LoginScreen
-from src.screen.other.other import OtherScreen
+from src.screen.question_bank.question_bank import QuestionBankScreen
 from src.screen.share.share import ShareScreen
 from src.utils.constant import ImageUrl
 from src.utils.file import FileManager
@@ -57,7 +58,7 @@ class EverStudy(tk.Tk):
             "GameScreen": self.show_game_screen,
             "UtilityScreen": self.show_utility_screen,
             "ShareScreen": self.show_share_screen,
-            "OtherScreen": self.show_other_screen,
+            "QuestionBankScreen": self.show_question_bank_screen,
             "AuthorScreen": self.show_author_screen,
             "LoginScreen": self.show_login_screen
         }
@@ -83,9 +84,6 @@ class EverStudy(tk.Tk):
             "RankScreen": self.show_rank_screen,
             "WordSearchModeScreen": self.show_word_search_mode_screen
         }
-        other_callback_list = {
-            "HomeScreen": self.show_home_screen
-        }
         share_callback_list = {
             "HomeScreen": self.show_home_screen
         }
@@ -98,7 +96,9 @@ class EverStudy(tk.Tk):
             "TimeTableScreen": self.show_time_table_screen,
             "ExamScreen": self.show_exam_screen,
             "ExamsScreen": self.show_exams_screen,
-            "ChatAIScreen": self.show_chat_ai_screen
+            "ChatAIScreen": self.show_chat_ai_screen,
+            "QuestionBankScreen": self.show_question_bank_screen,
+            "SubjectScreen": self.show_subject_screen
         }
         login_callback_list = {
             "HomeScreen": self.show_home_screen
@@ -116,7 +116,8 @@ class EverStudy(tk.Tk):
         self.screens["NormalGameModeScreen"] = NormalGameModeScreen(self.container, game_callback_list)
         self.screens["RankScreen"] = RankScreen(self.container, game_callback_list)
         self.screens["WordSearchModeScreen"] = WordSearchModeScreen(self.container, game_callback_list)
-        self.screens["OtherScreen"] = OtherScreen(self.container, other_callback_list)
+        self.screens["QuestionBankScreen"] = QuestionBankScreen(self.container, utility_callback_list)
+        self.screens["SubjectScreen"] = SubjectScreen(self.container, utility_callback_list)
         self.screens["ShareScreen"] = ShareScreen(self.container, share_callback_list)
         self.screens["UtilityScreen"] = UtilityScreen(self.container, utility_callback_list)
         self.screens["TimeTableScreen"] = TimeTableScreen(self.container, utility_callback_list)
@@ -178,8 +179,11 @@ class EverStudy(tk.Tk):
     def show_word_search_mode_screen(self):
         self.show_screen("WordSearchModeScreen")
 
-    def show_other_screen(self):
-        self.show_screen("OtherScreen")
+    def show_question_bank_screen(self):
+        self.show_screen("QuestionBankScreen")
+
+    def show_subject_screen(self):
+        self.show_screen("SubjectScreen")
 
     def show_share_screen(self):
         self.show_screen("ShareScreen")

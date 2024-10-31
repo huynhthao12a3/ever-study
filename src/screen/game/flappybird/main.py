@@ -19,7 +19,7 @@ class FlappyBird:
 
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=512)
         pygame.init()
-        pygame.display.set_caption('Trò chơi Flappy Bird')
+        pygame.display.set_caption('Flappy Bird')
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
         self.game_font = pygame.font.SysFont(Font.main_font, 35)

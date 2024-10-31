@@ -19,7 +19,6 @@ class HomeScreen(tk.Frame):
         self.show_game_screen = callback_list["GameScreen"]
         self.show_utility_screen = callback_list["UtilityScreen"]
         self.show_share_screen = callback_list["ShareScreen"]
-        self.show_other_screen = callback_list["OtherScreen"]
         self.show_author_screen = callback_list["AuthorScreen"]
         self.show_login_screen = callback_list["LoginScreen"]
 

@@ -29,7 +29,7 @@ class AppleCatcher:
         self.width = 800
         self.height = 600
         self.screen = pygame.display.set_mode((self.width, self.height))
-        pygame.display.set_caption('Trò Chơi Hứng Táo')
+        pygame.display.set_caption('Falling Apples')
         self.clock = pygame.time.Clock()
         self.game_font = pygame.font.SysFont(Font.main_font, 35)
         self.large_font = pygame.font.SysFont(Font.main_font, 70)
