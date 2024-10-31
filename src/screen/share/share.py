@@ -15,6 +15,7 @@ class ShareScreen(tk.Frame):
 
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
+        self.show_share_list_screen = callback_list["ShareListScreen"]
 
         # Variable
         self.title = tk.StringVar()
@@ -51,8 +52,12 @@ class ShareScreen(tk.Frame):
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
+
         title = self.title.get()
         content = self.content_text.get("1.0", tk.END).strip()
+        if 0 < x < 100 and 500 < y < 600:
+            self.show_share_list_screen()
+
         if (375 < x < 575 and 480 < y < 530
                 and len(title) > 0 and len(content) > 0
                 and Auth.login_success is True):

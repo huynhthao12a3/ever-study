@@ -49,6 +49,7 @@ class ImageUrl:
     bg_time_table_child2_screen = "image/background/tkb-2.gif"
     bg_exam_screen = "image/background/tien-ich-thi.gif"
     bg_share_screen = "image/background/chia-se.gif"
+    bg_share_list_screen = "image/background/danh-sach-chia-se.png"
     bg_question_bank_screen = "image/background/kho-de-1.gif"
     bg_subject_screen = "image/background/kho-de-2.gif"
     bg_author_screen = "image/background/tac-gia.gif"
