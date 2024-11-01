@@ -1,4 +1,5 @@
-﻿import tkinter as tk
+﻿import datetime
+import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 from src.utils.component import Component
@@ -79,6 +80,7 @@ class ShareListScreen(tk.Frame):
         Component.right_button_intro(self, ToolTip.share_screen)
 
     def on_item_select(self, event):
+        self.detail_content.config(state='normal')
         selected_item = self.tree.focus()
         if selected_item:
             self.update_detail_view(selected_item)
@@ -86,44 +88,31 @@ class ShareListScreen(tk.Frame):
             print("No item selected")
 
     def update_detail_view(self, selected_item):
+        print("update_detail_view: ", selected_item)
         item_data = self.tree.item(selected_item)
         print(f"Item data: {item_data}")  # Debug print
         if 'values' in item_data:
-            item_id, item_title = item_data['values']
-            print(f"Updating details for: ID={item_id}, Title={item_title}")  # Debug print
+            item_id, item_title, item_content, item_admin_feedback, item_created_at, item_updated_at = item_data['values']
 
-            self.detail_title.config(text=f"Details: {item_title}")
-            print(f"Detail title updated to: {self.detail_title['text']}")  # Debug print
-
+            self.detail_title.config(text=f"Chi tiết")
             self.detail_content.delete('1.0', tk.END)
-            self.detail_content.insert(tk.END, f"ID: {item_id}\n\n")
-            self.detail_content.insert(tk.END, f"Title: {item_title}\n\n")
-            self.detail_content.insert(tk.END, "Content:\n")
-            self.detail_content.insert(tk.END, f"This is the detailed content for {item_title}. "
-                                               "You can add any additional information here.")
-            print(f"Detail content updated. Current content: {self.detail_content.get('1.0', tk.END)}")  # Debug print
+            # self.detail_content.insert(tk.END, f"☞ ID: {item_id}\n\n")
+            self.detail_content.insert(tk.END, f"\n☞ Tiêu đề: {item_title}\n\n")
+            self.detail_content.insert(tk.END, f"☞ Nội dung: \n {item_content}\n\n")
+            self.detail_content.insert(tk.END, f"☞ Phản hồi: \n {item_admin_feedback}\n\n")
+            self.detail_content.insert(tk.END, f"☞ Ngày tạo: \n {datetime.datetime.fromisoformat(item_created_at).strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+            self.detail_content.insert(tk.END, f"☞ Cập nhật gần nhất: \n {datetime.datetime.fromisoformat(item_updated_at).strftime('%Y-%m-%d %H:%M:%S')}\n\n")
 
             self.detail_title.update()
             self.detail_content.update()
-
+            self.detail_content.config(state='disabled')
             print("Detail view updated")  # Debug print
         else:
             print("No values found for selected item")  # Debug print
 
-    def fetch_data_from_api(self):
-        try:
-            response = requests.get(Api.get_share_list)  # Thay thế bằng URL API thực tế của bạn
-            if response.status_code == 200:
-                return response.json()
-            else:
-                print(f"Failed to fetch data: {response.status_code}")
-                return None
-        except Exception as e:
-            print(f"Error fetching data: {e}")
-            return None
-
     def fetch_and_populate_data(self):
-        data = self.fetch_data_from_api()
+        data = Auth.share_list
+        print("data: ", data)
         if data:
             self.populate_tree(data)
         else:
@@ -136,7 +125,6 @@ class ShareListScreen(tk.Frame):
 
         # Add data from API
         for item in data:
-            self.tree.insert("", "end", values=(item['id'], item['title']))
+            self.tree.insert("", "end", values=(item['id'], item['title'], item['content'], item['admin_feedback'], item['created_at'], item['updated_at']))
 
         print(f"Populated tree with {len(self.tree.get_children())} items from API")
-
