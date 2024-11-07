@@ -22,6 +22,7 @@ class UtilityScreen(tk.Frame):
 
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
+        self.show_grade_screen = callback_list["GradeScreen"]
         self.show_calculate_screen = callback_list["CalculateScreen"]
         self.show_time_table_screen = callback_list["TimeTableScreen"]
         self.show_exam_screen = callback_list["ExamScreen"]
@@ -44,7 +45,7 @@ class UtilityScreen(tk.Frame):
         animated_canvas.add_clickable_area(575, 365, 730, 535)  # Chat AI Screen
 
         Component.left_label(self)
-        Component.right_button_back(self, self.show_home_screen)
+        Component.right_button_back(self, self.show_grade_screen)
         Component.right_button_intro(self, ToolTip.utility_screen)
 
     def on_click(self, x, y):

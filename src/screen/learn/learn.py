@@ -13,6 +13,7 @@ class LearnScreen(tk.Frame):
 
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
+        self.show_grade_screen = callback_list["GradeScreen"]
         self.show_math_screen = callback_list["MathScreen"]
 
     def load_widgets(self):
@@ -31,7 +32,7 @@ class LearnScreen(tk.Frame):
         animated_canvas.add_clickable_area(475, 450, 685, 550)  # Công Nghệ
 
         Component.left_label(self)
-        Component.right_button_back(self, self.show_home_screen)
+        Component.right_button_back(self, self.show_grade_screen)
         Component.right_button_intro(self, ToolTip.learn_screen)
 
     def on_click(self, x, y):

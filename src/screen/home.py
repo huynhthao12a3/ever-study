@@ -4,7 +4,7 @@ from tkinter import messagebox
 import requests
 
 from src.utils.component import Component
-from src.utils.constant import Auth, ImageUrl, Api
+from src.utils.constant import Auth, ImageUrl, Api, AppSetting
 from src.utils.gif import AnimatedGifCanvas
 
 
@@ -14,6 +14,7 @@ class HomeScreen(tk.Frame):
 
         self.animated_canvas = None
         self.master = master
+        self.show_grade_screen = callback_list["GradeScreen"]
         self.show_learn_screen = callback_list["LearnScreen"]
         self.show_calculate_screen = callback_list["CalculateScreen"]
         self.show_game_screen = callback_list["GameScreen"]
@@ -45,15 +46,21 @@ class HomeScreen(tk.Frame):
         if Auth.login_success is True or Auth.login_success is False:
             if 75 < x < 270 and 150 < y < 310:
                 print("Learn Screen")
-                self.show_learn_screen()
+                # self.show_learn_screen()
+                AppSetting.selected_feature = "learn"
+                self.show_grade_screen()
 
             if 325 < x < 470 and 120 < y < 310:
                 print("Game Screen")
-                self.show_game_screen()
+                # self.show_game_screen()
+                AppSetting.selected_feature = "game"
+                self.show_grade_screen()
 
             if 526 < x < 720 and 135 < y < 310:
                 print("Utility Screen")
-                self.show_utility_screen()
+                # self.show_utility_screen()
+                AppSetting.selected_feature = "utility"
+                self.show_grade_screen()
 
             if 335 < x < 465 and 350 < y < 525:
                 print("Share Screen")

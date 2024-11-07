@@ -38,6 +38,7 @@ class FileUrl:
 class ImageUrl:
     # Background image
     bg_home_screen = "image/background/home.gif"
+    bg_grade_screen = "image/background/grade.gif"
     bg_learn_screen = "image/background/on-tap.gif"
     bg_math_screen = "image/background/mon-toan.gif"
     bg_calculate_screen = "image/background/home-tinh-diem.gif"
@@ -116,6 +117,108 @@ class GameWordSearch:
         "lv3": ["PHONGKIEN", "PHANTRANH", "XUNGDOT", "DANGNGOAI", "DANGTRONG", "NOICHIEN", "DAIVIET", "HOANGSA", "TRUONGSA", "KHAIHOANG"],
         "lv4": ["PHONGKIEN", "PHANTRANH", "XUNGDOT", "DANGNGOAI", "DANGTRONG", "NOICHIEN", "DAIVIET", "HOANGSA", "TRUONGSA", "KHAIHOANG"]
     }
+
+
+class Question07:
+    math = [
+        {
+            "image_path": "image/question/game/grade06/toan_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade06/toan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    computer_science = [
+        {
+            "image_path": "image/question/game/grade06/tinhoc_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade06/tinhoc_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    english = [
+        {
+            "image_path": "image/question/game/grade06/tienganh_cauhoi01_C.png",
+            "correct_answer": "image/question/game/grade06/tienganh_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    literature = [
+        {
+            "image_path": "image/question/game/grade06/nguvan_cauhoi1_B.png",
+            "correct_answer": "image/question/game/grade06/nguvan_cauhoi1_B.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    history_geography = [
+        {
+            "image_path": "image/question/game/grade06/lsdl_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade06/lsdl_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    natural_sciences = [
+        {
+            "image_path": "image/question/game/grade06/khtn_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade06/khtn_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    civic_education = [
+        {
+            "image_path": "image/question/game/grade06/giaoduccongdan_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade06/giaoduccongdan_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    technology = [
+        {
+            "image_path": "image/question/game/grade06/congnghe_cauhoi01_D.png",
+            "correct_answer": "image/question/game/grade06/congnghe_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+
+
+class Question07:
+    math = [
+        {
+            "image_path": "image/question/game/grade07/toan_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade07/toan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    computer_science = [
+        {
+            "image_path": "image/question/game/grade07/tinhoc_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade07/tinhoc_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    english = [
+        {
+            "image_path": "image/question/game/grade07/tienganh_cauhoi01_C.png",
+            "correct_answer": "image/question/game/grade07/tienganh_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    literature = [
+        {
+            "image_path": "image/question/game/grade07/nguvan_cauhoi1_B.png",
+            "correct_answer": "image/question/game/grade07/nguvan_cauhoi1_B.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    history_geography = [
+        {
+            "image_path": "image/question/game/grade07/lsdl_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade07/lsdl_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    natural_sciences = [
+        {
+            "image_path": "image/question/game/grade07/khtn_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade07/khtn_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    civic_education = [
+        {
+            "image_path": "image/question/game/grade07/giaoduccongdan_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade07/giaoduccongdan_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    technology = [
+        {
+            "image_path": "image/question/game/grade07/congnghe_cauhoi01_D.png",
+            "correct_answer": "image/question/game/grade07/congnghe_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+        }
+    ]
 
 
 class Question:
@@ -298,6 +401,57 @@ class Question:
             "image_path": "image/question/game/congnghe_cauhoi04_B.png",
             "correct_answer": "image/question/game/congnghe_cauhoi04_B.png".split(".")[0][-1]  # correct answer
         },
+    ]
+
+
+class Question09:
+    math = [
+        {
+            "image_path": "image/question/game/grade09/toan_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade09/toan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    computer_science = [
+        {
+            "image_path": "image/question/game/grade09/tinhoc_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade09/tinhoc_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    english = [
+        {
+            "image_path": "image/question/game/grade09/tienganh_cauhoi01_C.png",
+            "correct_answer": "image/question/game/grade09/tienganh_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    literature = [
+        {
+            "image_path": "image/question/game/grade09/nguvan_cauhoi1_B.png",
+            "correct_answer": "image/question/game/grade09/nguvan_cauhoi1_B.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    history_geography = [
+        {
+            "image_path": "image/question/game/grade09/lsdl_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade09/lsdl_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    natural_sciences = [
+        {
+            "image_path": "image/question/game/grade09/khtn_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade09/khtn_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    civic_education = [
+        {
+            "image_path": "image/question/game/grade09/giaoduccongdan_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade09/giaoduccongdan_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        }
+    ]
+    technology = [
+        {
+            "image_path": "image/question/game/grade09/congnghe_cauhoi01_D.png",
+            "correct_answer": "image/question/game/grade09/congnghe_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+        }
     ]
 
 
@@ -502,9 +656,16 @@ class ExamSetting:
     selected_subject = Exam.ATGT
 
 
+class AppSetting:
+    selected_grade = None
+    selected_feature = None
+
+
 class ToolTip:
     learn_screen = ("☞ EverStudy ☜\nĐây là hướng dẫn sử dụng của màn hình Ôn tập.\n"
                     "\nBạn có thể tùy ý chọn môn mà bản thân cần ôn bài.")
+    grade_screen = ("☞ EverStudy ☜\nĐây là hướng dẫn sử dụng của màn hình chọn khối lớp.\n"
+                            "\nBạn vui lòng chọn khối lớp phù hợp với bản thân.")
     game_screen = ("☞ EverStudy ☜\nĐây là hướng dẫn sử dụng của màn hình Trò chơi.\n"
                    "\nChọn trò chơi mà bạn muốn chơi."
                    "\nFlappy Bird / Apple Collection / Word Search."

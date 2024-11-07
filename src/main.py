@@ -8,6 +8,7 @@ from src.screen.game.animalwordsearch.word_search_mode import WordSearchModeScre
 from src.screen.game.game_mode import GameModeScreen
 from src.screen.game.normal_game_mode import NormalGameModeScreen
 from src.screen.game.rank import RankScreen
+from src.screen.grade import GradeScreen
 from src.screen.question_bank.subject import SubjectScreen
 from src.screen.share.share_list import ShareListScreen
 from src.screen.utility.chatgpt import ChatAIScreen
@@ -54,6 +55,8 @@ class EverStudy(tk.Tk):
     def load_screens(self):
         # Routing
         home_callback_list = {
+            "HomeScreen": self.show_home_screen,
+            "GradeScreen": self.show_grade_screen,
             "LearnScreen": self.show_learn_screen,
             "CalculateScreen": self.show_calculate_screen,
             "GameScreen": self.show_game_screen,
@@ -65,6 +68,7 @@ class EverStudy(tk.Tk):
         }
         learn_callback_list = {
             "HomeScreen": self.show_home_screen,
+            "GradeScreen": self.show_grade_screen,
             "LearnScreen": self.show_learn_screen,
             "MathScreen": self.show_math_screen
         }
@@ -79,6 +83,7 @@ class EverStudy(tk.Tk):
         }
         game_callback_list = {
             "HomeScreen": self.show_home_screen,
+            "GradeScreen": self.show_grade_screen,
             "GameScreen": self.show_game_screen,
             "GameModeScreen": self.show_game_mode_screen,
             "NormalGameModeScreen": self.show_normal_game_mode_screen,
@@ -92,6 +97,7 @@ class EverStudy(tk.Tk):
         }
         utility_callback_list = {
             "HomeScreen": self.show_home_screen,
+            "GradeScreen": self.show_grade_screen,
             "CalculateScreen": self.show_calculate_screen,
             "SubjectAverageScreen": self.show_subject_average_screen,
             "AcademicResultScreen": self.show_academic_result_screen,
@@ -108,6 +114,7 @@ class EverStudy(tk.Tk):
         }
 
         self.screens["HomeScreen"] = HomeScreen(self.container, home_callback_list)
+        self.screens["GradeScreen"] = GradeScreen(self.container, home_callback_list)
         self.screens["LearnScreen"] = LearnScreen(self.container, learn_callback_list)
         self.screens["MathScreen"] = MathScreen(self.container, learn_callback_list)
         self.screens["AuthorScreen"] = AuthorScreen(self.container, author_callback_list)
@@ -149,6 +156,9 @@ class EverStudy(tk.Tk):
 
     def show_home_screen(self):
         self.show_screen("HomeScreen")
+
+    def show_grade_screen(self):
+        self.show_screen("GradeScreen")
 
     def show_learn_screen(self):
         self.show_screen("LearnScreen")

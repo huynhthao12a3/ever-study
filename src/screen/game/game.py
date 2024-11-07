@@ -11,6 +11,7 @@ class GameScreen(tk.Frame):
         self.root = self.winfo_toplevel()  # Get parent window (Tk)
         self.master = master
         self.show_home_screen = callback_list["HomeScreen"]
+        self.show_grade_screen = callback_list["GradeScreen"]
         self.show_game_mode_screen = callback_list["GameModeScreen"]
         self.pygame_window_closed = False
 
@@ -25,7 +26,7 @@ class GameScreen(tk.Frame):
         animated_canvas.add_clickable_area(590, 220, 750, 430)  # Word_Search
 
         Component.left_label(self)
-        Component.right_button_back(self, self.show_home_screen)
+        Component.right_button_back(self, self.show_grade_screen)
         Component.right_button_intro(self, ToolTip.game_screen)
 
     def on_click(self, x, y):
