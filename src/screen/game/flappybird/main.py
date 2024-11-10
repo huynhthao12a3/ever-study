@@ -93,7 +93,7 @@ class FlappyBird:
 
         # Game over
         self.game_over_surface = pygame.transform.scale2x(
-            self.file_manager.load_image('image/flappy-bird/message.png', True))
+            self.file_manager.load_image('image/flappy-bird/mgit p[uessage.png', True))
         self.game_over_rect = self.game_over_surface.get_rect(center=(400, 250))
 
         # Add sound
