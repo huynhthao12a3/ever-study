@@ -4,7 +4,9 @@ from tkinter import messagebox
 import requests
 
 from src.utils.component import Component
-from src.utils.constant import Auth, ImageUrl, Api, ToolTip, AppSetting
+from src.utils.constant import Auth, ImageUrl, Api, ToolTip, AppSetting, LearnFile06, BankFileUrl06, LearnFile07, \
+    BankFileUrl07, LearnFile08, BankFileUrl08, LearnFile09, BankFileUrl09, Question06, Question07, Question08, \
+    Question09
 from src.utils.gif import AnimatedGifCanvas
 
 
@@ -42,12 +44,24 @@ class GradeScreen(tk.Frame):
         print(f"Clicked on Page at x={x}, y={y}")
         if 140 < x < 355 and 130 < y < 290:
             AppSetting.selected_grade = "grade_6"
+            AppSetting.learn_instance = LearnFile06
+            AppSetting.game_instance = Question06
+            AppSetting.utility_instance = BankFileUrl06
         if 460 < x < 670 and 130 < y < 290:
             AppSetting.selected_grade = "grade_7"
+            AppSetting.learn_instance = LearnFile07
+            AppSetting.game_instance = Question07
+            AppSetting.utility_instance = BankFileUrl07
         if 140 < x < 355 and 350 < y < 510:
             AppSetting.selected_grade = "grade_8"
+            AppSetting.learn_instance = LearnFile08
+            AppSetting.game_instance = Question08
+            AppSetting.utility_instance = BankFileUrl08
         if 460 < x < 670 and 350 < y < 510:
             AppSetting.selected_grade = "grade_9"
+            AppSetting.learn_instance = LearnFile09
+            AppSetting.game_instance = Question09
+            AppSetting.utility_instance = BankFileUrl09
 
         if AppSetting.selected_feature == "learn":
             self.show_learn_screen()

@@ -2,7 +2,7 @@
 import sys
 import pygame
 
-from src.utils.constant import Font, Question
+from src.utils.constant import Font, AppSetting, Question06, Question07, Question09, Question08
 from src.utils.file import FileManager
 from src.utils.question import QuestionManager
 
@@ -77,7 +77,7 @@ class AppleCatcher:
         self.game_over_sound = pygame.mixer.Sound(self.file_manager.resource_path('sound/flappy-bird/sfx_die.wav'))
 
         # Quản lý câu hỏi
-        self.question_manager = QuestionManager(Question)
+        self.question_manager = QuestionManager(AppSetting.game_instance)
         self.question_manager.set_mode(selected_subject)
         self.show_question = False
         self.current_question = None

@@ -24,6 +24,7 @@ class Api:
 
 
 class FileUrl:
+    # Remove Math
     f_toan_chuong_01 = "Toan_Chuong_01_Bieu_thuc,phan_thuc_dai_so.pdf"
     f_toan_chuong_02 = "Toan_Chuong_02_Cac_hinh_khoi_trong_thuc_tien.pdf"
     f_toan_chuong_03 = "Toan_Chuong_03_Dinh_li_Pythagore_cac_loai_tu_giac_thuong_gap.pdf"
@@ -33,6 +34,156 @@ class FileUrl:
     f_toan_chuong_07 = "Toan_Chuong_07_Đinh_li_Thales.pdf"
     f_toan_chuong_08 = "Toan_Chuong_08_Tam_giac_dong_dang.pdf"
     f_toan_chuong_09 = "Toan_Chuong_09_Xac_suat.pdf"
+
+
+    # Learn
+class LearnFile06:
+    f_toan = "khoi-06/1-24-25-de-cuong-gki-toan-6.pdf"
+    f_nguvan = "khoi-06/6-24-25-dcgki-ngu-van-6.pdf"
+    f_khtn = "khoi-06/2-24-25-gk1-dc-khtn-6.pdf"
+    f_lsdl = "khoi-06/3-24-25-GHKI-LS-ĐL-6.pdf"
+    f_tienganh = "khoi-06/7-24-25-gk1-dc-tieng-anh-6.pdf"  # Dư khoảng cách trong file name, cần sửa lại
+    f_tinhoc = "khoi-06/4-24-25-gk1-tin-6.pdf"
+    f_gdcd = "khoi-06/5-24-25-dcgk-1-giao-duc-6.pdf"
+
+
+class LearnFile07:
+    f_toan = "khoi-07/1-24-25-de-cuong-gki-toan-7.pdf"
+    f_nguvan = "khoi-07/2-24-25-dcgk1-ngu-van-7.pdf"
+    f_khtn = "khoi-07/3-24-25-gki-dc-khtn-7.pdf"
+    f_lsdl = "khoi-07/4-24-25-ghki-ls-dl-7.pdf"
+    f_tienganh = "khoi-07/5-24-25-gk1-tieng-anh-7.pdf"
+    f_tinhoc = "khoi-07/6-24-25-gk1-tin-7.pdf"
+    f_gdcd = "khoi-07/7-24-25-dc-gk1-giao-duc-7.pdf"
+
+
+class LearnFile08:
+    f_toan = "khoi-08/1-24-25-de-cuong-gki-toan-8.pdf"
+    f_nguvan = "khoi-08/7-24-25-dc-gk1-ngu-van-8.pdf"
+    f_khtn = "khoi-08/2-24-25-gki-dc-khtn-8.pdf"
+    f_lsdl = "khoi-08/3-24-25-g-hki-ls-dl-8.pdf"
+    f_tienganh = "khoi-08/4-24-2-gk1-tieng-anh-8.pdf"
+    f_tinhoc = "khoi-08/5-23-24-gk1-tin-8.pdf"
+    f_gdcd = "khoi-08/6-24-25-dc-gk1-giao-duc-8.pdf"
+
+
+class LearnFile09:
+    f_toan = "khoi-09/1-24-25-de-cuong-gki-toan-9.pdf"
+    f_nguvan = "khoi-09/7-24-25-dcgk1-ngu-van-9.pdf"
+    f_khtn = "khoi-09/2-24-25-gki-dc-khtn-9.pdf"
+    f_lsdl = "khoi-09/3-24-25-gkhi-ls-dl-9.pdf"
+    f_tienganh = "khoi-09/4-24-25-gki-tieng-anh-9.pdf"
+    f_tinhoc = "khoi-09/5-24-25-gk1-tin-9.pdf"
+    f_gdcd = "khoi-09/6-24-25-dc-gk1-giao-duc-9.pdf"
+
+
+    # Question Bank
+class BankFileUrl06:
+    math = {
+        "hk2": "23-24-hk2-toan-6.pdf"
+    }
+    english = {
+        "hk2": "23-24-hk2-tieng-anh-6.pdf"
+    }
+    history_geography = {
+        "hk2": "23-24-hk2-ls-dl-6.pdf"
+    }
+    computer_science = {
+        "hk2": "23-24-hk2-tin-hoc-6.pdf"
+    }
+    literature = {
+        "hk2": "23-24-hk2-ngu-van-6.pdf"
+    }
+    natural_sciences = {
+        "hk2": "23-24-hk2-khtn-6.pdf"
+    }
+    civic_education = {
+        "hk2": "23-24-hk2-gdcd-6.pdf"
+    }
+    technology = {
+        "hk2": "23-24-hk2-cong-nghe-6.pdf"
+    }
+
+
+class BankFileUrl07:
+    math = {
+        "hk2": "23-24-hk2-toan-7.pdf"
+    }
+    english = {
+        "hk2": "23-24-hk2-tieng-anh-7.pdf"
+    }
+    history_geography = {
+        "hk2": "23-24-hk2-ls-dl-7.pdf"
+    }
+    computer_science = {
+        "hk2": "23-24-hk2-tin-hoc-7.pdf"
+    }
+    literature = {
+        "hk2": "23-24-hk2-ngu-van-7.pdf"
+    }
+    natural_sciences = {
+        "hk2": "23-24-hk2-khtn-7.pdf"
+    }
+    civic_education = {
+        "hk2": "23-24-hk2-gdcd-7.pdf"
+    }
+    technology = {
+        "hk2": "23-24-hk2-cong-nghe-7.pdf"
+    }
+
+
+class BankFileUrl08:
+    math = {
+        "hk2": "23-24-hk2-toan-8.pdf"
+    }
+    english = {
+        "hk2": "23-24-hk2-tieng-anh-8.pdf"
+    }
+    history_geography = {
+        "hk2": "23-24-hk2-ls-dl-8.pdf"
+    }
+    computer_science = {
+        "hk2": "23-24-hk2-tin-hoc-8.pdf"
+    }
+    literature = {
+        "hk2": "23-24-hk2-ngu-van-8.pdf"
+    }
+    natural_sciences = {
+        "hk2": "23-24-hk2-khtn-8.pdf"
+    }
+    civic_education = {
+        "hk2": "23-24-hk2-gdcd-8.pdf"
+    }
+    technology = {
+        "hk2": "23-24-hk2-cong-nghe-8.pdf"
+    }
+
+
+class BankFileUrl09:
+    math = {
+        "hk2": "23-24-hk2-toan-9.pdf"
+    }
+    english = {
+        "hk2": "23-24-hk2-tieng-anh-9.pdf"
+    }
+    history_geography = {
+        "hk2": "23-24-hk2-ls-dl-9.pdf"
+    }
+    computer_science = {
+        "hk2": "23-24-hk2-tin-hoc-9.pdf"
+    }
+    literature = {
+        "hk2": "23-24-hk2-ngu-van-9.pdf"
+    }
+    natural_sciences = {
+        "hk2": "23-24-hk2-khtn-9.pdf"
+    }
+    civic_education = {
+        "hk2": "23-24-hk2-gdcd-9.pdf"
+    }
+    technology = {
+        "hk2": "23-24-hk2-cong-nghe-9.pdf"
+    }
 
 
 class ImageUrl:
@@ -119,53 +270,149 @@ class GameWordSearch:
     }
 
 
-class Question07:
+class Question06:
     math = [
         {
             "image_path": "image/question/game/grade06/toan_cauhoi01_B.png",
             "correct_answer": "image/question/game/grade06/toan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/toan_cauhoi02_C.png",
+            "correct_answer": "image/question/game/grade06/toan_cauhoi02_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/toan_cauhoi03_D.png",
+            "correct_answer": "image/question/game/grade06/toan_cauhoi03_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/toan_cauhoi04_B.png",
+            "correct_answer": "image/question/game/grade06/toan_cauhoi04_B.png".split(".")[0][-1]  # correct answer
         }
     ]
     computer_science = [
         {
-            "image_path": "image/question/game/grade06/tinhoc_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade06/tinhoc_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade06/tinhoc_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade06/tinhoc_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/tinhoc_cauhoi02_A.png",
+            "correct_answer": "image/question/game/grade06/tinhoc_cauhoi02_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/tinhoc_cauhoi03_C.png",
+            "correct_answer": "image/question/game/grade06/tinhoc_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/tinhoc_cauhoi04_C.png",
+            "correct_answer": "image/question/game/grade06/tinhoc_cauhoi04_C.png".split(".")[0][-1]  # correct answer
         }
     ]
     english = [
         {
             "image_path": "image/question/game/grade06/tienganh_cauhoi01_C.png",
             "correct_answer": "image/question/game/grade06/tienganh_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/tienganh_cauhoi02_A.png",
+            "correct_answer": "image/question/game/grade06/tienganh_cauhoi02_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/tienganh_cauhoi03_B.png",
+            "correct_answer": "image/question/game/grade06/tienganh_cauhoi03_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/tienganh_cauhoi04_D.png",
+            "correct_answer": "image/question/game/grade06/tienganh_cauhoi04_D.png".split(".")[0][-1]  # correct answer
         }
     ]
     literature = [
         {
-            "image_path": "image/question/game/grade06/nguvan_cauhoi1_B.png",
-            "correct_answer": "image/question/game/grade06/nguvan_cauhoi1_B.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade06/nguvan_cauhoi01_D.png",
+            "correct_answer": "image/question/game/grade06/nguvan_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/nguvan_cauhoi02_D.png",
+            "correct_answer": "image/question/game/grade06/nguvan_cauhoi02_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/nguvan_cauhoi03_C.png",
+            "correct_answer": "image/question/game/grade06/nguvan_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/nguvan_cauhoi04_C.png",
+            "correct_answer": "image/question/game/grade06/nguvan_cauhoi04_C.png".split(".")[0][-1]  # correct answer
         }
     ]
     history_geography = [
         {
-            "image_path": "image/question/game/grade06/lsdl_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade06/lsdl_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade06/lsdl_cauhoi01_C.png",
+            "correct_answer": "image/question/game/grade06/lsdl_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/lsdl_cauhoi02_D.png",
+            "correct_answer": "image/question/game/grade06/lsdl_cauhoi02_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/lsdl_cauhoi03_B.png",
+            "correct_answer": "image/question/game/grade06/lsdl_cauhoi03_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/lsdl_cauhoi04_B.png",
+            "correct_answer": "image/question/game/grade06/lsdl_cauhoi04_B.png".split(".")[0][-1]  # correct answer
         }
     ]
     natural_sciences = [
         {
-            "image_path": "image/question/game/grade06/khtn_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade06/khtn_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade06/khtn_cauhoi01_D.png",
+            "correct_answer": "image/question/game/grade06/khtn_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/khtn_cauhoi02_B.png",
+            "correct_answer": "image/question/game/grade06/khtn_cauhoi02_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/khtn_cauhoi03_B.png",
+            "correct_answer": "image/question/game/grade06/khtn_cauhoi03_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/khtn_cauhoi04_C.png",
+            "correct_answer": "image/question/game/grade06/khtn_cauhoi04_C.png".split(".")[0][-1]  # correct answer
         }
     ]
     civic_education = [
         {
-            "image_path": "image/question/game/grade06/giaoduccongdan_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade06/giaoduccongdan_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade06/giaoduccongdan_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade06/giaoduccongdan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/giaoduccongdan_cauhoi02_A.png",
+            "correct_answer": "image/question/game/grade06/giaoduccongdan_cauhoi02_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/giaoduccongdan_cauhoi03_B.png",
+            "correct_answer": "image/question/game/grade06/giaoduccongdan_cauhoi03_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/giaoduccongdan_cauhoi04_B.png",
+            "correct_answer": "image/question/game/grade06/giaoduccongdan_cauhoi04_B.png".split(".")[0][-1]  # correct answer
         }
     ]
     technology = [
         {
-            "image_path": "image/question/game/grade06/congnghe_cauhoi01_D.png",
-            "correct_answer": "image/question/game/grade06/congnghe_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade06/congnghe_cauhoi01_C.png",
+            "correct_answer": "image/question/game/grade06/congnghe_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/congnghe_cauhoi02_C.png",
+            "correct_answer": "image/question/game/grade06/congnghe_cauhoi02_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/congnghe_cauhoi03_A.png",
+            "correct_answer": "image/question/game/grade06/congnghe_cauhoi03_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade06/congnghe_cauhoi04_C.png",
+            "correct_answer": "image/question/game/grade06/congnghe_cauhoi04_C.png".split(".")[0][-1]  # correct answer
         }
     ]
 
@@ -173,55 +420,151 @@ class Question07:
 class Question07:
     math = [
         {
-            "image_path": "image/question/game/grade07/toan_cauhoi01_B.png",
-            "correct_answer": "image/question/game/grade07/toan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade07/toan_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade07/toan_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/toan_cauhoi02_A.png",
+            "correct_answer": "image/question/game/grade07/toan_cauhoi02_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/toan_cauhoi03_C.png",
+            "correct_answer": "image/question/game/grade07/toan_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/toan_cauhoi04_B.png",
+            "correct_answer": "image/question/game/grade07/toan_cauhoi04_B.png".split(".")[0][-1]  # correct answer
         }
     ]
     computer_science = [
         {
-            "image_path": "image/question/game/grade07/tinhoc_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade07/tinhoc_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade07/tinhoc_cauhoi01_D.png",
+            "correct_answer": "image/question/game/grade07/tinhoc_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/tinhoc_cauhoi02_B.png",
+            "correct_answer": "image/question/game/grade07/tinhoc_cauhoi02_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/tinhoc_cauhoi03_D.png",
+            "correct_answer": "image/question/game/grade07/tinhoc_cauhoi03_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/tinhoc_cauhoi04_A.png",
+            "correct_answer": "image/question/game/grade07/tinhoc_cauhoi04_A.png".split(".")[0][-1]  # correct answer
         }
     ]
     english = [
         {
-            "image_path": "image/question/game/grade07/tienganh_cauhoi01_C.png",
-            "correct_answer": "image/question/game/grade07/tienganh_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade07/tienganh_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade07/tienganh_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/tienganh_cauhoi02_B.png",
+            "correct_answer": "image/question/game/grade07/tienganh_cauhoi02_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/tienganh_cauhoi03_B.png",
+            "correct_answer": "image/question/game/grade07/tienganh_cauhoi03_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/tienganh_cauhoi04_A.png",
+            "correct_answer": "image/question/game/grade07/tienganh_cauhoi04_A.png".split(".")[0][-1]  # correct answer
         }
     ]
     literature = [
         {
-            "image_path": "image/question/game/grade07/nguvan_cauhoi1_B.png",
-            "correct_answer": "image/question/game/grade07/nguvan_cauhoi1_B.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade07/nguvan_cauhoi01_C.png",
+            "correct_answer": "image/question/game/grade07/nguvan_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/nguvan_cauhoi02_C.png",
+            "correct_answer": "image/question/game/grade07/nguvan_cauhoi02_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/nguvan_cauhoi03_A.png",
+            "correct_answer": "image/question/game/grade07/nguvan_cauhoi03_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/nguvan_cauhoi04_B.png",
+            "correct_answer": "image/question/game/grade07/nguvan_cauhoi04_B.png".split(".")[0][-1]  # correct answer
         }
     ]
     history_geography = [
         {
-            "image_path": "image/question/game/grade07/lsdl_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade07/lsdl_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade07/lsdl_cauhoi01_C.png",
+            "correct_answer": "image/question/game/grade07/lsdl_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/lsdl_cauhoi02_D.png",
+            "correct_answer": "image/question/game/grade07/lsdl_cauhoi02_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/lsdl_cauhoi03_C.png",
+            "correct_answer": "image/question/game/grade07/lsdl_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/lsdl_cauhoi04_A.png",
+            "correct_answer": "image/question/game/grade07/lsdl_cauhoi04_A.png".split(".")[0][-1]  # correct answer
         }
     ]
     natural_sciences = [
         {
-            "image_path": "image/question/game/grade07/khtn_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade07/khtn_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade07/khtn_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade07/khtn_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/khtn_cauhoi02_D.png",
+            "correct_answer": "image/question/game/grade07/khtn_cauhoi02_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/khtn_cauhoi03_C.png",
+            "correct_answer": "image/question/game/grade07/khtn_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/khtn_cauhoi04_C.png",
+            "correct_answer": "image/question/game/grade07/khtn_cauhoi04_C.png".split(".")[0][-1]  # correct answer
         }
     ]
     civic_education = [
         {
             "image_path": "image/question/game/grade07/giaoduccongdan_cauhoi01_A.png",
             "correct_answer": "image/question/game/grade07/giaoduccongdan_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/giaoduccongdan_cauhoi02_D.png",
+            "correct_answer": "image/question/game/grade07/giaoduccongdan_cauhoi02_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/giaoduccongdan_cauhoi03_B.png",
+            "correct_answer": "image/question/game/grade07/giaoduccongdan_cauhoi03_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/giaoduccongdan_cauhoi04_C.png",
+            "correct_answer": "image/question/game/grade07/giaoduccongdan_cauhoi04_C.png".split(".")[0][-1]  # correct answer
         }
     ]
     technology = [
         {
-            "image_path": "image/question/game/grade07/congnghe_cauhoi01_D.png",
-            "correct_answer": "image/question/game/grade07/congnghe_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade07/congnghe_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade07/congnghe_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/congnghe_cauhoi02_D.png",
+            "correct_answer": "image/question/game/grade07/congnghe_cauhoi02_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/congnghe_cauhoi03_A.png",
+            "correct_answer": "image/question/game/grade07/congnghe_cauhoi03_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade07/congnghe_cauhoi04_D.png",
+            "correct_answer": "image/question/game/grade07/congnghe_cauhoi04_D.png".split(".")[0][-1]  # correct answer
         }
     ]
 
 
-class Question:
+class Question08:
     math = [
         {
             "image_path": "image/question/game/toan_cauhoi01_B.png",
@@ -409,48 +752,144 @@ class Question09:
         {
             "image_path": "image/question/game/grade09/toan_cauhoi01_B.png",
             "correct_answer": "image/question/game/grade09/toan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/toan_cauhoi02_C.png",
+            "correct_answer": "image/question/game/grade09/toan_cauhoi02_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/toan_cauhoi03_A.png",
+            "correct_answer": "image/question/game/grade09/toan_cauhoi03_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/toan_cauhoi04_D.png",
+            "correct_answer": "image/question/game/grade09/toan_cauhoi04_D.png".split(".")[0][-1]  # correct answer
         }
     ]
     computer_science = [
         {
-            "image_path": "image/question/game/grade09/tinhoc_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade09/tinhoc_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade09/tinhoc_cauhoi01_D.png",
+            "correct_answer": "image/question/game/grade09/tinhoc_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/tinhoc_cauhoi02_C.png",
+            "correct_answer": "image/question/game/grade09/tinhoc_cauhoi02_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/tinhoc_cauhoi03_D.png",
+            "correct_answer": "image/question/game/grade09/tinhoc_cauhoi03_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/tinhoc_cauhoi04_B.png",
+            "correct_answer": "image/question/game/grade09/tinhoc_cauhoi04_B.png".split(".")[0][-1]  # correct answer
         }
     ]
     english = [
         {
-            "image_path": "image/question/game/grade09/tienganh_cauhoi01_C.png",
-            "correct_answer": "image/question/game/grade09/tienganh_cauhoi01_C.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade09/tienganh_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade09/tienganh_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/tienganh_cauhoi02_B.png",
+            "correct_answer": "image/question/game/grade09/tienganh_cauhoi02_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/tienganh_cauhoi03_A.png",
+            "correct_answer": "image/question/game/grade09/tienganh_cauhoi03_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/tienganh_cauhoi04_A.png",
+            "correct_answer": "image/question/game/grade09/tienganh_cauhoi04_A.png".split(".")[0][-1]  # correct answer
         }
     ]
     literature = [
         {
-            "image_path": "image/question/game/grade09/nguvan_cauhoi1_B.png",
-            "correct_answer": "image/question/game/grade09/nguvan_cauhoi1_B.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade09/nguvan_cauhoi01_A.png",
+            "correct_answer": "image/question/game/grade09/nguvan_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/nguvan_cauhoi02_A.png",
+            "correct_answer": "image/question/game/grade09/nguvan_cauhoi02_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/nguvan_cauhoi03_A.png",
+            "correct_answer": "image/question/game/grade09/nguvan_cauhoi03_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/nguvan_cauhoi04_A.png",
+            "correct_answer": "image/question/game/grade09/nguvan_cauhoi04_A.png".split(".")[0][-1]  # correct answer
         }
     ]
     history_geography = [
         {
             "image_path": "image/question/game/grade09/lsdl_cauhoi01_A.png",
             "correct_answer": "image/question/game/grade09/lsdl_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/lsdl_cauhoi02_D.png",
+            "correct_answer": "image/question/game/grade09/lsdl_cauhoi02_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/lsdl_cauhoi03_C.png",
+            "correct_answer": "image/question/game/grade09/lsdl_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/lsdl_cauhoi04_D.png",
+            "correct_answer": "image/question/game/grade09/lsdl_cauhoi04_D.png".split(".")[0][-1]  # correct answer
         }
     ]
     natural_sciences = [
         {
-            "image_path": "image/question/game/grade09/khtn_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade09/khtn_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade09/khtn_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade09/khtn_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/khtn_cauhoi02_D.png",
+            "correct_answer": "image/question/game/grade09/khtn_cauhoi02_D.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/khtn_cauhoi03_C.png",
+            "correct_answer": "image/question/game/grade09/khtn_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/khtn_cauhoi04_C.png",
+            "correct_answer": "image/question/game/grade09/khtn_cauhoi04_C.png".split(".")[0][-1]  # correct answer
         }
     ]
     civic_education = [
         {
-            "image_path": "image/question/game/grade09/giaoduccongdan_cauhoi01_A.png",
-            "correct_answer": "image/question/game/grade09/giaoduccongdan_cauhoi01_A.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade09/giaoduccongdan_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade09/giaoduccongdan_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/giaoduccongdan_cauhoi02_C.png",
+            "correct_answer": "image/question/game/grade09/giaoduccongdan_cauhoi02_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/giaoduccongdan_cauhoi03_C.png",
+            "correct_answer": "image/question/game/grade09/giaoduccongdan_cauhoi03_C.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/giaoduccongdan_cauhoi04_B.png",
+            "correct_answer": "image/question/game/grade09/giaoduccongdan_cauhoi04_B.png".split(".")[0][-1]  # correct answer
         }
     ]
     technology = [
         {
-            "image_path": "image/question/game/grade09/congnghe_cauhoi01_D.png",
-            "correct_answer": "image/question/game/grade09/congnghe_cauhoi01_D.png".split(".")[0][-1]  # correct answer
+            "image_path": "image/question/game/grade09/congnghe_cauhoi01_B.png",
+            "correct_answer": "image/question/game/grade09/congnghe_cauhoi01_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/congnghe_cauhoi02_B.png",
+            "correct_answer": "image/question/game/grade09/congnghe_cauhoi02_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/congnghe_cauhoi03_B.png",
+            "correct_answer": "image/question/game/grade09/congnghe_cauhoi03_B.png".split(".")[0][-1]  # correct answer
+        },
+        {
+            "image_path": "image/question/game/grade09/congnghe_cauhoi04_C.png",
+            "correct_answer": "image/question/game/grade09/congnghe_cauhoi04_C.png".split(".")[0][-1]  # correct answer
         }
     ]
 
@@ -659,6 +1098,10 @@ class ExamSetting:
 class AppSetting:
     selected_grade = None
     selected_feature = None
+    learn_instance = None
+    game_instance = None
+    utility_instance = None
+    subject_instance = None
 
 
 class ToolTip:

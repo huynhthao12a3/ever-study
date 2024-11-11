@@ -1,5 +1,7 @@
-﻿from src.utils.component import Component
-from src.utils.constant import ImageUrl, ToolTip
+﻿from tkinter import messagebox
+
+from src.utils.component import Component
+from src.utils.constant import ImageUrl, ToolTip, AppSetting
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 import tkinter as tk
@@ -36,24 +38,57 @@ class QuestionBankScreen(tk.Frame):
         print(f"Clicked on Page at x={x}, y={y}")
         if 85 < x < 315 and 120 < y < 200:
             print("1. Toán")
-            self.show_subject_screen()
+            if AppSetting.selected_grade == "grade_9":
+                messagebox.showinfo("Thông báo", "Năm học 2024-2025 học chương trình mới nên chưa có đề cương.\nVui lòng quay lại sau.")
+            else:
+                AppSetting.subject_instance = AppSetting.utility_instance.math
+                self.show_subject_screen()
         if 500 < x < 725 and 120 < y < 200:
             print("2. Ngữ Văn")
-            self.show_subject_screen()
+            if AppSetting.selected_grade == "grade_9":
+                messagebox.showinfo("Thông báo", "Năm học 2024-2025 học chương trình mới nên chưa có đề cương.\nVui lòng quay lại sau.")
+            else:
+                AppSetting.subject_instance = AppSetting.utility_instance.literature
+                self.show_subject_screen()
         if 35 < x < 265 and 210 < y < 285:
             print("3. Tiếng Anh")
-            self.show_subject_screen()
+            if AppSetting.selected_grade == "grade_9":
+                messagebox.showinfo("Thông báo", "Năm học 2024-2025 học chương trình mới nên chưa có đề cương.\nVui lòng quay lại sau.")
+            else:
+                AppSetting.subject_instance = AppSetting.utility_instance.english
+                self.show_subject_screen()
         if 550 < x < 780 and 210 < y < 285:
             print("4. KHTN")
-            self.show_subject_screen()
+            if AppSetting.selected_grade == "grade_9":
+                messagebox.showinfo("Thông báo", "Năm học 2024-2025 học chương trình mới nên chưa có đề cương.\nVui lòng quay lại sau.")
+            else:
+                AppSetting.subject_instance = AppSetting.utility_instance.natural_sciences
+                self.show_subject_screen()
         if 35 < x < 265 and 315 < y < 390:
             print("5. LS&DL")
-            self.show_subject_screen()
+            if AppSetting.selected_grade == "grade_9":
+                messagebox.showinfo("Thông báo", "Năm học 2024-2025 học chương trình mới nên chưa có đề cương.\nVui lòng quay lại sau.")
+            else:
+                AppSetting.subject_instance = AppSetting.utility_instance.history_geography
+                self.show_subject_screen()
         if 550 < x < 780 and 315 < y < 390:
             print("6. Tin Học")
-            self.show_subject_screen()
+            if AppSetting.selected_grade == "grade_9":
+                messagebox.showinfo("Thông báo", "Năm học 2024-2025 học chương trình mới nên chưa có đề cương.\nVui lòng quay lại sau.")
+            else:
+                AppSetting.subject_instance = AppSetting.utility_instance.computer_science
+                self.show_subject_screen()
         if 85 < x < 315 and 400 < y < 480:
             print("7. GDCD")
-            self.show_subject_screen()
+            if AppSetting.selected_grade == "grade_9":
+                messagebox.showinfo("Thông báo", "Năm học 2024-2025 học chương trình mới nên chưa có đề cương.\nVui lòng quay lại sau.")
+            else:
+                AppSetting.subject_instance = AppSetting.utility_instance.civic_education
+                self.show_subject_screen()
         if 500 < x < 725 and 400 < y < 480:
             print("8. Công Nghệ")
+            if AppSetting.selected_grade == "grade_9":
+                messagebox.showinfo("Thông báo", "Năm học 2024-2025 học chương trình mới nên chưa có đề cương.\nVui lòng quay lại sau.")
+            else:
+                AppSetting.subject_instance = AppSetting.utility_instance.technology
+                self.show_subject_screen()

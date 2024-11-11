@@ -4,7 +4,8 @@ import time
 
 import pygame
 
-from src.utils.constant import GameFlappyBird, Font, Question
+from src.utils.constant import GameFlappyBird, Font, AppSetting, Question06, Question07, Question08, \
+    Question09
 from src.utils.file import FileManager
 from src.utils.question import QuestionManager
 
@@ -47,7 +48,7 @@ class FlappyBird:
         self.max_wrong_answers = 3
 
         # Question - answer
-        self.question_manager = QuestionManager(Question)
+        self.question_manager = QuestionManager(AppSetting.game_instance)
         self.question_manager.set_mode(selected_subject)
         self.show_question = False
         self.current_question = None
@@ -93,7 +94,7 @@ class FlappyBird:
 
         # Game over
         self.game_over_surface = pygame.transform.scale2x(
-            self.file_manager.load_image('image/flappy-bird/mgit p[uessage.png', True))
+            self.file_manager.load_image('image/flappy-bird/message.png', True))
         self.game_over_rect = self.game_over_surface.get_rect(center=(400, 250))
 
         # Add sound

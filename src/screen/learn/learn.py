@@ -1,7 +1,8 @@
-﻿from tkinter import messagebox
+﻿import webbrowser
+from tkinter import messagebox
 
 from src.utils.component import Component
-from src.utils.constant import Auth, ImageUrl, ToolTip
+from src.utils.constant import Auth, ImageUrl, ToolTip, AppSetting
 from src.utils.file import FileManager
 from src.utils.gif import AnimatedGifCanvas
 import tkinter as tk
@@ -15,6 +16,7 @@ class LearnScreen(tk.Frame):
         self.show_home_screen = callback_list["HomeScreen"]
         self.show_grade_screen = callback_list["GradeScreen"]
         self.show_math_screen = callback_list["MathScreen"]
+        self.file_manager = FileManager()
 
     def load_widgets(self):
         gif_path = ImageUrl.bg_learn_screen
@@ -40,26 +42,34 @@ class LearnScreen(tk.Frame):
 
         if 110 < x < 310 and 80 < y < 180:
             print("Môn Toán")
-            self.show_math_screen()
+            # self.show_math_screen()
+            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_toan))
         if 110 < x < 310 and 200 < y < 300:
             print("Môn Tiếng anh")
-            messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_tienganh))
+            # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
         if 110 < x < 310 and 330 < y < 430:
             print("Môn LS-DL")
-            messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_lsdl))
+            # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
         if 110 < x < 310 and 450 < y < 550:
             print("Môn Tin học")
-            messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_tinhoc))
+            # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
 
         if 475 < x < 685 and 80 < y < 180:
             print("Môn Ngữ văn")
-            messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_nguvan))
+            # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
         if 475 < x < 685 and 200 < y < 300:
             print("Môn KHTN")
-            messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_khtn))
+            # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
         if 475 < x < 685 and 330 < y < 430:
             print("Môn GDCD")
-            messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_gdcd))
+            # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
         if 475 < x < 685 and 450 < y < 550:
             print("Môn Công nghệ")
+            # webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_toan))
             messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
