@@ -16,6 +16,7 @@ class LearnScreen(tk.Frame):
         self.show_home_screen = callback_list["HomeScreen"]
         self.show_grade_screen = callback_list["GradeScreen"]
         self.show_math_screen = callback_list["MathScreen"]
+        self.show_learn_subject_screen = callback_list["LearnSubjectScreen"]
         self.file_manager = FileManager()
 
     def load_widgets(self):
@@ -43,33 +44,55 @@ class LearnScreen(tk.Frame):
         if 110 < x < 310 and 80 < y < 180:
             print("Môn Toán")
             # self.show_math_screen()
-            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_toan))
+            # webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_toan))
+            AppSetting.subject_instance = AppSetting.learn_instance.math
+            self.show_learn_subject_screen()
+
         if 110 < x < 310 and 200 < y < 300:
             print("Môn Tiếng anh")
-            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_tienganh))
+            # webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_tienganh))
             # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            AppSetting.subject_instance = AppSetting.learn_instance.english
+            self.show_learn_subject_screen()
+
         if 110 < x < 310 and 330 < y < 430:
             print("Môn LS-DL")
-            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_lsdl))
+            # webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_lsdl))
             # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            AppSetting.subject_instance = AppSetting.learn_instance.history_geography
+            self.show_learn_subject_screen()
+
         if 110 < x < 310 and 450 < y < 550:
             print("Môn Tin học")
-            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_tinhoc))
+            # webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_tinhoc))
             # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            AppSetting.subject_instance = AppSetting.learn_instance.computer_science
+            self.show_learn_subject_screen()
 
         if 475 < x < 685 and 80 < y < 180:
             print("Môn Ngữ văn")
-            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_nguvan))
+            # webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_nguvan))
             # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            AppSetting.subject_instance = AppSetting.learn_instance.literature
+            self.show_learn_subject_screen()
+
         if 475 < x < 685 and 200 < y < 300:
             print("Môn KHTN")
-            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_khtn))
+            # webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_khtn))
             # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            AppSetting.subject_instance = AppSetting.learn_instance.natural_sciences
+            self.show_learn_subject_screen()
+
         if 475 < x < 685 and 330 < y < 430:
             print("Môn GDCD")
-            webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_gdcd))
+            # webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_gdcd))
             # messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            AppSetting.subject_instance = AppSetting.learn_instance.civic_education
+            self.show_learn_subject_screen()
+
         if 475 < x < 685 and 450 < y < 550:
             print("Môn Công nghệ")
             # webbrowser.open(self.file_manager.resource_path("file/on-tap/" + AppSetting.learn_instance.f_toan))
             messagebox.showinfo("Thông báo", "Ứng dụng đang trong quá trình chuẩn bị tài liệu.\nVui lòng quay lại sau.")
+            # AppSetting.subject_instance = AppSetting.learn_instance.math
+            # self.show_learn_subject_screen()

@@ -9,6 +9,7 @@ from src.screen.game.game_mode import GameModeScreen
 from src.screen.game.normal_game_mode import NormalGameModeScreen
 from src.screen.game.rank import RankScreen
 from src.screen.grade import GradeScreen
+from src.screen.learn.learn_subject import LearnSubjectScreen
 from src.screen.question_bank.subject import SubjectScreen
 from src.screen.share.share_list import ShareListScreen
 from src.screen.utility.chatgpt import ChatAIScreen
@@ -70,7 +71,8 @@ class EverStudy(tk.Tk):
             "HomeScreen": self.show_home_screen,
             "GradeScreen": self.show_grade_screen,
             "LearnScreen": self.show_learn_screen,
-            "MathScreen": self.show_math_screen
+            "MathScreen": self.show_math_screen,
+            "LearnSubjectScreen": self.show_learn_subject_screen
         }
         author_callback_list = {
             "HomeScreen": self.show_home_screen
@@ -128,6 +130,7 @@ class EverStudy(tk.Tk):
         self.screens["WordSearchModeScreen"] = WordSearchModeScreen(self.container, game_callback_list)
         self.screens["QuestionBankScreen"] = QuestionBankScreen(self.container, utility_callback_list)
         self.screens["SubjectScreen"] = SubjectScreen(self.container, utility_callback_list)
+        self.screens["LearnSubjectScreen"] = LearnSubjectScreen(self.container, learn_callback_list)
         self.screens["ShareScreen"] = ShareScreen(self.container, share_callback_list)
         self.screens["ShareListScreen"] = ShareListScreen(self.container, share_callback_list)
         self.screens["UtilityScreen"] = UtilityScreen(self.container, utility_callback_list)
@@ -198,6 +201,9 @@ class EverStudy(tk.Tk):
 
     def show_subject_screen(self):
         self.show_screen("SubjectScreen")
+
+    def show_learn_subject_screen(self):
+        self.show_screen("LearnSubjectScreen")
 
     def show_share_screen(self):
         self.show_screen("ShareScreen")

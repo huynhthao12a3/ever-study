@@ -77,6 +77,111 @@ class LearnFile09:
     f_gdcd = "khoi-09/6-24-25-dc-gk1-giao-duc-9.pdf"
 
 
+    # Learn Subject
+class LearnSubjectFileUrl06:
+    math = {
+        "ghk1": "khoi-06/1-24-25-de-cuong-gki-toan-6.pdf",
+        "hk1": "khoi-06/1-24-25-de-cuong-hki-toan-6.pdf"
+    }
+    english = {
+        "ghk1": "khoi-06/7-24-25-gk1-dc-tieng-anh-6.pdf",
+        "hk1": "khoi-06/3-24-25-de-cuong-hki-tieng anh-6.pdf"
+    }
+    history_geography = {
+        "ghk1": "khoi-06/3-24-25-GHKI-LS-ĐL-6.pdf"
+    }
+    computer_science = {
+        "ghk1": "khoi-06/4-24-25-gk1-tin-6.pdf"
+    }
+    literature = {
+        "ghk1": "khoi-06/6-24-25-dcgki-ngu-van-6.pdf"
+    }
+    natural_sciences = {
+        "ghk1": "khoi-06/2-24-25-gk1-dc-khtn-6.pdf"
+    }
+    civic_education = {
+        "ghk1": "khoi-06/5-24-25-dcgk-1-giao-duc-6.pdf"
+    }
+
+
+class LearnSubjectFileUrl07:
+    math = {
+        "ghk1": "khoi-07/1-24-25-de-cuong-gki-toan-7.pdf",
+        "hk1": "khoi-07/1-24-25-de-cuong-hki-toan-7.pdf"
+    }
+    english = {
+        "ghk1": "khoi-07/5-24-25-gk1-tieng-anh-7.pdf",
+        "hk1": "khoi-07/3-24-25-de-cuong-hki-tieng anh-7.pdf"
+    }
+    history_geography = {
+        "ghk1": "khoi-07/4-24-25-ghki-ls-dl-7.pdf"
+    }
+    computer_science = {
+        "ghk1": "khoi-07/6-24-25-gk1-tin-7.pdf"
+    }
+    literature = {
+        "ghk1": "khoi-07/2-24-25-dcgk1-ngu-van-7.pdf"
+    }
+    natural_sciences = {
+        "ghk1": "khoi-07/3-24-25-gki-dc-khtn-7.pdf"
+    }
+    civic_education = {
+        "ghk1": "khoi-07/7-24-25-dc-gk1-giao-duc-7.pdf"
+    }
+
+
+class LearnSubjectFileUrl08:
+    math = {
+        "ghk1": "khoi-08/1-24-25-de-cuong-gki-toan-8.pdf",
+        "hk1": "khoi-08/1-24-25-de-cuong-hki-toan-8.pdf"
+    }
+    english = {
+        "ghk1": "khoi-08/4-24-2-gk1-tieng-anh-8.pdf",
+        "hk1": "khoi-08/3-24-25-de-cuong-hki-tieng anh-8.pdf"
+    }
+    history_geography = {
+        "ghk1": "khoi-08/3-24-25-g-hki-ls-dl-8.pdf"
+    }
+    computer_science = {
+        "ghk1": "khoi-08/5-23-24-gk1-tin-8.pdf"
+    }
+    literature = {
+        "ghk1": "khoi-08/7-24-25-dc-gk1-ngu-van-8.pdf"
+    }
+    natural_sciences = {
+        "ghk1": "khoi-08/2-24-25-gki-dc-khtn-8.pdf"
+    }
+    civic_education = {
+        "ghk1": "khoi-08/6-24-25-dc-gk1-giao-duc-8.pdf"
+    }
+
+
+class LearnSubjectFileUrl09:
+    math = {
+        "ghk1": "khoi-09/1-24-25-de-cuong-gki-toan-9.pdf",
+        "hk1": "khoi-09/1-24-25-de-cuong-hki-toan-9.pdf"
+    }
+    english = {
+        "ghk1": "khoi-09/4-24-25-gki-tieng-anh-9.pdf",
+        "hk1": "khoi-09/3-24-25-de-cuong-hki-tieng anh-9.pdf"
+    }
+    history_geography = {
+        "ghk1": "khoi-09/3-24-25-gkhi-ls-dl-9.pdf"
+    }
+    computer_science = {
+        "ghk1": "khoi-09/5-24-25-gk1-tin-9.pdf"
+    }
+    literature = {
+        "ghk1": "khoi-09/7-24-25-dcgk1-ngu-van-9.pdf"
+    }
+    natural_sciences = {
+        "ghk1": "khoi-09/2-24-25-gki-dc-khtn-9.pdf"
+    }
+    civic_education = {
+        "ghk1": "khoi-09/6-24-25-dc-gk1-giao-duc-9.pdf"
+    }
+
+
     # Question Bank
 class BankFileUrl06:
     math = {
