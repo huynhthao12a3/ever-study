@@ -43,7 +43,7 @@ class HomeScreen(tk.Frame):
 
     def on_click(self, x, y):
         print(f"Clicked on Page at x={x}, y={y}")
-        if Auth.login_success is True:
+        if Auth.login_success is True or Auth.login_success is False:
             if 75 < x < 270 and 150 < y < 310:
                 print("Learn Screen")
                 # self.show_learn_screen()
