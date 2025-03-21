@@ -16,6 +16,7 @@ class ChatAIScreen(tk.Frame):
         self.input_var = tk.StringVar()
         self.loading_animation = None
         self.after(100, self.check_queue)
+        self.everstudy_api_url = "https://everstudy-chat-api.vercel.app/search"
 
     def load_widgets(self):
         # Background
@@ -92,11 +93,15 @@ class ChatAIScreen(tk.Frame):
 
     def get_response(self, message):
         try:
-            response = self.get_gpt4o_mini_response(message)
-            self.queue.put(("EverStudy AI: " + response))
+            response = self.search_duckduckgo(message)
+            if response:
+                formatted_response = self.format_search_results(response)
+                self.queue.put(("EverStudy AI: " + formatted_response))
+            else:
+                self.queue.put("EverStudy AI: Xin lỗi, tôi không tìm thấy thông tin phù hợp.")
         except Exception as e:
             print(f"Error getting response: {str(e)}")
-            self.queue.put("Lỗi: EverStudy AI đang bảo trì. Vui lòng thử lại.")
+            self.queue.put("Lỗi: EverStudy AI đang gặp sự cố. Vui lòng thử lại sau.")
 
     def check_queue(self):
         try:
@@ -125,3 +130,29 @@ class ChatAIScreen(tk.Frame):
         response = requests.post(url, json=data, headers=headers)
         response.raise_for_status()
         return response.json()['choices'][0]['message']['content']
+
+    def search_duckduckgo(self, query, max_results=1):
+        """
+        Tìm kiếm trên DuckDuckGo bằng API của Everstudy.
+        """
+        url = f"{self.everstudy_api_url}?q={query}&max_results={max_results}"
+        try:
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+            return data["results"]
+        except requests.exceptions.RequestException as e:
+            print(f"Lỗi khi gọi API DuckDuckGo: {e}")
+            return None
+
+    def format_search_results(self, results):
+        """
+        Định dạng kết quả tìm kiếm thành một chuỗi dễ đọc.
+        """
+        formatted = "Đây là một số thông tin tôi tìm thấy:\n\n"
+        for result in results:
+            formatted += f"Tiêu đề: {result['title']}\n"
+            formatted += f"Mô tả: {result['body']}\n"
+            formatted += f"URL: {result['href']}\n\n"
+        return formatted
+    
