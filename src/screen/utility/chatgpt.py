@@ -6,6 +6,7 @@ import queue
 from src.utils.component import Component
 from src.utils.constant import ImageUrl, ToolTip
 from src.utils.gif import AnimatedGifCanvas
+from googletrans import Translator
 
 class ChatAIScreen(tk.Frame):
     def __init__(self, master, callback_list, *args, **kwargs):
@@ -115,9 +116,9 @@ class ChatAIScreen(tk.Frame):
             self.after(100, self.check_queue)
 
     def get_gpt4o_mini_response(self, message):
-        url = "https://everstudy-chatgpt.deno.dev/v1/chat/completions"
+        url = "https://everstudy-chat-ai.vercel.app/v1/chat/completions"
         headers = {
-            "Authorization": "Bearer EverStudy",
+            # "Authorization": "Bearer EverStudy",
             "Content-Type": "application/json"
         }
         data = {
@@ -129,13 +130,15 @@ class ChatAIScreen(tk.Frame):
         }
         response = requests.post(url, json=data, headers=headers)
         response.raise_for_status()
+        print(response.json())
         return response.json()['choices'][0]['message']['content']
 
     def search_duckduckgo(self, query, max_results=1):
         """
         Tìm kiếm trên DuckDuckGo bằng API của Everstudy.
         """
-        url = f"{self.everstudy_api_url}?q={query}&max_results={max_results}"
+        url = f"{self.everstudy_api_url}?q={query}&lang=vi&max_results={max_results}"
+        print(url)
         try:
             response = requests.get(url, timeout=10)
             response.raise_for_status()
@@ -149,10 +152,11 @@ class ChatAIScreen(tk.Frame):
         """
         Định dạng kết quả tìm kiếm thành một chuỗi dễ đọc.
         """
-        formatted = "Đây là một số thông tin tôi tìm thấy:\n\n"
+        formatted = "" #"Đây là một số thông tin tôi tìm thấy:\n\n"
+        translator = Translator()
         for result in results:
-            formatted += f"Tiêu đề: {result['title']}\n"
-            formatted += f"Mô tả: {result['body']}\n"
-            formatted += f"URL: {result['href']}\n\n"
+            # formatted += f"Tiêu đề: {result['title']}\n"
+            formatted += f"{translator.translate(result['body'], dest='vi').text}\n"
+            # formatted += f"URL: {result['href']}\n\n"
         return formatted
     
